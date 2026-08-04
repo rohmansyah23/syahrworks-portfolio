@@ -1,0 +1,75 @@
+import {
+  DiHtml5,
+  DiCss3,
+  DiJavascript1,
+  DiReact,
+  DiPhp,
+  DiGo,
+  DiPython,
+  DiNodejsSmall,
+  DiLaravel,
+  DiPostgresql,
+  DiMysql,
+  DiFirebase,
+  DiDart,
+  DiGit,
+  DiDatabase,
+  DiBootstrap,
+} from "react-icons/di";
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiFlutter,
+  SiCodeigniter,
+  SiSupabase,
+  SiPrisma,
+  SiKotlin,
+  SiGithub,
+  SiVercel,
+} from "react-icons/si";
+import type { TechGroup } from "@/lib/types";
+
+export const techStack: TechGroup[] = [
+  {
+    group: "Backend",
+    items: [
+      { name: "PHP", icon: DiPhp },
+      { name: "CodeIgniter", icon: SiCodeigniter },
+      { name: "Laravel", icon: DiLaravel },
+      { name: "Node.js", icon: DiNodejsSmall },
+      { name: "Go", icon: DiGo },
+      { name: "Python", icon: DiPython },
+      { name: "SQL", icon: DiDatabase },
+      { name: "PostgreSQL", icon: DiPostgresql },
+      { name: "MySQL", icon: DiMysql },
+      { name: "Supabase", icon: SiSupabase },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Firebase", icon: DiFirebase },
+    ],
+  },
+  {
+    group: "Frontend",
+    items: [
+      { name: "HTML5", icon: DiHtml5 },
+      { name: "CSS3", icon: DiCss3 },
+      { name: "JavaScript", icon: DiJavascript1 },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Bootstrap", icon: DiBootstrap },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "React", icon: DiReact },
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "Flutter", icon: SiFlutter },
+      { name: "Dart", icon: DiDart },
+      { name: "Kotlin", icon: SiKotlin },
+    ],
+  },
+  {
+    group: "Tools",
+    items: [
+      { name: "Git", icon: DiGit },
+      { name: "GitHub", icon: SiGithub },
+      { name: "Vercel", icon: SiVercel },
+    ],
+  },
+];
