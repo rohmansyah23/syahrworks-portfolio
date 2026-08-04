@@ -30,12 +30,12 @@ export default function LatestBlogs() {
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-2">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {latest.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group flex flex-col gap-6 bg-background p-6 transition-colors duration-200 hover:bg-muted sm:p-8"
+              className="group flex flex-col gap-6 border border-border bg-background p-6 transition-colors duration-200 hover:bg-muted sm:p-8"
             >
               <div className="flex items-center justify-between">
                 <p className="micro-label text-muted-foreground">

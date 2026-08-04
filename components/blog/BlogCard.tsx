@@ -8,7 +8,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-col overflow-hidden border border-border bg-card transition-all duration-200 hover:border-foreground hover:shadow-[4px_4px_0_0_var(--foreground)]"
+      className="group flex flex-col overflow-hidden border border-border bg-card transition-all duration-200 hover:shadow-[4px_4px_0_0_var(--foreground)]"
     >
       {post.coverImage && (
         <div className="relative overflow-hidden">
@@ -18,7 +18,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
             width={800}
             height={600}
             sizes="(min-width: 640px) 50vw, 100vw"
-            className="aspect-[16/9] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            className="aspect-[16/9] w-full object-cover"
           />
         </div>
       )}

@@ -27,11 +27,11 @@ export default function CVDialog({ resumeUrl }: { resumeUrl: string }) {
         <DialogHeader>
           <DialogTitle>Curriculum Vitae</DialogTitle>
           <DialogDescription>
-            Dokumen disimpan di Google Drive — bisa juga dibuka di tab baru.
+            Dokumen bisa juga dibuka di tab baru.
           </DialogDescription>
         </DialogHeader>
         <iframe
-          src={resumeUrl.replace("/view", "/preview")}
+          src={resumeUrl}
           title="Curriculum Vitae"
           className="h-[65vh] w-full rounded-sm border border-border bg-muted"
         />

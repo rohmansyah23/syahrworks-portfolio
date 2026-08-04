@@ -25,6 +25,5 @@ export const about: AboutData = {
   ],
   quote:
     "Build reliable systems, ship clean code, and never stop learning.",
-  resumeUrl:
-    "https://drive.google.com/file/d/1p3hgEF94IcqOXCfC6ExF766YTWiLvVwD/view?usp=drive_link",
+  resumeUrl: "/CV-Muhammad-Rohman-Syah.pdf",
 };

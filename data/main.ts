@@ -1,4 +1,4 @@
-import { MapPin, Mail, MessageCircle } from "lucide-react";
+import { MapPin, Mail, MessageCircle, Rocket } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import type { MainData } from "@/lib/types";
 
@@ -43,6 +43,12 @@ export const main: MainData = {
       value: "+62 899-7785-724",
       href: "https://wa.me/628997785724",
       icon: MessageCircle,
+    },
+    {
+      label: "Start a Project",
+      value: "Let's build something →",
+      href: "mailto:rohmansyah23@gmail.com",
+      icon: Rocket,
     },
   ],
 };

@@ -42,14 +42,14 @@ export default async function TopRepos() {
             </p>
           </div>
         ) : (
-          <div className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {repos.map((repo) => (
               <a
                 key={repo.id}
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col gap-4 bg-background p-6 transition-colors duration-200 hover:bg-muted sm:p-7"
+                className="group flex flex-col gap-4 border border-border bg-background p-6 transition-colors duration-200 hover:bg-muted sm:p-7"
               >
                 <div className="flex items-start justify-between gap-3">
                   <FolderGit2 className="h-5 w-5 shrink-0 text-muted-foreground transition-colors duration-200 group-hover:text-foreground" />

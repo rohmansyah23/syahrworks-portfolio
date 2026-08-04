@@ -80,7 +80,7 @@ syahrworks-portfolio/
 ## 9. Struktur Data (modul TS ber-type, migrasi dari data.json lama)
 - **main**: name="Muhammad Rohman Syah", logo="SyahrWorks" (wordmark), tagline, titles[] (peran; hero menampilkan statis, TANPA typewriter), heroImage, getInTouch[] (Location: Jakarta, Email, GitHub, LinkedIn, WhatsApp).
 - **techStack**: 3 grup — Backend (PHP, CodeIgniter, Laravel, Node.js, Go, Python, SQL, PostgreSQL, MySQL, Supabase, Prisma, Firebase), Frontend (HTML5, CSS3, JS, TS, Bootstrap, Tailwind, React, Next.js, Flutter, Dart, Kotlin), Tools (Git, GitHub, Vercel).
-- **about**: aboutImage, intro (dari data lama), philosophy[], workingStyle[], favoriteTech[], quote, resumeUrl (drive link lama).
+- **about**: aboutImage, intro (dari data lama), philosophy[], workingStyle[], favoriteTech[], quote, resumeUrl (`/CV-Muhammad-Rohman-Syah.pdf` — self-hosted di `public/`).
 - **journey** (`type: Full-Time|Part-Time|Education|Certification|Competition`):
   - Full-Time: Freelance Full-Stack Developer (Jan 2024–Present)
   - Part-Time: IT Support & Teaching Assistant (SMKS Jakarta 1, Okt–Des 2024); Operational Admin & Stockist (Milagros, Feb 2021–Des 2024)

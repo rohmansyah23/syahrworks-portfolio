@@ -77,7 +77,7 @@ public/  (salinan aset dari repo lama)
 
 - **main** → `data/main.ts` (name, logo="SyahrWorks" wordmark, tagline, titles[] statis TANPA typewriter, heroImage, getInTouch[]).
 - **skills (26)** → `data/techStack.ts` 3 grup: Backend / Frontend / Tools (mapping per PRD §9; Flutter/Dart/Kotlin masuk Frontend).
-- **about** → `data/about.ts` (aboutImage, intro, philosophy[], workingStyle[], favoriteTech[], quote, resumeUrl dari drive link lama).
+- **about** → `data/about.ts` (aboutImage, intro, philosophy[], workingStyle[], favoriteTech[], quote, resumeUrl = `/CV-Muhammad-Rohman-Syah.pdf` self-hosted di `public/`).
 - **experiences (3)** → `data/journey.ts` type Full-Time/Part-Time (Freelance, SMKS Jakarta 1, Milagros).
 - **educations (2)** → `data/journey.ts` type Education (UBSI, SMKS Jakarta 1).
 - **Sertifikasi BNSP (3)** → `data/journey.ts` type Certification (data aktual user, lihat §3).

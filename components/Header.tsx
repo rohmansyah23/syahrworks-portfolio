@@ -51,16 +51,22 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // Kunci scroll saat drawer terbuka
+  // Kunci scroll saat drawer terbuka + tutup dengan tombol Escape
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    if (open) window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
+    <>
+      <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
       <div className="container-editorial flex h-16 items-center justify-between">
         <Link
           href="/"
@@ -107,8 +113,10 @@ export default function Header() {
           </button>
         </div>
       </div>
+      </header>
 
-      {/* Drawer mobile */}
+      {/* Drawer mobile — di luar <header> agar `fixed` benar-benar relatif ke viewport
+          (anak dari elemen yang punya backdrop-filter akan "terperangkap" dalam kotak header) */}
       <div
         className={cn(
           "fixed inset-0 z-50 md:hidden",
@@ -173,6 +181,6 @@ export default function Header() {
           </p>
         </div>
       </div>
-    </header>
+    </>
   );
 }

@@ -72,7 +72,7 @@ export default function BlogGrid() {
           No posts found — coba ubah kata kunci atau tag.
         </p>
       ) : (
-        <div className="mt-12 grid gap-px border border-border bg-border sm:grid-cols-2">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {filtered.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}
