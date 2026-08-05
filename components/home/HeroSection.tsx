@@ -46,7 +46,10 @@ export default function HeroSection({ lang }: { lang: Locale }) {
             <h1 className="mt-4 font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-[7.5rem] lg:leading-[0.95]">
               {/* Layar < 383px & 465px - 1023px: Normal flow */}
               <span className="max-[382px]:inline min-[465px]:inline hidden lg:hidden">
-                {main.name}
+                <span>Muhammad Rohman </span>
+                <span className="inline-block bg-accent px-2.5 py-0.5 font-serif not-italic text-background rounded-2xs leading-none align-baseline rotate-[-5.5deg]">
+                  Syah
+                </span>
               </span>
 
               {/* Rentang 383px - 464px: Horizontal scroll + Bi-Directional Fade */}
@@ -68,12 +71,20 @@ export default function HeroSection({ lang }: { lang: Locale }) {
                   onScroll={checkScroll}
                   className="block overflow-x-auto whitespace-nowrap pb-1 px-1 [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
-                  {main.name}
+                  <span>Muhammad Rohman </span>
+                  <span className="inline-block bg-accent px-2.5 py-0.5 font-serif not-italic text-background rounded-2xs leading-none align-baseline rotate-[-5.5deg]">
+                    Syah
+                  </span>
                 </span>
               </span>
 
               {/* Layar Desktop >= 1024px */}
-              <span className="hidden lg:inline">Rohman Syah</span>
+              <span className="hidden lg:inline">
+                <span>Rohman </span>
+                <span className="inline-block bg-accent px-3 lg:px-4 py-0.5 lg:py-1 font-serif not-italic text-background rounded-2xs leading-none align-baseline rotate-[-5.5deg]">
+                  Syah
+                </span>
+              </span>
             </h1>
 
             <p className="mt-4 font-mono text-sm tracking-wide text-muted-foreground">
