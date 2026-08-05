@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { ArrowUpRight, FolderGit2, Star } from "lucide-react";
-import { getTopRepos } from "@/lib/github";
+import { getPinnedRepos } from "@/lib/github";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import SectionHeader from "@/components/home/SectionHeader";
 
 export const revalidate = 3600;
 
-export default async function TopRepos({ lang }: { lang: Locale }) {
+export default async function PinnedRepos({ lang }: { lang: Locale }) {
   const t = getDictionary(lang);
-  const repos = await getTopRepos();
+  const repos = await getPinnedRepos();
 
   return (
     <section className="border-b border-border">
@@ -16,9 +16,9 @@ export default async function TopRepos({ lang }: { lang: Locale }) {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeader
             index="04"
-            label={t.topReposLabel}
-            title={t.topReposTitle}
-            description={t.topReposDescription}
+            label={t.pinnedReposLabel}
+            title={t.pinnedReposTitle}
+            description={t.pinnedReposDescription}
             className="mb-0"
           />
           <Link
@@ -27,7 +27,7 @@ export default async function TopRepos({ lang }: { lang: Locale }) {
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground"
           >
-            {t.topReposViewAll}
+            {t.pinnedReposViewAll}
             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
@@ -36,10 +36,10 @@ export default async function TopRepos({ lang }: { lang: Locale }) {
           /* Fallback wajib: tampilkan pesan ringan, build tidak crash */
           <div className="mt-12 flex flex-col gap-3 border border-border bg-card p-10 text-center">
             <p className="micro-label text-muted-foreground">
-              {t.topReposUnavailable}
+              {t.pinnedReposUnavailable}
             </p>
             <p className="mx-auto max-w-md text-sm leading-relaxed text-muted-foreground">
-              {t.topReposFallback}
+              {t.pinnedReposFallback}
             </p>
           </div>
         ) : (
@@ -61,7 +61,7 @@ export default async function TopRepos({ lang }: { lang: Locale }) {
                     {repo.name}
                   </h3>
                   <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                    {repo.description ?? t.topReposNoDescription}
+                    {repo.description ?? t.pinnedReposNoDescription}
                   </p>
                 </div>
                 <div className="mt-auto flex items-center gap-4 font-mono text-xs text-muted-foreground">

@@ -31,7 +31,7 @@ export const ui: UIStrings = {
   projectsLabel: "Projects",
   getInTouchLabel: "Get In Touch",
   techStackLabel: "Tech Stack",
-  topReposLabel: "Top Repos",
+  pinnedReposLabel: "Pinned Repos",
   contactLabel: "Contact",
   /* Judul & filter halaman */
   journeyTitle: "The road so far.",
@@ -46,15 +46,15 @@ export const ui: UIStrings = {
   techStackTitle: "Technologies I work with.",
   techStackDescription:
     "The technologies I use to build reliable web, mobile, and backend applications.",
-  /* Top Repos */
-  topReposTitle: "Open source, top repositories.",
-  topReposDescription:
-    "Featured projects from my GitHub — sorted by number of stars.",
-  topReposViewAll: "View All Repositories",
-  topReposUnavailable: "Repositories unavailable",
-  topReposFallback:
+  /* Pinned Repos */
+  pinnedReposTitle: "Repositories I'm actively working on.",
+  pinnedReposDescription:
+    "Hand-picked projects from my GitHub — pinned to showcase.",
+  pinnedReposViewAll: "View All Repositories",
+  pinnedReposUnavailable: "Repositories unavailable",
+  pinnedReposFallback:
     "Repository data is currently unavailable. Please visit my GitHub profile to see all projects.",
-  topReposNoDescription: "No description provided.",
+  pinnedReposNoDescription: "No description provided.",
   /* Latest Blogs */
   latestBlogsLabel: "From The Blog",
   latestBlogsTitle: "Latest writings.",

@@ -34,7 +34,7 @@ Membangun ulang web portofolio dari **nol** (bukan fork template) menjadi situs 
 ## 5. Non-Goals (yang TIDAK dikerjakan)
 - Tidak menyentuh/modifikasi repo lama.
 - Tidak menyalin teks/konten milik ShinyQ (Kurniadi) — hanya struktur halaman.
-- Tidak ada fitur dinamis lain: **tanpa** visitor counter, Cloudflare KV, R2, **tanpa database (Neon/Postgres, Prisma, ORM, migrasi)**, autentikasi, dashboard admin/CMS. Konten 100% statis (modul TS / `data.json`). Satu-satunya fitur dinamis = widget GitHub Top Repos (server fetch + cache).
+- Tidak ada fitur dinamis lain: **tanpa** visitor counter, Cloudflare KV, R2, **tanpa database (Neon/Postgres, Prisma, ORM, migrasi)**, autentikasi, dashboard admin/CMS. Konten 100% statis (modul TS / `data.json`). Satu-satunya fitur dinamis = widget GitHub Pinned Repos (server fetch + cache).
 - Tanpa efek typewriter, tanpa pola desain "AI slop" (lihat §12 Anti-Slop Checklist).
 
 ## 6. Referensi
@@ -66,7 +66,7 @@ syahrworks-portfolio/
     not-found.tsx  sitemap.ts  robots.ts  loading.tsx(opsional)
   components/
     Header.tsx  Footer.tsx
-    home/    HeroSection · GetInTouch · TechStack · TopRepos · LatestBlogs
+    home/    HeroSection · GetInTouch · TechStack · PinnedRepos · LatestBlogs
     about/   AboutSection · CVDialog
     journey/ Timeline · TimelineItem
     blog/    BlogGrid · BlogCard
@@ -94,7 +94,7 @@ syahrworks-portfolio/
 ## 10. Spesifikasi Halaman
 **Navbar (global, sticky blur):** logo **wordmark "SyahrWorks"**, menu Home/About/Journey/Blog/Projects (state aktif), theme toggle, drawer mobile. **Footer (global):** Navigations, Contact, sosial, copyright.
 
-1. **Home (`/`)** — Hero **editorial statis** (micro-label `01 — HOME`, nama besar serif "Muhammad Rohman Syah", subtitle `main.tagline`, 2 CTA ke /journey & /about; tanpa typewriter) → Get In Touch (micro-label `02 — GET IN TOUCH`, kartu info minimal) → Tech Stack (`03 — TECH STACK`, 3 grup ikon) → GitHub Top Repos (`04 — TOP REPOS`, 6 repo + "View All") → Latest Blog (`05 — FROM THE BLOG`) → Contact form Formspree (`06 — CONTACT`, validasi email + toast).
+1. **Home (`/`)** — Hero **editorial statis** (micro-label `01 — HOME`, nama besar serif "Muhammad Rohman Syah", subtitle `main.tagline`, 2 CTA ke /journey & /about; tanpa typewriter) → Get In Touch (micro-label `02 — GET IN TOUCH`, kartu info minimal) → Tech Stack (`03 — TECH STACK`, 3 grup ikon) → GitHub Pinned Repos (`04 — PINNED REPOS`, 6 repo + "View All") → Latest Blog (`05 — FROM THE BLOG`) → Contact form Formspree (`06 — CONTACT`, validasi email + toast).
 2. **About (`/about`)** — micro-label `01 — ABOUT`, judul serif besar, foto (sticky desktop), bio, ⚙️ Engineering Philosophy, 💻 Working Style, ✨ Technologies I Love, blockquote, tombol **View CV** (modal PDF).
 3. **Journey (`/journey`)** — micro-label `01 — JOURNEY`, tabs filter 5 type, timeline garis tengah/kiri, item: logo, periode, judul, subtitle, bullet, chips tools.
 4. **Blog (`/blog`)** — micro-label `01 — BLOG`, search + tag chips, grid kartu, "No posts found". **Detail `/blog/[slug]`** — cover, meta, render markdown, back link, `generateStaticParams`.
@@ -102,10 +102,10 @@ syahrworks-portfolio/
 6. **404** — micro-label `404`, "Page not found", tombol kembali.
 
 ## 11. Fitur Dinamis
-**GitHub Top Repos** (server component):
-- `lib/github.ts`: fetch `api.github.com/users/rohmansyah23/repos?per_page=100&sort=pushed`, sort by `stargazers_count` desc, ambil 6. Header auth bila `GITHUB_API_TOKEN` ada.
+**GitHub Pinned Repos** (server component):
+- `lib/github.ts`: POST GraphQL `api.github.com/graphql` (`Authorization: Bearer` dari `GITHUB_API_TOKEN`, WAJIB ada) query `user(login:"rohmansyah23") { pinnedItems(first: 6, types: [REPOSITORY]) { nodes { ... } } }`, ambil 6 repo yang di-pin.
 - Cache Next (`revalidate = 3600`) — tanpa KV, tanpa database.
-- **Fallback wajib**: fetch gagal/kosong → pesan ringan atau hide section, build TIDAK boleh crash.
+- **Fallback wajib**: token tidak ada/fetch gagal/kosong → pesan ringan atau hide section, build TIDAK boleh crash.
 
 ## 12. Design System — "Editorial Anti-Slop" (referensi: tasteskill.dev)
 **Prinsip:** typography-led, whitespace-driven, palet dibatasi, detail halus. Desain berkarakter yang TIDAK terlihat seperti "template AI generik".
@@ -148,7 +148,7 @@ syahrworks-portfolio/
 ## 13. SEO & Performa
 - `app/sitemap.ts`, `app/robots.ts`, `generateMetadata` per halaman (title/description/og/twitter).
 - `next/image` untuk aset statis & **screenshot proyek** (beri `sizes`, `priority` hanya hero); `loading="lazy"` non-hero.
-- Semua halaman statis (static generation); TopRepos di-revalidate (ISR-style).
+- Semua halaman statis (static generation); PinnedRepos di-revalidate (ISR-style).
 
 ## 14. Konten yang Perlu Disediakan User
 1. Daftar **kompetisi** (untuk tab Competition).
@@ -162,7 +162,7 @@ syahrworks-portfolio/
 3. Setup types + data modules (migrasi & perluas konten).
 4. Build UI primitives + layout (font, theme, header, footer).
 5. Bangun halaman: Home → About → Journey → Projects → Blog(+detail) → 404 → SEO.
-6. Implementasi TopRepos + fallback.
+6. Implementasi PinnedRepos + fallback.
 7. `.env.local` + `.env.local.example`.
 8. QA & verifikasi.
 
@@ -178,9 +178,9 @@ syahrworks-portfolio/
 ## 17. Verifikasi & Acceptance Criteria
 - [ ] `npm install` tanpa error peer deps.
 - [ ] `npm run lint` tanpa error.
-- [ ] `npm run build` LOLOS (build statis + generateStaticParams; TopRepos tidak menghambat build).
-- [ ] Manual test `npm run dev`: semua 5 halaman, 404, dark/light toggle, responsive, filter Journey (5 tab), search+filter Blog + detail artikel, filter Projects + modal + galeri, form kontak (validasi + toast), TopRepos tampil.
-- [ ] Build tetap sukses tanpa env (fallback TopRepos).
+- [ ] `npm run build` LOLOS (build statis + generateStaticParams; PinnedRepos tidak menghambat build).
+- [ ] Manual test `npm run dev`: semua 5 halaman, 404, dark/light toggle, responsive, filter Journey (5 tab), search+filter Blog + detail artikel, filter Projects + modal + galeri, form kontak (validasi + toast), PinnedRepos tampil.
+- [ ] Build tetap sukses tanpa env (fallback PinnedRepos).
 - [ ] Anti-Slop Checklist §12 terpenuhi (tidak ada gradient ungu/blob/typewriter/emoji-label).
 - [ ] Deploy ke Vercel → `syahrworks.vercel.app`; repo baru `rohmansyah23/syahrworks-portfolio`.
 

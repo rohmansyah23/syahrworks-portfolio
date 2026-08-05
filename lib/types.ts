@@ -108,8 +108,8 @@ export type Social = {
   link: string;
 };
 
-/* ---------- GitHub Top Repos ---------- */
-export type TopRepo = {
+/* ---------- GitHub Pinned Repos ---------- */
+export type PinnedRepo = {
   id: number;
   name: string;
   full_name: string;

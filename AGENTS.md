@@ -18,7 +18,7 @@ Sebelum menulis kode, agent WAJIB membaca:
 - **DILARANG** menyentuh/memodifikasi `D:\A-Projek\Web\next-portfolio` (repo arsip lama). Hanya dipakai sebagai SUMBER KONTEN: `data.json` + `public/` (gambar).
 - **DILARANG** menyalin teks/konten milik ShinyQ (Kurniadi) — struktur halaman boleh diadopsi, konten & bahasa desain TIDAK.
 - **TANPA database** (Neon/Postgres, Prisma, ORM, migrasi), tanpa autentikasi, tanpa CMS/dashboard. Konten 100% statis via modul TS di `data/`.
-- Satu-satunya fitur dinamis: **GitHub Top Repos** (server fetch + cache revalidate, fallback wajib).
+- Satu-satunya fitur dinamis: **GitHub Pinned Repos** (server fetch + cache revalidate, fallback wajib).
 - **TANPA** efek typewriter, `react-scroll`, `@next/font`, firebase, sendgrid.
 
 ## 3. Stack & Commands
@@ -78,6 +78,6 @@ docs/                       # PRD.md, PROMPT.md (sumber spesifikasi), I18N.md, E
 ## 8. Verification Checklist
 - [ ] `npm install` tanpa error peer deps.
 - [ ] `npm run lint` tanpa error.
-- [ ] `npm run build` LOLOS (build statis + `generateStaticParams`; TopRepos tidak menghambat build; tetap sukses tanpa env).
-- [ ] `npm run dev` manual test: 5 halaman, 404, dark/light toggle, responsive, filter Journey (5 tab), search+filter Blog + detail, filter Projects + modal + galeri, form kontak (validasi + toast), TopRepos tampil.
+- [ ] `npm run build` LOLOS (build statis + `generateStaticParams`; PinnedRepos tidak menghambat build; tetap sukses tanpa env).
+- [ ] `npm run dev` manual test: 5 halaman, 404, dark/light toggle, responsive, filter Journey (5 tab), search+filter Blog + detail, filter Projects + modal + galeri, form kontak (validasi + toast), PinnedRepos tampil.
 - [ ] Anti-Slop Checklist §6 terpenuhi secara visual.

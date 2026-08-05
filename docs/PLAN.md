@@ -8,7 +8,7 @@
 
 ## 1. Ringkasan Eksekutif
 
-Membangun ulang portfolio dari **nol** (bukan fork template) di `D:\A-Projek\Web\syahrworks-portfolio` — multi-page 5 halaman (Home, About, Journey, Blog + detail, Projects) + 404, desain editorial "anti-slop AI" ala tasteskill.dev, stack Next.js 16 / React 19 / TS 5 / Tailwind 4. Repo lama `next-portfolio` **hanya** sebagai sumber konten (`data.json` + `public/`). Satu-satunya fitur dinamis: **GitHub Top Repos** (server fetch + revalidate, fallback wajib).
+Membangun ulang portfolio dari **nol** (bukan fork template) di `D:\A-Projek\Web\syahrworks-portfolio` — multi-page 5 halaman (Home, About, Journey, Blog + detail, Projects) + 404, desain editorial "anti-slop AI" ala tasteskill.dev, stack Next.js 16 / React 19 / TS 5 / Tailwind 4. Repo lama `next-portfolio` **hanya** sebagai sumber konten (`data.json` + `public/`). Satu-satunya fitur dinamis: **GitHub Pinned Repos** (server fetch via GraphQL + revalidate, fallback wajib).
 
 ## 2. Temuan Kondisi Aktual (verifikasi 5 Aug 2026)
 
@@ -62,7 +62,7 @@ app/
   not-found.tsx  sitemap.ts  robots.ts  loading.tsx (opsional)
 components/
   Header.tsx  Footer.tsx
-  home/    HeroSection · GetInTouch · TechStack · TopRepos · LatestBlogs
+  home/    HeroSection · GetInTouch · TechStack · PinnedRepos · LatestBlogs
   about/   AboutSection · CVDialog
   journey/ Timeline · TimelineItem
   blog/    BlogGrid · BlogCard
@@ -103,7 +103,7 @@ public/  (salinan aset dari repo lama)
 10. `components/Footer.tsx` — Navigations, Contact, sosial, copyright.
 
 ### Phase 2 — Halaman (urutan build)
-11. **Home** — Hero editorial statis (01 — HOME) → Get In Touch (02) → Tech Stack (03) → TopRepos (04) → Latest Blog (05) → Contact Formspree (06, validasi email + toast).
+11. **Home** — Hero editorial statis (01 — HOME) → Get In Touch (02) → Tech Stack (03) → PinnedRepos (04) → Latest Blog (05) → Contact Formspree (06, validasi email + toast).
 12. **About** — 01 — ABOUT: foto sticky, bio, Engineering Philosophy, Working Style, Technologies I Love, quote, tombol View CV (modal PDF).
 13. **Journey** — 01 — JOURNEY: tabs filter 5 type, timeline (garis tengah desktop / kiri mobile), item: logo, periode, judul, subtitle, bullet, chips tools.
 14. **Projects** — 01 — PROJECTS: filter kategori, grid asimetris/bento, kartu → ProjectModal (desc, role, techStack, links, galeri) → GalleryModal.
@@ -112,7 +112,7 @@ public/  (salinan aset dari repo lama)
 17. **SEO** — `app/sitemap.ts`, `app/robots.ts`, `generateMetadata` per halaman.
 
 ### Phase 3 — Dinamis & QA
-18. `lib/github.ts` + `components/home/TopRepos.tsx` — fetch repos `rohmansyah23` (per_page=100, sort=pushed), sort by stargazers desc, ambil 6, `revalidate = 3600`, auth header bila token ada, **fallback wajib** (gagal/kosong → pesan ringan atau hide, build tidak boleh crash).
+18. `lib/github.ts` + `components/home/PinnedRepos.tsx` — POST GraphQL `api.github.com/graphql` (auth bearer `GITHUB_API_TOKEN` wajib) query `pinnedItems(first: 6, types: [REPOSITORY])`, ambil 6 repo yang di-pin, `revalidate = 3600`, **fallback wajib** (token tidak ada/gagal/kosong → pesan ringan atau hide, build tidak boleh crash).
 19. `.env.local` (salin endpoint Formspree dari repo lama + `GITHUB_API_TOKEN` opsional) + `.env.local.example`.
 20. **Verifikasi:** `npm run lint` → `npm run build` (harus lolos, termasuk tanpa env) → manual test `npm run dev`.
 21. **Cek Anti-Slop Checklist** §9 (visual: tanpa gradient ungu/blob/typewriter/emoji-label).
@@ -125,7 +125,7 @@ public/  (salinan aset dari repo lama)
 - [ ] Blog: search + filter tag + detail artikel (markdown render).
 - [ ] Projects: filter kategori + ProjectModal + GalleryModal.
 - [ ] Form kontak: validasi email + toast (Formspree).
-- [ ] TopRepos tampil (dan fallback saat fetch gagal).
+- [ ] PinnedRepos tampil (dan fallback saat fetch gagal / tanpa token).
 - [ ] Logo wordmark "SyahrWorks", hero statis tanpa typewriter.
 
 ## 9. Design System — "Editorial Anti-Slop" (ringkasan wajib)
@@ -150,7 +150,7 @@ public/  (salinan aset dari repo lama)
 
 - [ ] `npm install` tanpa error peer deps.
 - [ ] `npm run lint` tanpa error.
-- [ ] `npm run build` LOLOS (statis + generateStaticParams; TopRepos tidak menghambat; sukses tanpa env).
+- [ ] `npm run build` LOLOS (statis + generateStaticParams; PinnedRepos tidak menghambat; sukses tanpa env).
 - [ ] Manual test §8 terpenuhi.
 - [ ] Anti-Slop Checklist §9 terpenuhi secara visual.
 - [ ] Konten migrasi utuh: 12 proyek, 3 pengalaman, 2 pendidikan, 26 skill, 5 sosial + 3 sertifikasi BNSP + kompetisi (bila ada).
@@ -161,5 +161,5 @@ public/  (salinan aset dari repo lama)
 
 - ❌ Menyentuh/memodifikasi `D:\A-Projek\Web\next-portfolio`.
 - ❌ Menyalin teks/konten ShinyQ (Kurniadi) — hanya struktur halaman.
-- ❌ Fitur dinamis lain (visitor counter, KV, R2, database, auth, CMS). Dinamis hanya GitHub Top Repos.
+- ❌ Fitur dinamis lain (visitor counter, KV, R2, database, auth, CMS). Dinamis hanya GitHub Pinned Repos.
 - ❌ Efek typewriter / pola desain AI-slop.

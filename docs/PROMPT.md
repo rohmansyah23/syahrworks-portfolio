@@ -57,7 +57,7 @@ syahrworks-portfolio/
       HeroSection.tsx     # hero editorial STATIS (tanpa typewriter), CTA
       GetInTouch.tsx      # info cards minimal: lokasi, email, GitHub, LinkedIn, WhatsApp (ikon lucide)
       TechStack.tsx       # 3 grup ikon tech (Backend/Frontend/Tools)
-      TopRepos.tsx        # server component — GitHub top 6 repo
+      PinnedRepos.tsx      # server component — GitHub 6 repo yang di-pin
       LatestBlogs.tsx     # teaser 1-2 artikel terbaru
     about/
       AboutSection.tsx    # bio, philosophy, workingStyle, favoriteTech, quote, CV dialog
@@ -174,7 +174,7 @@ export const siteMetadata = { siteUrl: "https://syahrworks.vercel.app", ... } //
   1. Hero — micro-label `01 — HOME`, nama besar SERIF statis "Muhammad Rohman Syah" (TANPA typewriter), subtitle `main.tagline`, 2 CTA ke `/journey` & `/about`.
   2. Get In Touch — micro-label `02 — GET IN TOUCH`, kartu info minimal dengan ikon lucide (Location/Email/GitHub/LinkedIn/WhatsApp).
   3. Tech Stack — micro-label `03 — TECH STACK`, 3 grup (Backend/Frontend/Tools) ikon tech, tiap ikon punya title tooltip.
-  4. GitHub Top Repos — micro-label `04 — TOP REPOS`, 6 kartu repo (nama, bahasa, deskripsi, ★, 🍴) + link "View All Repositories". Server component (lihat §6).
+  4. GitHub Pinned Repos — micro-label `04 — PINNED REPOS`, 6 kartu repo yang di-pin (nama, bahasa, deskripsi, ★, 🍴) + link "View All Repositories". Server component (lihat §6).
   5. Latest Blog — micro-label `05 — FROM THE BLOG`, 1-2 kartu artikel terbaru + "View All".
   6. Contact form Formspree — micro-label `06 — CONTACT`, form (name/email/message) + toast, VALIDASI email.
 - **About**: micro-label `01 — ABOUT`, judul besar serif, foto (sticky di desktop), bio (`about.intro`), lalu section: ⚙️ Engineering Philosophy, 💻 Working Style, ✨ Technologies I Love (bullet dengan ▹), blockquote `about.quote`, tombol **View CV** (buka modal PDF `resumeUrl`).
@@ -184,10 +184,10 @@ export const siteMetadata = { siteUrl: "https://syahrworks.vercel.app", ... } //
 - **Projects**: micro-label `01 — PROJECTS`, heading + deskripsi, filter kategori chips, grid **asimetris/bento** (featured besar + kecil — hierarki jelas, BUKAN 3 kolom seragam), kartu (cover, title, tags, desc singkat) → klik buka **ProjectModal** (deskripsi lengkap, role, techStack chips, links: GitHub/Live/Doc, galeri → GalleryModal).
 - **404**: micro-label `404`, "Page not found", tombol back home.
 
-## 6. FITUR DINAMIS — GITHUB TOP REPOS (server-side)
-- `lib/github.ts`: `GET https://api.github.com/users/rohmansyah23/repos?per_page=100&sort=pushed` memakai `fetch` (header `Authorization: Bearer` bila `GITHUB_API_TOKEN` ada), urutkan by `stargazers_count` desc, ambil 6.
-- `<TopRepos />`: server component (`async`), pakai `export const revalidate = 3600` atau `next: { revalidate: 3600 }` pada fetch → hasil di-cache Next (TIDAK perlu Cloudflare KV, TIDAK perlu database).
-- Fallback: jika fetch gagal / array kosong → tampilkan pesan ringan atau sembunyikan section; JANGAN crash build.
+## 6. FITUR DINAMIS — GITHUB PINNED REPOS (server-side)
+- `lib/github.ts`: POST GraphQL `https://api.github.com/graphql` (`Authorization: Bearer` dari `GITHUB_API_TOKEN`, WAJIB ada) query `user(login:"rohmansyah23") { pinnedItems(first: 6, types: [REPOSITORY]) { nodes { ... } } }`, ambil 6 repo yang di-pin.
+- `<PinnedRepos />`: server component (`async`), pakai `export const revalidate = 3600` atau `next: { revalidate: 3600 }` pada fetch → hasil di-cache Next (TIDAK perlu Cloudflare KV, TIDAK perlu database).
+- Fallback: jika token tidak ada / fetch gagal / array kosong → tampilkan pesan ringan atau sembunyikan section; JANGAN crash build.
 
 ## 7. DESIGN SYSTEM — "EDITORIAL ANTI-SLOP" (referensi: tasteskill.dev)
 Prinsip: typography-led, whitespace besar, palet dibatasi, detail halus. Jangan tampilkan desain yang terlihat seperti "template AI generik".
@@ -230,7 +230,7 @@ Prinsip: typography-led, whitespace besar, palet dibatasi, detail halus. Jangan 
 - `app/sitemap.ts` & `app/robots.ts` (siteUrl syahrworks.vercel.app).
 - Metadata per halaman (generateMetadata): title, description, openGraph, twitter.
 - `next/image` untuk gambar statis & **screenshot proyek** (beri `sizes`, `priority` hanya hero). `loading="lazy"` untuk non-hero.
-- Pastikan build memakai static generation (semua halaman bisa statis; tidak ada data dinamis yang mengharuskan SSR runtime kecuali TopRepos yang tetap bisa di-revalidate).
+- Pastikan build memakai static generation (semua halaman bisa statis; tidak ada data dinamis yang mengharuskan SSR runtime kecuali PinnedRepos yang tetap bisa di-revalidate).
 
 ## 9. LANGKAH EKSEKUSI (urutan)
 1. `cd D:\A-Projek\Web && npx create-next-app@latest syahrworks-portfolio` (opsi: TS + App Router + Tailwind + ESLint + import alias `@/*`, tanpa src/).
@@ -240,22 +240,22 @@ Prinsip: typography-led, whitespace besar, palet dibatasi, detail halus. Jangan 
 5. Install deps tambahan (§2). Buat `ui/` primitives (flat, hairline).
 6. Bangun layout (fonts serif+sans+mono, ThemeProvider, globals.css) → Header/Footer (wordmark).
 7. Bangun halaman berurutan: Home → About → Journey → Projects → Blog(+detail) → 404 → SEO.
-8. Implement `TopRepos` + fallback.
-9. `.env.local` (salin `NEXT_PUBLIC_FORMSPREE_ENDPOINT` dari repo lama, tambah `GITHUB_API_TOKEN` opsional). Update `.env.local.example`.
+8. Implement `PinnedRepos` + fallback.
+9. `.env.local` (salin `NEXT_PUBLIC_FORMSPREE_ENDPOINT` dari repo lama, tambah `GITHUB_API_TOKEN` — sekarang WAJIB untuk menampilkan section). Update `.env.local.example`.
 10. Verifikasi (lihat §10) + cek Anti-Slop Checklist §7.
 
 ## 10. VERIFIKASI (WAJIB)
 - `npm install` bersih (tidak ada peer-dependency error).
 - `npm run lint` → tanpa error.
-- `npm run build` → LOLOS tanpa error/warning berarti (perhatikan async page, generateStaticParams, dan fetch di TopRepos — gunakan `await Promise.all` / cache agar tidak hang).
-- `npm run dev` → cek manual semua halaman: Home, About, Journey (5 tab filter), Blog (search + filter tag + detail), Projects (filter + modal + grid bento), 404, dark/light toggle, responsive mobile, form kontak (validasi + toast), TopRepos tampil.
+- `npm run build` → LOLOS tanpa error/warning berarti (perhatikan async page, generateStaticParams, dan fetch di PinnedRepos — gunakan `await Promise.all` / cache agar tidak hang).
+- `npm run dev` → cek manual semua halaman: Home, About, Journey (5 tab filter), Blog (search + filter tag + detail), Projects (filter + modal + grid bento), 404, dark/light toggle, responsive mobile, form kontak (validasi + toast), PinnedRepos tampil.
 - Pastikan build PRISMAATIF: jika tak ada env, build tetap sukses (fallback rapi).
 - Cek visual: tidak ada gradient ungu/blob, tidak ada typewriter, tidak ada emoji label section, typografi serif terlihat jelas di heading.
 
 ## 11. CONSTRAINT / NON-GOALS
 - DILARANG menyentuh/memodifikasi `D:\A-Projek\Web\next-portfolio`.
 - DILARANG menyalin teks/konten milik ShinyQ (Kurniadi) — hanya struktur navigasi yang diadopsi; bahasa desain TIDAK ikut ditiru.
-- DILARANG menambah fitur dinamis lain (visitor counter, R2, KV) — yang dinamis hanya GitHub Top Repos; sisanya statis.
+- DILARANG menambah fitur dinamis lain (visitor counter, R2, KV) — yang dinamis hanya GitHub Pinned Repos; sisanya statis.
 - TANPA database (Neon/Postgres, Prisma, ORM, migrasi) — konten 100% statis via modul TS.
 - Tanpa autentikasi, tanpa efek typewriter.
 - Konten default bahasa: deskripsi proyek/pengalaman boleh English (konsisten dengan data lama), artikel blog Bahasa Indonesia.

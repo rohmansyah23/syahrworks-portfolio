@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import GetInTouch from "@/components/home/GetInTouch";
 import TechStack from "@/components/home/TechStack";
-import TopRepos from "@/components/home/TopRepos";
+import PinnedRepos from "@/components/home/PinnedRepos";
 import LatestBlogs from "@/components/home/LatestBlogs";
 import ContactForm from "@/components/home/ContactForm";
 import { getData, resolveLang } from "@/lib/i18n";
@@ -29,7 +29,7 @@ export default async function HomePage({
       <HeroSection lang={lang} />
       <GetInTouch lang={lang} />
       <TechStack lang={lang} />
-      <TopRepos lang={lang} />
+      <PinnedRepos lang={lang} />
       <LatestBlogs lang={lang} />
       <ContactForm lang={lang} />
     </>

@@ -52,7 +52,7 @@ export type UIStrings = {
   projectsLabel: string;
   getInTouchLabel: string;
   techStackLabel: string;
-  topReposLabel: string;
+  pinnedReposLabel: string;
   contactLabel: string;
   /* Judul & filter halaman */
   journeyTitle: string;
@@ -65,13 +65,13 @@ export type UIStrings = {
   /* Tech Stack */
   techStackTitle: string;
   techStackDescription: string;
-  /* Top Repos */
-  topReposTitle: string;
-  topReposDescription: string;
-  topReposViewAll: string;
-  topReposUnavailable: string;
-  topReposFallback: string;
-  topReposNoDescription: string;
+  /* Pinned Repos */
+  pinnedReposTitle: string;
+  pinnedReposDescription: string;
+  pinnedReposViewAll: string;
+  pinnedReposUnavailable: string;
+  pinnedReposFallback: string;
+  pinnedReposNoDescription: string;
   /* Latest Blogs */
   latestBlogsLabel: string;
   latestBlogsTitle: string;

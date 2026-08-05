@@ -1,44 +1,92 @@
-import type { TopRepo } from "@/lib/types";
+import type { PinnedRepo } from "@/lib/types";
 
 const GITHUB_USER = "rohmansyah23";
-const TOP_REPOS_COUNT = 6;
+const PINNED_REPOS_COUNT = 6;
+
+const PINNED_QUERY = `
+  query {
+    user(login: "${GITHUB_USER}") {
+      pinnedItems(first: ${PINNED_REPOS_COUNT}, types: [REPOSITORY]) {
+        nodes {
+          ... on Repository {
+            databaseId
+            name
+            url
+            description
+            primaryLanguage {
+              name
+            }
+            stargazerCount
+            forkCount
+            isFork
+          }
+        }
+      }
+    }
+  }
+`;
+
+type PinnedNode = {
+  databaseId: number | null;
+  name: string;
+  url: string;
+  description: string | null;
+  primaryLanguage: { name: string } | null;
+  stargazerCount: number;
+  forkCount: number;
+  isFork: boolean;
+};
 
 /**
- * Ambil top repos GitHub (server-only). Sortir by stargazers desc, ambil 6.
- * Fallback wajib: gagal / kosong → return [] (section akan disembunyikan).
- * Build TIDAK boleh crash meski tanpa env atau tanpa internet.
+ * Ambil repos yang dipin GitHub (server-only) via GraphQL pinnedItems.
+ * GraphQL WAJIB token. Tanpa token / gagal / kosong → return [] (section
+ * akan menampilkan fallback message). Build TIDAK boleh crash.
  */
-export async function getTopRepos(): Promise<TopRepo[]> {
-  try {
-    const token = process.env.GITHUB_API_TOKEN;
-    const headers: Record<string, string> = {
-      Accept: "application/vnd.github+json",
-    };
-    if (token) {
-      headers.Authorization = `Bearer ${token}`;
-    }
+export async function getPinnedRepos(): Promise<PinnedRepo[]> {
+  const token = process.env.GITHUB_API_TOKEN;
+  if (!token) return [];
 
-    const res = await fetch(
-      `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=pushed`,
-      {
-        headers,
-        // Cache 1 jam — tanpa database/KV
-        next: { revalidate: 3600 },
-        // Batasi waktu tunggu agar build/prerender tidak pernah hang
-        signal: AbortSignal.timeout(10_000),
-      }
-    );
+  try {
+    const res = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query: PINNED_QUERY }),
+      // Cache 1 jam — tanpa database/KV
+      next: { revalidate: 3600 },
+      // Batasi waktu tunggu agar build/prerender tidak pernah hang
+      signal: AbortSignal.timeout(10_000),
+    });
 
     if (!res.ok) return [];
 
-    const repos: TopRepo[] = await res.json();
-    if (!Array.isArray(repos) || repos.length === 0) return [];
+    const json: unknown = await res.json();
+    const nodes = extractPinnedNodes(json);
+    if (!Array.isArray(nodes) || nodes.length === 0) return [];
 
-    return repos
-      .filter((repo) => !repo.fork)
-      .sort((a, b) => b.stargazers_count - a.stargazers_count)
-      .slice(0, TOP_REPOS_COUNT);
+    return nodes
+      .filter((node) => !node.isFork)
+      .map((node, index) => ({
+        id: node.databaseId ?? index,
+        name: node.name,
+        full_name: `${GITHUB_USER}/${node.name}`,
+        description: node.description,
+        html_url: node.url,
+        language: node.primaryLanguage?.name ?? null,
+        stargazers_count: node.stargazerCount,
+        forks_count: node.forkCount,
+        fork: node.isFork,
+      }));
   } catch {
     return [];
   }
+}
+
+function extractPinnedNodes(json: unknown): PinnedNode[] {
+  if (typeof json !== "object" || json === null) return [];
+  const { data } = json as { data?: { user?: { pinnedItems?: { nodes?: unknown } } } };
+  const nodes = data?.user?.pinnedItems?.nodes;
+  return Array.isArray(nodes) ? (nodes as PinnedNode[]) : [];
 }

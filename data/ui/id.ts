@@ -31,7 +31,7 @@ export const ui: UIStrings = {
   projectsLabel: "Proyek",
   getInTouchLabel: "Hubungi Saya",
   techStackLabel: "Stack Teknologi",
-  topReposLabel: "Top Repos",
+  pinnedReposLabel: "Repos Pin",
   contactLabel: "Kontak",
   /* Judul & filter halaman */
   journeyTitle: "Jalan yang sudah dilalui.",
@@ -46,15 +46,15 @@ export const ui: UIStrings = {
   techStackTitle: "Teknologi yang saya gunakan.",
   techStackDescription:
     "Teknologi yang saya gunakan untuk membangun aplikasi web, mobile, dan backend yang andal.",
-  /* Top Repos */
-  topReposTitle: "Repositori open source pilihan.",
-  topReposDescription:
-    "Proyek pilihan dari GitHub saya — diurutkan berdasarkan jumlah star.",
-  topReposViewAll: "Lihat Semua Repositori",
-  topReposUnavailable: "Repositori tidak tersedia",
-  topReposFallback:
+  /* Pinned Repos */
+  pinnedReposTitle: "Repositori yang sedang saya kerjakan.",
+  pinnedReposDescription:
+    "Proyek pilihan dari GitHub saya — yang saya pin untuk ditampilkan.",
+  pinnedReposViewAll: "Lihat Semua Repositori",
+  pinnedReposUnavailable: "Repositori tidak tersedia",
+  pinnedReposFallback:
     "Data repositori sedang tidak dapat dimuat. Silakan kunjungi profil GitHub saya untuk melihat semua proyek.",
-  topReposNoDescription: "Tidak ada deskripsi.",
+  pinnedReposNoDescription: "Tidak ada deskripsi.",
   /* Latest Blogs */
   latestBlogsLabel: "Dari Blog",
   latestBlogsTitle: "Tulisan terbaru.",

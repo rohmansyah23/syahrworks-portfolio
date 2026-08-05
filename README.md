@@ -14,7 +14,7 @@ Semua route ber-prefix locale: `/en` & `/id`.
 
 | Route | Deskripsi |
 |---|---|
-| `/{lang}/` | Hero editorial, Get In Touch, Tech Stack, Top Repos, Latest Blog, Contact Form |
+| `/{lang}/` | Hero editorial, Get In Touch, Tech Stack, Pinned Repos, Latest Blog, Contact Form |
 | `/{lang}/about` | Bio, filosofi, cara kerja, tech favorit, CV modal |
 | `/{lang}/journey` | Timeline dengan filter 4 tab: Experience / Education / Certification / Competition |
 | `/{lang}/blog` | Search + filter tag, detail artikel markdown per locale |
@@ -22,7 +22,7 @@ Semua route ber-prefix locale: `/en` & `/id`.
 
 ## Fitur Dinamis
 
-Hanya satu: **GitHub Top Repos** (server fetch, cache revalidate 1 jam, fallback rapi bila gagal). Tanpa database, tanpa auth, tanpa CMS.
+Hanya satu: **GitHub Pinned Repos** (server fetch via GraphQL, cache revalidate 1 jam, fallback rapi bila gagal). Tanpa database, tanpa auth, tanpa CMS.
 
 ## Development
 

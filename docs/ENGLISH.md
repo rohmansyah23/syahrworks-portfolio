@@ -40,7 +40,7 @@
 | `components/Header.tsx` | 3 `aria-label` (mode terang/gelap, buka/tutup menu) | ✅ |
 | `components/home/ContactForm.tsx` | desc section + 5 pesan validasi/toast + 1 pesan gagal | ✅ |
 | `components/home/GetInTouch.tsx` | desc section | ✅ |
-| `components/home/TopRepos.tsx` | desc section + teks fallback | ✅ |
+| `components/home/PinnedRepos.tsx` | desc section + teks fallback | ✅ |
 | `components/blog/BlogGrid.tsx` | `aria-label="Cari artikel"` + empty state | ✅ |
 | `components/journey/Timeline.tsx` | empty state | ✅ |
 | `components/projects/ProjectGrid.tsx` | empty state | ✅ |
