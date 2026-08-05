@@ -102,8 +102,19 @@ export default function Header({ lang }: { lang: Locale }) {
         <div className="container-editorial flex h-16 items-center justify-between">
           <Link
             href={`/${lang}`}
-            className="font-serif text-xl tracking-tight text-foreground transition-opacity duration-200 hover:opacity-70"
+            aria-label="SyahrWorks Home"
+            className="flex items-center gap-3 font-serif text-2xl sm:text-3xl tracking-tight text-foreground transition-opacity duration-200 hover:opacity-85"
           >
+            <img
+              src="/logo-light.svg"
+              alt="SyahrWorks"
+              className="h-9 w-9 object-contain dark:hidden"
+            />
+            <img
+              src="/logo-dark.svg"
+              alt="SyahrWorks"
+              className="h-9 w-9 object-contain hidden dark:block"
+            />
             <Wordmark lang={lang} />
           </Link>
 
@@ -174,9 +185,19 @@ export default function Header({ lang }: { lang: Locale }) {
           )}
         >
           <div className="flex items-center justify-between">
-            <span className="font-serif text-xl tracking-tight">
+            <div className="flex items-center gap-2.5 font-serif text-2xl tracking-tight text-foreground">
+              <img
+                src="/logo-light.svg"
+                alt="SyahrWorks"
+                className="h-8 w-8 object-contain dark:hidden"
+              />
+              <img
+                src="/logo-dark.svg"
+                alt="SyahrWorks"
+                className="h-8 w-8 object-contain hidden dark:block"
+              />
               <Wordmark lang={lang} />
-            </span>
+            </div>
             <button
               type="button"
               aria-label={t.closeMenu}

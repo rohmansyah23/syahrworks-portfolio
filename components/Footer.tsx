@@ -33,8 +33,19 @@ export default function Footer({ lang }: { lang: Locale }) {
         <div className="sm:col-span-2 lg:col-span-1">
           <Link
             href={`/${lang}`}
-            className="font-serif text-2xl tracking-tight text-foreground transition-opacity duration-200 hover:opacity-70"
+            aria-label="SyahrWorks Home"
+            className="inline-flex items-center gap-3 font-serif text-2xl sm:text-3xl tracking-tight text-foreground transition-opacity duration-200 hover:opacity-85"
           >
+            <img
+              src="/logo-light.svg"
+              alt="SyahrWorks"
+              className="h-9 w-9 object-contain dark:hidden"
+            />
+            <img
+              src="/logo-dark.svg"
+              alt="SyahrWorks"
+              className="h-9 w-9 object-contain hidden dark:block"
+            />
             <Wordmark lang={lang} />
           </Link>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
