@@ -5,11 +5,12 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
-import { useServerInsertedHTML } from "next/navigation";
+import { usePathname, useServerInsertedHTML } from "next/navigation";
 
 const STORAGE_KEY = "theme";
 
@@ -18,6 +19,34 @@ type Theme = "light" | "dark";
 /* Anti-FOUC: set class sebelum React hydrate. Di-inject lewat useServerInsertedHTML
    (di luar tree React) sehingga React 19 tidak memperingatkan soal <script>. */
 const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem("${STORAGE_KEY}");var d=t==="dark";document.documentElement.classList.toggle("dark",d);document.documentElement.style.colorScheme=d?"dark":"light"}catch(e){}})();`;
+
+/* Sumber kebenaran tema = class "dark" pada <html> (di-set oleh THEME_INIT_SCRIPT
+   maupun setTheme). resolvedTheme dibaca lewat useSyncExternalStore sehingga
+   selalu mencerminkan DOM tanpa setState dalam effect. */
+function getThemeFromDOM(): Theme {
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
+function subscribeThemeChange(cb: () => void) {
+  window.addEventListener("themechange", cb);
+  window.addEventListener("storage", cb);
+  return () => {
+    window.removeEventListener("themechange", cb);
+    window.removeEventListener("storage", cb);
+  };
+}
+
+function getThemeSnapshot(): Theme {
+  return getThemeFromDOM();
+}
+
+function getThemeServerSnapshot(): Theme {
+  return "light";
+}
+
+function notifyThemeChange() {
+  window.dispatchEvent(new Event("themechange"));
+}
 
 type ThemeContextValue = {
   theme: Theme;
@@ -47,21 +76,44 @@ export function ThemeProvider({
     <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
   ));
 
-  const [theme, setThemeState] = useState<Theme>("light");
+  const pathname = usePathname();
 
+  const resolvedTheme = useSyncExternalStore(
+    subscribeThemeChange,
+    getThemeSnapshot,
+    getThemeServerSnapshot
+  );
+
+  /* Terapkan preferensi dari localStorage ke DOM. Murni update external system
+     (tanpa setState) sehingga lolos react-hooks/set-state-in-effect. */
+  const applyStoredThemeToDOM = useCallback(() => {
+    let stored: string | null = null;
+    try {
+      stored = window.localStorage.getItem(STORAGE_KEY);
+    } catch {}
+    const dark = stored === "dark";
+    const el = document.documentElement;
+    el.classList.toggle("dark", dark);
+    el.style.colorScheme = dark ? "dark" : "light";
+  }, []);
+
+  // Sinkronkan tema dari tab lain (storage event) ke DOM.
   useEffect(() => {
-    const applyFromDOM = () => {
-      setThemeState(
-        document.documentElement.classList.contains("dark") ? "dark" : "light"
-      );
-    };
-    applyFromDOM();
     const onStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY) applyFromDOM();
+      if (e.key === STORAGE_KEY) {
+        applyStoredThemeToDOM();
+        notifyThemeChange();
+      }
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
-  }, []);
+  }, [applyStoredThemeToDOM]);
+
+  // Re-assert setelah navigasi (sebelum paint) — mencegah flash light saat ganti bahasa.
+  useLayoutEffect(() => {
+    applyStoredThemeToDOM();
+    notifyThemeChange();
+  }, [pathname, applyStoredThemeToDOM]);
 
   const setTheme = useCallback(
     (next: Theme) => {
@@ -73,7 +125,7 @@ export function ThemeProvider({
         try {
           window.localStorage.setItem(STORAGE_KEY, next);
         } catch {}
-        setThemeState(next);
+        notifyThemeChange();
       };
 
       if (!disableTransitionOnChange) {
@@ -97,8 +149,8 @@ export function ThemeProvider({
   );
 
   const value = useMemo(
-    () => ({ theme, resolvedTheme: theme, setTheme }),
-    [theme, setTheme]
+    () => ({ theme: resolvedTheme, resolvedTheme, setTheme }),
+    [resolvedTheme, setTheme]
   );
 
   return (

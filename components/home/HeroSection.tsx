@@ -37,13 +37,13 @@ export default function HeroSection({ lang }: { lang: Locale }) {
           >
             {t.heroAboutMe}
           </Link>
-          <Link
+          <a
             href="#get-in-touch"
             className="inline-flex h-11 items-center gap-2 px-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
           >
             {t.heroGetInTouch}
             <ArrowDown className="h-4 w-4" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>
