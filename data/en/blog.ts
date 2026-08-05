@@ -8,14 +8,14 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ppdb-sistem-terpadu-payment-gateway-ujian-aman",
     title:
-      "Building an Integrated Student Admission (PPDB) System: Payment Gateway Integration and a Secure Online Exam",
+      "Developing an Efficient PPDB System Integrating Payment Gateway and Secure Exams",
     date: "2026-01-01",
     excerpt:
       "Research on developing an integrated admission system for SMKS Jakarta 1 Pondok Kopi: registration, digital payments via payment gateway, anti-cheating online exams, and centralized announcements — with a 'Very Good' acceptance rating (4.48/5.00).",
-    coverImage: "/projects/oc.png",
-    tags: ["Research", "PPDB", "Payment Gateway", "Web Development"],
+    coverImage: "/blog/placeholder-blog.png",
+    tags: ["Research", "PPDB", "Payment Gateway", "Online Exam", "Waterfall"],
     category: "Research & Development",
-    readingTime: "5 min read",
+    readingTime: "6 min read",
     author: "Muhammad Rohman Syah",
     featured: true,
   },
@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-05",
     excerpt:
       "Learning material on the most-used basic to intermediate commands in Command Prompt (CMD) and Windows PowerShell — complete with syntax, examples, their differences, and a suggested learning path.",
-    coverImage: "/projects/auto-refresh.png",
+    coverImage: "/blog/placeholder-blog.png",
     tags: ["Windows", "CMD", "PowerShell", "Tutorial"],
     category: "Tutorial",
     readingTime: "12 min read",

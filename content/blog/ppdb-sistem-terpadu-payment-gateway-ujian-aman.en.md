@@ -1,3 +1,17 @@
+## Publication
+
+The research behind this article was published in a peer-reviewed journal:
+
+| Item | Detail |
+|---|---|
+| Journal | *Computer Science (CO-SCIENCE)* |
+| Issue | Vol. 6 No. 1 (2026): January 2026, pp. 48–56 |
+| Published | January 1, 2026 |
+| Authors | Muhammad Rohman Syah, Deny Novianti M.Kom, Roynaldy Rosdiyanto |
+| DOI | [10.31294/co-science.v6i1.10103](https://doi.org/10.31294/co-science.v6i1.10103) |
+
+Read the full paper: [jurnal.bsi.ac.id — article 10103](https://jurnal.bsi.ac.id/index.php/co-science/article/view/10103)
+
 ## Introduction
 
 The new student admission process (PPDB) is a critical gateway for any educational institution. However, SMKS Jakarta 1 Pondok Kopi faced a significant **35.4% decline in applicants** between 2021 and 2024, caused by an inefficient and fragmented admission system.
@@ -20,7 +34,15 @@ This research aims to develop an **integrated web-based student admission (PPDB)
 
 ## Methodology
 
-The system was developed using the **Waterfall** model, with stages of requirements analysis, design, implementation, testing, and maintenance. Evaluation was carried out in two stages:
+The system was developed using the **Waterfall** model, applied in five stages:
+
+1. **Requirements analysis** — collecting the school's admission workflow and pain points.
+2. **Design** — modeling the integrated system and its database.
+3. **Implementation** — building the web-based system, including the payment gateway and online exam modules.
+4. **Testing** — verifying each feature against expected behavior.
+5. **Maintenance** — supporting deployment and future refinements.
+
+Evaluation was carried out in two stages:
 
 | Stage | Method | Result |
 |---|---|---|

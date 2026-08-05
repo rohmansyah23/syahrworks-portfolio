@@ -8,7 +8,7 @@ export default function GetInTouch({ lang }: { lang: Locale }) {
   const main = getData(lang).main.main;
 
   return (
-    <section id="get-in-touch" className="border-b border-border">
+    <section id="get-in-touch" className="scroll-mt-20 border-b border-border">
       <div className="container-editorial py-14 sm:py-20">
         <SectionHeader
           index="02"

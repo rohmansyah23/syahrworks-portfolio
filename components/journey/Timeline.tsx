@@ -8,6 +8,7 @@ import {
 } from "@/lib/i18n";
 import TimelineItem from "@/components/journey/TimelineItem";
 import { cn } from "@/lib/utils";
+import type { JourneyItem } from "@/lib/types";
 
 type JourneyType =
   | "Experience"
@@ -44,13 +45,21 @@ export default function Timeline({ lang }: { lang: Locale }) {
       : journey.some((item) => item.type === type)
   );
 
+  // Item yang masih berjalan ("Present") selalu di atas; sisanya diurut endDate desc.
+  const endRank = (item: JourneyItem) =>
+    /^\d{4}-\d{2}$/.test(item.endDate) ? item.endDate : "9999-99";
+
   const filtered = journey
     .filter((item) =>
       activeTab === "Experience"
         ? isExperienceType(item.type)
         : item.type === activeTab
     )
-    .sort((a, b) => b.startDate.localeCompare(a.startDate));
+    .sort(
+      (a, b) =>
+        endRank(b).localeCompare(endRank(a)) ||
+        b.startDate.localeCompare(a.startDate)
+    );
 
   return (
     <div>

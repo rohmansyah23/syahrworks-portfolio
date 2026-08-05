@@ -8,14 +8,14 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ppdb-sistem-terpadu-payment-gateway-ujian-aman",
     title:
-      "Membangun Sistem PPDB Terpadu: Integrasi Payment Gateway dan Ujian Online yang Aman",
+      "Mengembangkan Sistem PPDB yang Efisien: Integrasi Payment Gateway dan Ujian Online yang Aman",
     date: "2026-01-01",
     excerpt:
       "Riset pengembangan sistem PPDB terpadu untuk SMKS Jakarta 1 Pondok Kopi: pendaftaran, pembayaran digital melalui payment gateway, ujian online anti-kecurangan, dan pengumuman terpusat — dengan penilaian penerimaan 'Sangat Baik' (4,48/5,00).",
-    coverImage: "/projects/oc.png",
-    tags: ["Riset", "PPDB", "Payment Gateway", "Web Development"],
+    coverImage: "/blog/placeholder-blog.png",
+    tags: ["Riset", "PPDB", "Payment Gateway", "Ujian Online", "Waterfall"],
     category: "Riset & Pengembangan",
-    readingTime: "5 mnt baca",
+    readingTime: "6 mnt baca",
     author: "Muhammad Rohman Syah",
     featured: true,
   },
@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-05",
     excerpt:
       "Materi pembelajaran perintah paling umum dari tingkat dasar hingga menengah di Command Prompt (CMD) dan Windows PowerShell — lengkap dengan sintaks, contoh, perbedaannya, dan alur belajar yang disarankan.",
-    coverImage: "/projects/auto-refresh.png",
+    coverImage: "/blog/placeholder-blog.png",
     tags: ["Windows", "CMD", "PowerShell", "Tutorial"],
     category: "Tutorial",
     readingTime: "12 mnt baca",

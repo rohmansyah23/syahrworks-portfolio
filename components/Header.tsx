@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/ThemeProvider";
 import { Languages, Menu, Moon, Sun, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getData, getDictionary, type Locale } from "@/lib/i18n";
@@ -167,7 +167,7 @@ export default function Header({ lang }: { lang: Locale }) {
         />
         <div
           className={cn(
-            "absolute inset-y-0 right-0 flex w-72 max-w-[85%] flex-col border-l border-border bg-background p-6 transition-transform duration-200",
+            "absolute inset-y-0 right-0 flex w-72 max-w-[85%] flex-col overflow-y-auto overscroll-contain border-l border-border bg-background p-6 transition-transform duration-200",
             open
               ? "translate-x-0"
               : "pointer-events-none translate-x-full opacity-0"

@@ -24,7 +24,7 @@ Sebelum menulis kode, agent WAJIB membaca:
 ## 3. Stack & Commands
 - Scaffold: `create-next-app@latest` (TypeScript, App Router, Tailwind, ESLint, import alias `@/*`, tanpa src/).
 - Font (`next/font/google`): **Instrument Serif** (display) · **Inter** (body) · **JetBrains Mono** (label/angka).
-- Runtime deps: `lucide-react`, `react-icons`, `next-themes`, `framer-motion`, `cva`, `clsx`, `tailwind-merge`, `@radix-ui/react-dialog`, `react-markdown`, `react-toastify`.
+- Runtime deps: `lucide-react`, `react-icons`, `framer-motion`, `cva`, `clsx`, `tailwind-merge`, `@radix-ui/react-dialog`, `react-markdown`, `react-toastify`. Dark mode pakai provider kustom `components/ThemeProvider.tsx` (`useServerInsertedHTML` + context, tanpa library).
 - Env: `NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/xdaqpdrl` · `GITHUB_API_TOKEN` (opsional, server-only).
 - Commands:
   - `npm install`
@@ -46,7 +46,7 @@ docs/                       # PRD.md, PROMPT.md (sumber spesifikasi), I18N.md, E
 - `main` → name, logo="SyahrWorks" (wordmark), tagline, titles[] (peran, hero statis tanpa typewriter), heroImage, getInTouch[].
 - `techStack` → 3 grup: Backend / Frontend / Tools.
 - `about` → aboutImage, intro, philosophy[], workingStyle[], favoriteTech[], quote, resumeUrl.
-- `journey` → 4 tab filter: `Experience | Education | Certification | Competition`. Item kerja memakai `type: Full-Time|Part-Time` (dikumpulkan di tab Experience, urutan startDate desc, badge tipe kecil di kartu). Konten: 1 Full-Time (Freelance), 2 Part-Time (SMKS Jakarta 1, Milagros), 2 Education (UBSI, SMKS Jakarta 1), 3 BNSP Certification, Competition (placeholder).
+- `journey` → 4 tab filter: `Experience | Education | Certification | Competition`. Item kerja memakai `type: Full-Time|Part-Time` (dikumpulkan di tab Experience, urutan endDate desc dengan item berjalan "Present" di paling atas, badge tipe kecil di kartu). Konten: 1 Full-Time (Freelance), 2 Part-Time (SMKS Jakarta 1, Milagros), 2 Education (UBSI, SMKS Jakarta 1), 3 BNSP Certification, Competition (placeholder).
 - `projects` → 12 proyek: CroCode, PawsCare, QC Mobile, Auto-Refresh Bot, Red Line Guardian AI, Pustaka Booking, AI Go, Eat Scroll, Taskbar Navigator, Catering Mama Akbar, Milagros Web, Shress. Field: role, techStack[], tags[] (kategori), githubUrl/liveUrl/docUrl, gallery[].
 - `blog` → slug, title, date, excerpt, coverImage, tags, category, readingTime, author, featured, body (markdown). Mulai 1–2 artikel.
 - `socials` → GitHub, Instagram, LinkedIn, YouTube, WhatsApp.

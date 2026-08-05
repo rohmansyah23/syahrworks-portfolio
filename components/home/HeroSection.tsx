@@ -25,7 +25,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <Link
-            href={localePath(lang, "/projects")}
+            href={localePath(lang, "/journey")}
             className="inline-flex h-11 items-center gap-2 bg-foreground px-6 text-sm font-medium text-background transition-all duration-200 hover:opacity-85 active:scale-[0.98]"
           >
             {t.heroViewProjects}

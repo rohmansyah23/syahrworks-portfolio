@@ -1,3 +1,17 @@
+## Publikasi
+
+Riset di balik artikel ini telah dipublikasikan pada jurnal bereputasi:
+
+| Item | Detail |
+|---|---|
+| Jurnal | *Computer Science (CO-SCIENCE)* |
+| Volume | Vol. 6 No. 1 (2026): Januari 2026, hlm. 48–56 |
+| Terbit | 1 Januari 2026 |
+| Penulis | Muhammad Rohman Syah, Deny Novianti M.Kom, Roynaldy Rosdiyanto |
+| DOI | [10.31294/co-science.v6i1.10103](https://doi.org/10.31294/co-science.v6i1.10103) |
+
+Baca paper lengkap: [jurnal.bsi.ac.id — artikel 10103](https://jurnal.bsi.ac.id/index.php/co-science/article/view/10103)
+
 ## Pendahuluan
 
 Proses Penerimaan Peserta Didik Baru (PPDB) merupakan gerbang kritis bagi setiap institusi pendidikan. Namun, SMKS Jakarta 1 Pondok Kopi menghadapi penurunan signifikan sebesar **35,4% jumlah pendaftar** antara tahun 2021 dan 2024, yang disebabkan oleh sistem PPDB yang tidak efisien dan terfragmentasi.
@@ -20,7 +34,15 @@ Penelitian ini bertujuan mengembangkan **sistem informasi PPDB terintegrasi berb
 
 ## Metodologi
 
-Sistem dikembangkan menggunakan model **Waterfall** dengan tahapan analisis kebutuhan, desain, implementasi, pengujian, dan pemeliharaan. Evaluasi dilakukan dalam dua tahap:
+Sistem dikembangkan menggunakan model **Waterfall** yang diterapkan dalam lima tahap:
+
+1. **Analisis kebutuhan** — mengumpulkan alur kerja PPDB sekolah dan permasalahannya.
+2. **Desain** — memodelkan sistem terintegrasi beserta basis datanya.
+3. **Implementasi** — membangun sistem berbasis web, termasuk modul payment gateway dan ujian online.
+4. **Pengujian** — memverifikasi setiap fitur terhadap perilaku yang diharapkan.
+5. **Pemeliharaan** — mendukung penempatan sistem dan penyempurnaan ke depannya.
+
+Evaluasi dilakukan dalam dua tahap:
 
 | Tahap | Metode | Hasil |
 |---|---|---|
