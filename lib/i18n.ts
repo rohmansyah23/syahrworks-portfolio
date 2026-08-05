@@ -42,6 +42,7 @@ export type UIStrings = {
   footerBuiltWith: string;
   /* Hero */
   heroViewProjects: string;
+  heroViewJourney: string;
   heroAboutMe: string;
   heroGetInTouch: string;
   /* Label micro editorial */

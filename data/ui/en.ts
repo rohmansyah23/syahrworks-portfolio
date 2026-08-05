@@ -21,6 +21,7 @@ export const ui: UIStrings = {
   footerBuiltWith: "Built with Next.js & Tailwind",
   /* Hero */
   heroViewProjects: "View Projects",
+  heroViewJourney: "View Journey",
   heroAboutMe: "About Me",
   heroGetInTouch: "Get in touch",
   /* Label micro editorial */

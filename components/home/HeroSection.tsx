@@ -97,17 +97,17 @@ export default function HeroSection({ lang }: { lang: Locale }) {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
-                href={localePath(lang, "/journey")}
+                href={localePath(lang, "/projects")}
                 className="inline-flex h-11 items-center gap-2 bg-foreground px-6 text-sm font-medium text-background transition-all duration-200 hover:opacity-85 active:scale-[0.98]"
               >
                 {t.heroViewProjects}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href={localePath(lang, "/about")}
+                href={localePath(lang, "/journey")}
                 className="inline-flex h-11 items-center gap-2 border border-border px-6 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground active:scale-[0.98]"
               >
-                {t.heroAboutMe}
+                {t.heroViewJourney}
               </Link>
               <a
                 href="#get-in-touch"
