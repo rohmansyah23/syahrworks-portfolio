@@ -31,10 +31,10 @@ export default function BlogCard({
       )}
       <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3">
-          <p className="font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground">
+          <p className="font-mono text-[0.65rem] uppercase tracking-widest text-accent">
             {post.category}
           </p>
-          <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0.5 group-hover:opacity-100 motion-reduce:group-hover:transform-none" />
+          <ArrowUpRight className="h-4 w-4 text-accent opacity-0 transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0.5 group-hover:opacity-100 motion-reduce:group-hover:transform-none" />
         </div>
         <h3 className="font-serif text-xl leading-snug tracking-tight text-foreground">
           {post.title}

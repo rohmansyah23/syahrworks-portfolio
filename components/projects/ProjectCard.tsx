@@ -32,10 +32,10 @@ export default function ProjectCard({
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3">
-          <p className="font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground">
+          <p className="font-mono text-[0.65rem] uppercase tracking-widest text-accent">
             {project.tags[0]}
           </p>
-          <span className="text-foreground opacity-0 transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0.5 group-hover:opacity-100 motion-reduce:group-hover:transform-none">
+          <span className="text-accent opacity-0 transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0.5 group-hover:opacity-100 motion-reduce:group-hover:transform-none">
             →
           </span>
         </div>
