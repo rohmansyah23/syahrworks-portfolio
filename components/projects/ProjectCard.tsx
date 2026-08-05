@@ -16,7 +16,7 @@ export default function ProjectCard({
       type="button"
       onClick={onClick}
       className={cn(
-        "group flex w-full flex-col overflow-hidden border border-border bg-card text-left transition-all duration-200 hover:shadow-[4px_4px_0_0_var(--foreground)]",
+        "group flex w-full flex-col overflow-hidden border border-border bg-card text-left transition-[box-shadow] duration-300 ease-out hover:shadow-[6px_6px_0_0_var(--muted-foreground)] motion-reduce:transition-none",
         featured ? "sm:col-span-2 sm:row-span-2" : ""
       )}
     >
@@ -25,9 +25,9 @@ export default function ProjectCard({
           src={project.coverImage}
           alt={project.title}
           width={featured ? 1200 : 800}
-          height={featured ? 800 : 600}
+          height={featured ? 675 : 450}
           sizes={featured ? "(min-width: 640px) 66vw, 100vw" : "(min-width: 640px) 33vw, 100vw"}
-          className="aspect-[4/3] w-full object-cover"
+          className="aspect-[16/9] w-full object-cover"
         />
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
@@ -35,7 +35,7 @@ export default function ProjectCard({
           <p className="font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground">
             {project.tags[0]}
           </p>
-          <span className="text-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          <span className="text-foreground opacity-0 transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0.5 group-hover:opacity-100 motion-reduce:group-hover:transform-none">
             →
           </span>
         </div>

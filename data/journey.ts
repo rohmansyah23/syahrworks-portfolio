@@ -127,18 +127,5 @@ export const journey: JourneyItem[] = [
     tools: ["Programming", "OOP"],
   },
 
-  /* ---------- Competition (placeholder sampai data user tiba) ---------- */
-  {
-    slug: "competition-placeholder",
-    type: "Competition",
-    startDate: "2026-01",
-    endDate: "2026-01",
-    title: "[TBD] — Data Kompetisi",
-    subtitle: "Menunggu data dari pemilik",
-    caption: "Segera hadir",
-    description: [
-      "Daftar kompetisi yang pernah diikuti akan ditambahkan di sini.",
-      "Sampai data diterima, tab ini menampilkan placeholder ini.",
-    ],
-  },
+  /* ---------- Competition (datang menyusul) ---------- */
 ];

@@ -15,8 +15,8 @@ export default function JourneyPage() {
         The road so far.
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-        Pengalaman kerja, pendidikan, sertifikasi BNSP, dan perjalanan kompetisi
-        — disusun secara kronologis. Filter berdasarkan kategori di bawah.
+        Pengalaman kerja, pendidikan, dan sertifikasi — disusun secara
+        kronologis. Filter berdasarkan kategori di bawah.
       </p>
 
       <div className="mt-14">

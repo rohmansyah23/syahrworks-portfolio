@@ -8,7 +8,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-col overflow-hidden border border-border bg-card transition-all duration-200 hover:shadow-[4px_4px_0_0_var(--foreground)]"
+      className="group flex flex-col overflow-hidden border border-border bg-card transition-[box-shadow] duration-300 ease-out hover:shadow-[6px_6px_0_0_var(--muted-foreground)] motion-reduce:transition-none"
     >
       {post.coverImage && (
         <div className="relative overflow-hidden">
@@ -16,7 +16,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
             src={post.coverImage}
             alt={post.title}
             width={800}
-            height={600}
+            height={450}
             sizes="(min-width: 640px) 50vw, 100vw"
             className="aspect-[16/9] w-full object-cover"
           />
@@ -27,9 +27,9 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           <p className="font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground">
             {post.category}
           </p>
-          <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+          <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0.5 group-hover:opacity-100 motion-reduce:group-hover:transform-none" />
         </div>
-        <h3 className="font-serif text-xl leading-snug tracking-tight text-foreground transition-opacity duration-200 group-hover:opacity-80">
+        <h3 className="font-serif text-xl leading-snug tracking-tight text-foreground">
           {post.title}
         </h3>
         <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">
