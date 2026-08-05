@@ -1,6 +1,10 @@
+"use client";
+
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { getData, getDictionary, localePath, type Locale } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 
 export default function HeroSection({ lang }: { lang: Locale }) {
   const t = getDictionary(lang);
@@ -13,6 +17,24 @@ export default function HeroSection({ lang }: { lang: Locale }) {
 
   const isId = lang === "id";
 
+  const scrollRef = useRef<HTMLSpanElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener("resize", checkScroll);
+    return () => window.removeEventListener("resize", checkScroll);
+  }, [checkScroll]);
+
   return (
     <section className="border-b border-border">
       <div className="container-editorial py-12 sm:py-16 lg:py-20">
@@ -21,8 +43,37 @@ export default function HeroSection({ lang }: { lang: Locale }) {
           <div className="lg:col-span-7">
             <p className="micro-label text-accent">01 — {t.homeLabel}</p>
 
-            <h1 className="mt-4 font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              {main.name}
+            <h1 className="mt-4 font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-[7.5rem] lg:leading-[0.95]">
+              {/* Layar < 383px & 465px - 1023px: Normal flow */}
+              <span className="max-[382px]:inline min-[465px]:inline hidden lg:hidden">
+                {main.name}
+              </span>
+
+              {/* Rentang 383px - 464px: Horizontal scroll + Bi-Directional Fade */}
+              <span className="relative min-[383px]:max-[464px]:block hidden">
+                <span
+                  className={cn(
+                    "pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-8 bg-gradient-to-r from-background to-transparent transition-opacity duration-200",
+                    canScrollLeft ? "opacity-100" : "opacity-0"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-8 bg-gradient-to-l from-background to-transparent transition-opacity duration-200",
+                    canScrollRight ? "opacity-100" : "opacity-0"
+                  )}
+                />
+                <span
+                  ref={scrollRef}
+                  onScroll={checkScroll}
+                  className="block overflow-x-auto whitespace-nowrap pb-1 px-1 [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                >
+                  {main.name}
+                </span>
+              </span>
+
+              {/* Layar Desktop >= 1024px */}
+              <span className="hidden lg:inline">Rohman Syah</span>
             </h1>
 
             <p className="mt-4 font-mono text-sm tracking-wide text-muted-foreground">
