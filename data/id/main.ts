@@ -22,8 +22,8 @@ export const main: MainData = {
     },
     {
       label: "Email",
-      value: "rohmansyah23@gmail.com",
-      href: "mailto:rohmansyah23@gmail.com",
+      value: "syahr642@gmail.com",
+      href: "mailto:syahr642@gmail.com",
       icon: Mail,
     },
     {
@@ -47,7 +47,7 @@ export const main: MainData = {
     {
       label: "Mulai Proyek",
       value: "Mari bangun sesuatu →",
-      href: "mailto:rohmansyah23@gmail.com",
+      href: "mailto:syahr642@gmail.com",
       icon: Rocket,
       cta: true,
     },
