@@ -25,7 +25,7 @@ export default function BlogCard({
             width={800}
             height={450}
             sizes="(min-width: 640px) 50vw, 100vw"
-            className="aspect-[16/9] w-full object-cover"
+            className="aspect-[16/9] w-full object-cover grayscale transition-[filter,transform] duration-300 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 pointer-coarse:grayscale-0"
           />
         </div>
       )}

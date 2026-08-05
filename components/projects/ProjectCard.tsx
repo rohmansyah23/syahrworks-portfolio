@@ -27,7 +27,7 @@ export default function ProjectCard({
           width={featured ? 1200 : 800}
           height={featured ? 675 : 450}
           sizes={featured ? "(min-width: 640px) 66vw, 100vw" : "(min-width: 640px) 33vw, 100vw"}
-          className="aspect-[16/9] w-full object-cover"
+          className="aspect-[16/9] w-full object-cover grayscale transition-[filter,transform] duration-300 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 pointer-coarse:grayscale-0"
         />
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
