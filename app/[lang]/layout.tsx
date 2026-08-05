@@ -1,0 +1,116 @@
+import type { Metadata, Viewport } from "next";
+import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import {
+  defaultLocale,
+  getData,
+  isLocale,
+  locales,
+  type Locale,
+} from "@/lib/i18n";
+import "../globals.css";
+
+const instrument = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang?: string }>;
+}): Promise<Metadata> {
+  const { lang: raw } = await params;
+  const lang: Locale = raw && isLocale(raw) ? raw : defaultLocale;
+  const data = getData(lang);
+  const meta = data.site.siteMetadata;
+
+  return {
+    metadataBase: new URL(meta.siteUrl),
+    title: {
+      default: meta.title,
+      template: `%s — ${meta.author}`,
+    },
+    description: meta.description,
+    keywords: meta.keywords,
+    authors: [{ name: meta.author, url: meta.siteUrl }],
+    openGraph: {
+      type: "website",
+      locale: lang === "id" ? "id_ID" : "en_US",
+      url: meta.siteUrl,
+      title: meta.title,
+      description: meta.description,
+      siteName: "SyahrWorks",
+      images: [
+        { url: meta.ogImage, width: 512, height: 512, alt: meta.author },
+      ],
+    },
+    twitter: {
+      card: "summary",
+      title: meta.title,
+      description: meta.description,
+      images: [meta.ogImage],
+      creator: meta.twitterHandle,
+    },
+    robots: { index: true, follow: true },
+  };
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAFAF9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0A0A" },
+  ],
+};
+
+export default async function RootLayout({
+  children,
+  params,
+}: Readonly<{
+  children: React.ReactNode;
+  params: Promise<{ lang?: string }>;
+}>) {
+  const { lang: raw } = await params;
+  const lang: Locale = raw && isLocale(raw) ? raw : defaultLocale;
+
+  return (
+    <html
+      lang={lang}
+      suppressHydrationWarning
+      className={`${instrument.variable} ${inter.variable} ${jetbrains.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <Header lang={lang} />
+          <main className="flex-1">{children}</main>
+          <Footer lang={lang} />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}

@@ -1,10 +1,18 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { blogPosts } from "@/data/blog";
+import {
+  getData,
+  getDictionary,
+  localePath,
+  type Locale,
+} from "@/lib/i18n";
 import { formatDate } from "@/lib/utils";
 import SectionHeader from "@/components/home/SectionHeader";
 
-export default function LatestBlogs() {
+export default function LatestBlogs({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang);
+  const blogPosts = getData(lang).blog.blogPosts;
+
   const latest = [...blogPosts]
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 2);
@@ -13,19 +21,19 @@ export default function LatestBlogs() {
 
   return (
     <section className="border-b border-border">
-      <div className="container-editorial py-20 sm:py-28">
+      <div className="container-editorial py-14 sm:py-20">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeader
             index="05"
-            label="From The Blog"
-            title="Latest writings."
+            label={t.latestBlogsLabel}
+            title={t.latestBlogsTitle}
             className="mb-0"
           />
           <Link
-            href="/blog"
+            href={localePath(lang, "/blog")}
             className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground"
           >
-            View All Articles
+            {t.latestBlogsViewAll}
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
         </div>
@@ -34,7 +42,7 @@ export default function LatestBlogs() {
           {latest.map((post) => (
             <Link
               key={post.slug}
-              href={`/blog/${post.slug}`}
+              href={localePath(lang, `/blog/${post.slug}`)}
               className="group flex flex-col gap-6 border border-border bg-background p-6 transition-colors duration-200 hover:bg-muted sm:p-8"
             >
               <div className="flex items-center justify-between">
@@ -47,7 +55,7 @@ export default function LatestBlogs() {
                 {post.title}
               </h3>
               <div className="mt-auto flex items-center gap-3 font-mono text-xs text-muted-foreground">
-                <span>{formatDate(post.date)}</span>
+                <span>{formatDate(post.date, lang)}</span>
                 <span className="h-1 w-1 rounded-full bg-border" />
                 <span>{post.readingTime}</span>
               </div>

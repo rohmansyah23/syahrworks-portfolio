@@ -1,49 +1,56 @@
 import Image from "next/image";
-import { about } from "@/data/about";
-import { main } from "@/data/main";
-import { projects } from "@/data/projects";
-import { journey } from "@/data/journey";
+import {
+  getData,
+  getDictionary,
+  type Locale,
+} from "@/lib/i18n";
 import CVDialog from "@/components/about/CVDialog";
 
-// Quick facts untuk kolom foto sticky — dihitung dari data, bukan hardcode
-const quickFacts = [
-  { label: "Location", value: main.getInTouch[0].value },
-  { label: "Projects", value: `${projects.length}+ shipped` },
-  {
-    label: "Certifications",
-    value: `${journey.filter((j) => j.type === "Certification").length}× BNSP`,
-  },
-  {
-    label: "Current",
-    value:
-      journey.find((j) => j.type === "Full-Time")?.subtitle ?? "—",
-  },
-];
+export default function AboutSection({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang);
+  const data = getData(lang);
+  const about = data.about.about;
+  const main = data.main.main;
+  const projects = data.projects.projects;
+  const journey = data.journey.journey;
 
-const sectionMap = [
-  {
-    key: "philosophy" as const,
-    title: "Engineering Philosophy",
-    icon: "✳",
-  },
-  {
-    key: "workingStyle" as const,
-    title: "Working Style",
-    icon: "✦",
-  },
-  {
-    key: "favoriteTech" as const,
-    title: "Technologies I Love",
-    icon: "❋",
-  },
-];
+  // Quick facts untuk kolom foto sticky — dihitung dari data, bukan hardcode
+  const quickFacts = [
+    { label: t.aboutFactLocation, value: main.getInTouch[0].value },
+    { label: t.aboutFactProjects, value: `${projects.length}+ ${t.aboutShipped}` },
+    {
+      label: t.aboutFactCertifications,
+      value: `${journey.filter((j) => j.type === "Certification").length}× BNSP`,
+    },
+    {
+      label: t.aboutFactCurrent,
+      value: journey.find((j) => j.type === "Full-Time")?.subtitle ?? "—",
+    },
+  ];
 
-export default function AboutSection() {
+  const sectionMap = [
+    {
+      key: "philosophy" as const,
+      title: t.aboutEngineeringPhilosophy,
+      icon: "✳",
+    },
+    {
+      key: "workingStyle" as const,
+      title: t.aboutWorkingStyle,
+      icon: "✦",
+    },
+    {
+      key: "favoriteTech" as const,
+      title: t.aboutFavoriteTech,
+      icon: "❋",
+    },
+  ];
+
   return (
-    <div className="container-editorial py-20 sm:py-28">
-      <p className="micro-label text-accent">01 — ABOUT</p>
+    <div className="container-editorial py-14 sm:py-20">
+      <p className="micro-label text-accent">01 — {t.aboutLabel}</p>
       <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl">
-        A developer who cares about the details.
+        {t.aboutTitle}
       </h1>
 
       <div className="mt-16 grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:gap-16">
@@ -114,7 +121,7 @@ export default function AboutSection() {
           </blockquote>
 
           <div className="mt-10">
-            <CVDialog resumeUrl={about.resumeUrl} />
+            <CVDialog lang={lang} resumeUrl={about.resumeUrl} />
           </div>
         </div>
       </div>

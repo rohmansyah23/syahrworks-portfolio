@@ -1,25 +1,46 @@
 import type { MetadataRoute } from "next";
-import { siteMetadata } from "@/data/site";
-import { blogPosts } from "@/data/blog";
+import { getData, locales } from "@/lib/i18n";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = siteMetadata.siteUrl;
   const now = new Date();
+  const base = getData("en").site.siteMetadata.siteUrl;
 
-  const staticPages: MetadataRoute.Sitemap = [
-    { url: base, lastModified: now, changeFrequency: "monthly", priority: 1 },
-    { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/journey`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/projects`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-  ];
+  const staticPaths = ["", "/about", "/journey", "/blog", "/projects"] as const;
 
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${base}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "yearly",
-    priority: 0.6,
-  }));
+  const alternatesFor = (path: string) => ({
+    languages: Object.fromEntries(
+      locales.map((lang) => [lang, `${base}/${lang}${path}`])
+    ),
+  });
 
-  return [...staticPages, ...blogPages];
+  const pages: MetadataRoute.Sitemap = [];
+
+  for (const lang of locales) {
+    for (const path of staticPaths) {
+      pages.push({
+        url: `${base}/${lang}${path}`,
+        lastModified: now,
+        changeFrequency: path === "/blog" ? "weekly" : "monthly",
+        priority: path === "" ? 1 : path === "/projects" ? 0.9 : 0.8,
+        alternates: alternatesFor(path),
+      });
+    }
+  }
+
+  const blogSlugs = getData("en").blog.blogPosts.map((post) => post.slug);
+
+  for (const lang of locales) {
+    for (const slug of blogSlugs) {
+      const path = `/blog/${slug}`;
+      pages.push({
+        url: `${base}/${lang}${path}`,
+        lastModified: now,
+        changeFrequency: "yearly",
+        priority: 0.6,
+        alternates: alternatesFor(path),
+      });
+    }
+  }
+
+  return pages;
 }

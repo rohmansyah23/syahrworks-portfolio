@@ -1,22 +1,30 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { main } from "@/data/main";
 import { socials } from "@/data/socials";
+import { getData, getDictionary, type Locale } from "@/lib/i18n";
+import Wordmark from "@/components/ui/Wordmark";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/journey", label: "Journey" },
-  { href: "/blog", label: "Blog" },
-  { href: "/projects", label: "Projects" },
-];
-
-const contactLinks = main.getInTouch.filter((item) =>
-  ["Location", "Email", "WhatsApp"].includes(item.label)
-);
-
-export default function Footer() {
+export default function Footer({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang);
+  const main = getData(lang).main.main;
   const year = new Date().getFullYear();
+
+  const navLinks = [
+    { href: `/${lang}`, label: t.navHome },
+    { href: `/${lang}/about`, label: t.navAbout },
+    { href: `/${lang}/journey`, label: t.navJourney },
+    { href: `/${lang}/blog`, label: t.navBlog },
+    { href: `/${lang}/projects`, label: t.navProjects },
+  ];
+
+  // Contact footer: Lokasi (teks polos), Email & WhatsApp (link)
+  const contactLinks = main.getInTouch.filter(
+    (item) =>
+      !item.cta &&
+      ["maps.google.com", "mailto:", "wa.me"].some((k) =>
+        item.href.includes(k)
+      )
+  );
 
   return (
     <footer className="border-t border-border">
@@ -24,10 +32,10 @@ export default function Footer() {
         {/* Brand */}
         <div className="sm:col-span-2 lg:col-span-1">
           <Link
-            href="/"
+            href={`/${lang}`}
             className="font-serif text-2xl tracking-tight text-foreground transition-opacity duration-200 hover:opacity-70"
           >
-            {main.logo}
+            <Wordmark lang={lang} />
           </Link>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
             {main.tagline}
@@ -36,7 +44,9 @@ export default function Footer() {
 
         {/* Navigations */}
         <div>
-          <h3 className="micro-label text-muted-foreground">Navigations</h3>
+          <h3 className="micro-label text-muted-foreground">
+            {t.footerNavigations}
+          </h3>
           <ul className="mt-4 space-y-2.5">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -54,13 +64,15 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <h3 className="micro-label text-muted-foreground">Contact</h3>
+          <h3 className="micro-label text-muted-foreground">
+            {t.footerContact}
+          </h3>
           <ul className="mt-4 space-y-2.5 text-sm text-foreground/80">
             {contactLinks.map((item) =>
-              item.label === "Location" ? (
-                <li key={item.label}>{item.value}</li>
+              item.href.includes("maps.google.com") ? (
+                <li key={item.href}>{item.value}</li>
               ) : (
-                <li key={item.label}>
+                <li key={item.href}>
                   <a
                     href={item.href}
                     className="transition-colors duration-200 hover:text-foreground"
@@ -75,7 +87,9 @@ export default function Footer() {
 
         {/* Social */}
         <div>
-          <h3 className="micro-label text-muted-foreground">Social</h3>
+          <h3 className="micro-label text-muted-foreground">
+            {t.footerSocial}
+          </h3>
           <ul className="mt-4 flex flex-wrap gap-2">
             {socials.map((social) => (
               <li key={social.name}>
@@ -100,7 +114,7 @@ export default function Footer() {
             © {year} {main.name}
           </p>
           <p className="micro-label text-muted-foreground">
-            Built with Next.js &amp; Tailwind
+            {t.footerBuiltWith}
           </p>
         </div>
       </div>

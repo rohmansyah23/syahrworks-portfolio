@@ -1,22 +1,24 @@
 import Link from "next/link";
 import { ArrowUpRight, FolderGit2, Star } from "lucide-react";
 import { getTopRepos } from "@/lib/github";
+import { getDictionary, type Locale } from "@/lib/i18n";
 import SectionHeader from "@/components/home/SectionHeader";
 
 export const revalidate = 3600;
 
-export default async function TopRepos() {
+export default async function TopRepos({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang);
   const repos = await getTopRepos();
 
   return (
     <section className="border-b border-border">
-      <div className="container-editorial py-20 sm:py-28">
+      <div className="container-editorial py-14 sm:py-20">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeader
             index="04"
-            label="Top Repos"
-            title="Open source, top repositories."
-            description="Proyek-proyek pilihan dari GitHub saya — diurutkan berdasarkan jumlah star."
+            label={t.topReposLabel}
+            title={t.topReposTitle}
+            description={t.topReposDescription}
             className="mb-0"
           />
           <Link
@@ -25,7 +27,7 @@ export default async function TopRepos() {
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground"
           >
-            View All Repositories
+            {t.topReposViewAll}
             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
@@ -34,11 +36,10 @@ export default async function TopRepos() {
           /* Fallback wajib: tampilkan pesan ringan, build tidak crash */
           <div className="mt-12 flex flex-col gap-3 border border-border bg-card p-10 text-center">
             <p className="micro-label text-muted-foreground">
-              Repositories unavailable
+              {t.topReposUnavailable}
             </p>
             <p className="mx-auto max-w-md text-sm leading-relaxed text-muted-foreground">
-              Data repositori sedang tidak dapat dimuat. Silakan kunjungi
-              profil GitHub saya untuk melihat semua proyek.
+              {t.topReposFallback}
             </p>
           </div>
         ) : (
@@ -60,7 +61,7 @@ export default async function TopRepos() {
                     {repo.name}
                   </h3>
                   <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                    {repo.description ?? "No description provided."}
+                    {repo.description ?? t.topReposNoDescription}
                   </p>
                 </div>
                 <div className="mt-auto flex items-center gap-4 font-mono text-xs text-muted-foreground">

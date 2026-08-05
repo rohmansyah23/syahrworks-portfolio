@@ -6,16 +6,16 @@ export const main: MainData = {
   name: "Muhammad Rohman Syah",
   logo: "SyahrWorks",
   tagline:
-    "Building reliable web & mobile applications that deliver great user experiences, with a strong focus on performance, scalability, and clean code.",
+    "Membangun aplikasi web & mobile yang andal dengan pengalaman pengguna yang baik — berfokus pada performa, skalabilitas, dan clean code.",
   titles: [
     "Full-Stack Developer",
     "Next.js & TypeScript",
     "Flutter Developer",
-    "Go Backend",
+    "Backend Go",
   ],
   getInTouch: [
     {
-      label: "Location",
+      label: "Lokasi",
       value: "Jakarta, Indonesia",
       href: "https://maps.google.com/?q=Jakarta,Indonesia",
       icon: MapPin,
@@ -45,10 +45,11 @@ export const main: MainData = {
       icon: MessageCircle,
     },
     {
-      label: "Start a Project",
-      value: "Let's build something →",
+      label: "Mulai Proyek",
+      value: "Mari bangun sesuatu →",
       href: "mailto:rohmansyah23@gmail.com",
       icon: Rocket,
+      cta: true,
     },
   ],
 };

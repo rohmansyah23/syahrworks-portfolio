@@ -1,22 +1,25 @@
 import { ArrowUpRight } from "lucide-react";
-import { main } from "@/data/main";
+import { getData, getDictionary, type Locale } from "@/lib/i18n";
 import SectionHeader from "@/components/home/SectionHeader";
 import { cn } from "@/lib/utils";
 
-export default function GetInTouch() {
+export default function GetInTouch({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang);
+  const main = getData(lang).main.main;
+
   return (
     <section id="get-in-touch" className="border-b border-border">
-      <div className="container-editorial py-20 sm:py-28">
+      <div className="container-editorial py-14 sm:py-20">
         <SectionHeader
           index="02"
-          label="Get In Touch"
-          title="Let's build something together."
-          description="Tertarik berkolaborasi atau punya pertanyaan? Hubungi saya melalui kanal berikut."
+          label={t.getInTouchLabel}
+          title={t.getInTouchTitle}
+          description={t.getInTouchDescription}
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {main.getInTouch.map((item) => {
-            const isCTA = item.label === "Start a Project";
+            const isCTA = item.cta === true;
             return (
               <a
                 key={item.label}

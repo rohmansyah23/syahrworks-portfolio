@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteMetadata } from "@/data/site";
+import { getData } from "@/lib/i18n";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
+    sitemap: `${getData("en").site.siteMetadata.siteUrl}/sitemap.xml`,
   };
 }

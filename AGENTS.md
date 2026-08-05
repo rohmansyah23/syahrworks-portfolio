@@ -34,19 +34,19 @@ Sebelum menulis kode, agent WAJIB membaca:
 
 ## 4. Arsitektur File
 ```
-app/                        # layout, globals.css, page.tsx, about/journey/projects/blog/[slug]/not-found/sitemap/robots
+app/                        # [lang]/layout (root: html lang per locale), [lang]/ 6 halaman + blog/[slug], not-found, page.tsx (redirect / → /en), sitemap, robots, globals.css
 components/                 # Header, Footer, home/*, about/*, journey/*, blog/*, projects/*, ui/*
-data/                       # site, main, techStack, about, journey, projects, blog, socials (modul TS ber-type)
-lib/                        # github.ts, utils.ts, types.ts
+data/                       # ui/{en,id}.ts (dictionary UI), en/ & id/ (konten per locale), techStack, socials (shared)
+lib/                        # i18n.ts (Locale, getData, getDictionary, localePath), github.ts, utils.ts, types.ts
 public/                     # salinan aset dari repo lama (foto, gambar proyek, favicon)
-docs/                       # PRD.md, PROMPT.md (sumber spesifikasi)
+docs/                       # PRD.md, PROMPT.md (sumber spesifikasi), I18N.md, ENGLISH.md
 ```
 
 ## 5. Data Model (ringkasan)
 - `main` → name, logo="SyahrWorks" (wordmark), tagline, titles[] (peran, hero statis tanpa typewriter), heroImage, getInTouch[].
 - `techStack` → 3 grup: Backend / Frontend / Tools.
 - `about` → aboutImage, intro, philosophy[], workingStyle[], favoriteTech[], quote, resumeUrl.
-- `journey` → `type: Full-Time|Part-Time|Education|Certification|Competition`. Konten: 1 Full-Time (Freelance), 2 Part-Time (SMKS Jakarta 1, Milagros), 2 Education (UBSI, SMKS Jakarta 1), 3 BNSP Certification, Competition (placeholder).
+- `journey` → 4 tab filter: `Experience | Education | Certification | Competition`. Item kerja memakai `type: Full-Time|Part-Time` (dikumpulkan di tab Experience, urutan startDate desc, badge tipe kecil di kartu). Konten: 1 Full-Time (Freelance), 2 Part-Time (SMKS Jakarta 1, Milagros), 2 Education (UBSI, SMKS Jakarta 1), 3 BNSP Certification, Competition (placeholder).
 - `projects` → 12 proyek: CroCode, PawsCare, QC Mobile, Auto-Refresh Bot, Red Line Guardian AI, Pustaka Booking, AI Go, Eat Scroll, Taskbar Navigator, Catering Mama Akbar, Milagros Web, Shress. Field: role, techStack[], tags[] (kategori), githubUrl/liveUrl/docUrl, gallery[].
 - `blog` → slug, title, date, excerpt, coverImage, tags, category, readingTime, author, featured, body (markdown). Mulai 1–2 artikel.
 - `socials` → GitHub, Instagram, LinkedIn, YouTube, WhatsApp.

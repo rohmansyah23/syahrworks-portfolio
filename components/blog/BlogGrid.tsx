@@ -2,36 +2,44 @@
 
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { blogPosts } from "@/data/blog";
+import {
+  getData,
+  getDictionary,
+  type Locale,
+} from "@/lib/i18n";
 import BlogCard from "@/components/blog/BlogCard";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
-export default function BlogGrid() {
+export default function BlogGrid({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang);
+  const blogPosts = getData(lang).blog.blogPosts;
   const [query, setQuery] = useState("");
-  const [activeTag, setActiveTag] = useState<string>("All");
+  const [activeTag, setActiveTag] = useState<string>(t.all);
 
   const allTags = useMemo(() => {
     const tags = new Set<string>();
-    blogPosts.forEach((post) => post.tags.forEach((t) => tags.add(t)));
-    return ["All", ...Array.from(tags).sort()];
-  }, []);
+    blogPosts.forEach((post) => post.tags.forEach((tag) => tags.add(tag)));
+    return [t.all, ...Array.from(tags).sort()];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return blogPosts
       .filter((post) => {
         const matchesTag =
-          activeTag === "All" || post.tags.includes(activeTag);
+          activeTag === t.all || post.tags.includes(activeTag);
         const matchesQuery =
           q === "" ||
           post.title.toLowerCase().includes(q) ||
           post.excerpt.toLowerCase().includes(q) ||
-          post.tags.some((t) => t.toLowerCase().includes(q));
+          post.tags.some((tag) => tag.toLowerCase().includes(q));
         return matchesTag && matchesQuery;
       })
       .sort((a, b) => b.date.localeCompare(a.date));
-  }, [query, activeTag]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, activeTag, lang]);
 
   return (
     <div>
@@ -40,11 +48,11 @@ export default function BlogGrid() {
           <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             type="search"
-            placeholder="Search articles..."
+            placeholder={t.blogSearchPlaceholder}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="pl-10"
-            aria-label="Cari artikel"
+            aria-label={t.blogSearchAria}
           />
         </div>
 
@@ -69,12 +77,12 @@ export default function BlogGrid() {
 
       {filtered.length === 0 ? (
         <p className="mt-20 border border-border bg-card p-10 text-center text-sm text-muted-foreground">
-          No posts found — coba ubah kata kunci atau tag.
+          {t.blogEmpty}
         </p>
       ) : (
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {filtered.map((post) => (
-            <BlogCard key={post.slug} post={post} />
+            <BlogCard key={post.slug} post={post} lang={lang} />
           ))}
         </div>
       )}

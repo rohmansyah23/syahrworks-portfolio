@@ -1,13 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { localePath, type Locale } from "@/lib/i18n";
 import { formatDate } from "@/lib/utils";
 import type { BlogPost } from "@/lib/types";
 
-export default function BlogCard({ post }: { post: BlogPost }) {
+export default function BlogCard({
+  post,
+  lang,
+}: {
+  post: BlogPost;
+  lang: Locale;
+}) {
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={localePath(lang, `/blog/${post.slug}`)}
       className="group flex flex-col overflow-hidden border border-border bg-card transition-[box-shadow] duration-300 ease-out hover:shadow-[6px_6px_0_0_var(--muted-foreground)] motion-reduce:transition-none"
     >
       {post.coverImage && (
@@ -36,7 +43,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           {post.excerpt}
         </p>
         <div className="mt-auto flex items-center gap-3 pt-2 font-mono text-xs text-muted-foreground">
-          <span>{formatDate(post.date)}</span>
+          <span>{formatDate(post.date, lang)}</span>
           <span className="h-1 w-1 rounded-full bg-border" />
           <span>{post.readingTime}</span>
         </div>

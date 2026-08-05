@@ -1,15 +1,18 @@
 import { techStack } from "@/data/techStack";
+import { getDictionary, type Locale } from "@/lib/i18n";
 import SectionHeader from "@/components/home/SectionHeader";
 
-export default function TechStack() {
+export default function TechStack({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang);
+
   return (
     <section className="border-b border-border">
-      <div className="container-editorial py-20 sm:py-28">
+      <div className="container-editorial py-14 sm:py-20">
         <SectionHeader
           index="03"
-          label="Tech Stack"
-          title="Technologies I work with."
-          description="Tumpukan teknologi yang saya gunakan untuk membangun web, mobile, dan backend yang andal."
+          label={t.techStackLabel}
+          title={t.techStackTitle}
+          description={t.techStackDescription}
         />
 
         <div className="grid gap-10 lg:grid-cols-3 lg:gap-6">

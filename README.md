@@ -6,17 +6,19 @@ Portfolio v2 milik **Muhammad Rohman Syah (SyahrWorks)** — dibangun 100% dari 
 
 - **Next.js 16** · React 19 · TypeScript 5 · Tailwind CSS 4 (CSS-first)
 - Font: **Instrument Serif** (display) · **Inter** (body) · **JetBrains Mono** (label/angka) via `next/font`
-- App Router, multi-page: **Home, About, Journey, Blog (+detail), Projects** + 404
+- App Router, multi-page + **bilingual EN/ID** (`/en` default via redirect dari `/`, `/id`), tanpa middleware/library i18n
 
 ## Halaman
 
+Semua route ber-prefix locale: `/en` & `/id`.
+
 | Route | Deskripsi |
 |---|---|
-| `/` | Hero editorial, Get In Touch, Tech Stack, Top Repos, Latest Blog, Contact Form |
-| `/about` | Bio, filosofi, cara kerja, tech favorit, CV modal |
-| `/journey` | Timeline dengan filter 5 kategori (Full-Time/Part-Time/Education/Certification/Competition) |
-| `/blog` | Search + filter tag, detail artikel markdown |
-| `/projects` | Grid bento + filter kategori + modal detail & galeri |
+| `/{lang}/` | Hero editorial, Get In Touch, Tech Stack, Top Repos, Latest Blog, Contact Form |
+| `/{lang}/about` | Bio, filosofi, cara kerja, tech favorit, CV modal |
+| `/{lang}/journey` | Timeline dengan filter 4 tab: Experience / Education / Certification / Competition |
+| `/{lang}/blog` | Search + filter tag, detail artikel markdown per locale |
+| `/{lang}/projects` | Grid bento + filter kategori + modal detail & galeri |
 
 ## Fitur Dinamis
 
@@ -43,12 +45,12 @@ GITHUB_API_TOKEN=   # opsional, server-only
 ## Struktur
 
 ```
-app/         # halaman + layout + SEO
+app/         # [lang]/ halaman + layout + not-found, page.tsx redirect, sitemap, robots
 components/  # header, footer, section per halaman, ui primitives
-data/        # konten (modul TS ber-type)
-content/     # body markdown artikel blog
-lib/         # github fetch, types, utils
-docs/        # PRD.md, PROMPT.md, PLAN.md (spesifikasi & instruksi agent)
+data/        # ui/{en,id}.ts dictionary, en/ & id/ konten per locale, techStack & socials shared
+content/     # body markdown artikel blog (*.en.md, *.id.md)
+lib/         # i18n, github fetch, types, utils
+docs/        # PRD.md, PROMPT.md, PLAN.md, I18N.md, ENGLISH.md
 ```
 
 ## Deploy

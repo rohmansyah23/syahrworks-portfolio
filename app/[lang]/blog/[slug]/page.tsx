@@ -7,11 +7,23 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
-import { blogPosts } from "@/data/blog";
+import {
+  getData,
+  getDictionary,
+  locales,
+  localePath,
+  resolveLang,
+  type Locale,
+} from "@/lib/i18n";
 import { formatDate } from "@/lib/utils";
 
-function getMarkdown(slug: string): string | null {
-  const filePath = path.join(process.cwd(), "content", "blog", `${slug}.md`);
+function getMarkdown(slug: string, lang: Locale): string | null {
+  const filePath = path.join(
+    process.cwd(),
+    "content",
+    "blog",
+    `${slug}.${lang}.md`
+  );
   try {
     return fs.readFileSync(filePath, "utf8");
   } catch {
@@ -20,17 +32,22 @@ function getMarkdown(slug: string): string | null {
 }
 
 export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  return locales.flatMap((lang) =>
+    getData(lang)
+      .blog.blogPosts.map((post) => ({ lang, slug: post.slug }))
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang?: string; slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
-  if (!post) return { title: "Artikel tidak ditemukan" };
+  const lang = await resolveLang(params);
+  const t = getDictionary(lang);
+  const post = getData(lang).blog.blogPosts.find((p) => p.slug === slug);
+  if (!post) return { title: t.blogNotFound };
   return {
     title: post.title,
     description: post.excerpt,
@@ -47,23 +64,25 @@ export async function generateMetadata({
 export default async function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang?: string; slug: string }>;
 }) {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const lang = await resolveLang(params);
+  const t = getDictionary(lang);
+  const post = getData(lang).blog.blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
-  const body = getMarkdown(slug);
+  const body = getMarkdown(slug, lang);
   if (!body) notFound();
 
   return (
-    <article className="container-editorial py-20 sm:py-28">
+    <article className="container-editorial py-14 sm:py-20">
       <Link
-        href="/blog"
+        href={localePath(lang, "/blog")}
         className="group inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
-        Back to Blog
+        {t.blogBack}
       </Link>
 
       <div className="mx-auto mt-10 max-w-3xl">
@@ -75,7 +94,7 @@ export default async function BlogPostPage({
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs text-muted-foreground">
           <span className="flex items-center gap-1.5">
             <Calendar className="h-3.5 w-3.5" />
-            {formatDate(post.date)}
+            {formatDate(post.date, lang)}
           </span>
           <span className="flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5" />
@@ -106,7 +125,7 @@ export default async function BlogPostPage({
 
         <div className="mt-16 border-t border-border pt-6">
           <p className="font-mono text-xs text-muted-foreground">
-            Ditulis oleh{" "}
+            {t.blogWrittenBy}{" "}
             <span className="text-foreground">{post.author}</span>
           </p>
         </div>

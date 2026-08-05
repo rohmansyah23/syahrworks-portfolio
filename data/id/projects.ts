@@ -1,0 +1,157 @@
+import type { Project } from "@/lib/types";
+
+export const projectCategories = [
+  "Semua",
+  "Web Development",
+  "Mobile",
+  "AI & Data",
+  "Desktop & Tools",
+] as const;
+
+export const projects: Project[] = [
+  {
+    id: "catering-mama-akbar",
+    title: "Catering Mama Akbar",
+    description:
+      "Sistem Manajemen Menu & Katering modern untuk Catering Mama Akbar Pondok Kelapa. Mengintegrasikan katalog menu interaktif dengan panel admin back-office terautentikasi JWT.",
+    coverImage: "/projects/catering-mama-akbar.png",
+    tags: ["Web Development"],
+    role: "Full-Stack Developer",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Neon Postgres", "Cloudinary", "shadcn/ui", "JWT", "bcryptjs"],
+    liveUrl: "https://catering-mama-akbar.vercel.app/",
+    gallery: ["/projects/catering-mama-akbar.png"],
+  },
+  {
+    id: "shress",
+    title: "Shress",
+    description:
+      "Pelaporan keuangan multi-tenant untuk UMKM Indonesia. Aplikasi Flutter produksi yang berjalan offline dengan wawasan keuangan real-time, pencatatan transaksi, manajemen utang, pembayaran QRIS, dan pengawasan multi-bisnis.",
+    coverImage: "/projects/sheress.png",
+    tags: ["Mobile"],
+    role: "Mobile Developer",
+    techStack: ["Flutter", "Dart", "Riverpod", "Supabase", "PostgreSQL", "Firebase"],
+    githubUrl: "https://github.com/rohmansyah23/Shress",
+    gallery: ["/projects/sheress.png"],
+  },
+  {
+    id: "milagros-web",
+    title: "Milagros Web",
+    description:
+      "Website modern untuk agen Milagros resmi dengan landing page, katalog produk interaktif, dan panel admin untuk manajemen stok serta media. Menggunakan Prisma ORM dan shadcn/ui.",
+    coverImage: "/projects/milagros-web.png",
+    tags: ["Web Development"],
+    role: "Full-Stack Developer",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Zustand", "Cloudinary", "shadcn/ui"],
+    liveUrl: "https://milagros-web.vercel.app/",
+    gallery: ["/projects/milagros-web.png"],
+  },
+  {
+    id: "ai-go-warehouse-chatbot",
+    title: "AI Go — Chatbot Gudang",
+    description:
+      "Chatbot asisten gudang dibangun dengan Go (Gin Gonic) dan terintegrasi Google Gemini API. Dua mode: berbasis aturan (Chatms) dan bertenaga AI (Chatga) dengan Function Calling.",
+    coverImage: "/projects/ai-go.png",
+    tags: ["Web Development", "AI & Data"],
+    role: "Backend Developer",
+    techStack: ["Go", "Gin Gonic", "MySQL", "GORM", "Google Gemini API", "Tailwind CSS", "jQuery"],
+    githubUrl: "https://github.com/rohmansyah23/ai-go",
+    gallery: ["/projects/ai-go.png"],
+  },
+  {
+    id: "red-line-guardian-ai",
+    title: "Red Line Guardian AI",
+    description:
+      "Ekosistem lengkap berisi game reaksi refleks tinggi (Pygame) dan agen Computer Vision canggih (OpenCV + PID Control) yang dirancang untuk mensimulasikan gameplay manusia tingkat profesional.",
+    coverImage: "/projects/red-line-bot-game.png",
+    tags: ["AI & Data", "Desktop & Tools"],
+    role: "AI & Automation Developer",
+    techStack: ["Python", "Pygame", "OpenCV", "MSS", "PID Control", "Pynput", "Tkinter"],
+    githubUrl: "https://github.com/rohmansyah23/red-line-guardian-ai",
+    gallery: ["/projects/red-line-bot-game.png"],
+  },
+  {
+    id: "qc-mobile-app",
+    title: "QC Mobile App",
+    description:
+      "O&C Financial — aplikasi pencatatan keuangan pribadi full-stack untuk pasangan. UI flat-minimalis ala Skandinavia dengan integrasi Supabase real-time dan manajemen state Riverpod.",
+    coverImage: "/projects/oc.png",
+    tags: ["Mobile"],
+    role: "Mobile Developer",
+    techStack: ["Flutter", "Dart", "Riverpod", "Supabase"],
+    githubUrl: "https://github.com/rohmansyah23/QC-Mobile-App",
+    gallery: ["/projects/oc.png"],
+  },
+  {
+    id: "eat-scroll",
+    title: "Eat Scroll",
+    description:
+      "Auto scroll tanpa sentuhan untuk Android. Baca Threads, komik, artikel, Reddit, dan lainnya sambil makan, bepergian, atau menggunakan satu tangan.",
+    coverImage: "/projects/eat-scroll.png",
+    tags: ["Mobile"],
+    role: "Mobile Developer",
+    techStack: ["Dart", "Kotlin"],
+    githubUrl: "https://github.com/rohmansyah23/eat-scroll",
+    gallery: ["/projects/eat-scroll.png"],
+  },
+  {
+    id: "crocode-marketplace",
+    title: "CroCode Marketplace",
+    description:
+      "Platform digital modern untuk menjual source code website dan aplikasi berkualitas. Berfungsi sebagai katalog produk sekaligus gerbang transaksi utama.",
+    coverImage: "/projects/crocode.png",
+    tags: ["Web Development"],
+    role: "Full-Stack Developer",
+    techStack: ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "AOS", "GLightbox"],
+    githubUrl: "https://github.com/rohmansyah23/Crocode",
+    liveUrl: "https://rohmansyah23.github.io/Crocode/",
+    gallery: ["/projects/crocode.png"],
+  },
+  {
+    id: "auto-refresh-bot",
+    title: "Auto-Refresh Bot",
+    description:
+      "Aplikasi mini browser dibangun dengan Flutter berfitur Floating Menu UI. Dilengkapi Cloudflare Anti-Bot bypass, Multi-Popup Auth, Desktop Mode, dan zoom skala dinamis menggunakan flutter_inappwebview.",
+    coverImage: "/projects/auto-refresh.png",
+    tags: ["Mobile"],
+    role: "Mobile Developer",
+    techStack: ["Flutter", "Dart", "flutter_inappwebview"],
+    githubUrl: "https://github.com/rohmansyah23/flutter-auto-refresh-bot",
+    gallery: ["/projects/auto-refresh.png"],
+  },
+  {
+    id: "taskbar-navigator",
+    title: "Taskbar Navigator",
+    description:
+      "Alat otomatisasi Windows yang ringan dan cerdas untuk memetakan ulang navigasi taskbar ke tombol Alt. Memastikan aplikasi berpindah fokus dan muncul ke latar depan, menyelesaikan masalah window ter-minimize.",
+    coverImage: "/projects/taskbar-navigation.png",
+    tags: ["Desktop & Tools"],
+    role: "Desktop Automation Developer",
+    techStack: ["Python", "Windows Automation"],
+    githubUrl: "https://github.com/rohmansyah23/taskbar-navigator",
+    gallery: ["/projects/taskbar-navigation.png"],
+  },
+  {
+    id: "pawscare-portal",
+    title: "PawsCare Portal",
+    description:
+      "Pet Health Portal — portal informasi kesehatan hewan dan anjing dengan admin CMS, galeri, dan fitur pencarian. Dibangun dengan CodeIgniter 3 dan Ion Auth.",
+    coverImage: "/projects/pawscare.png",
+    tags: ["Web Development"],
+    role: "Full-Stack Developer",
+    techStack: ["CodeIgniter 3", "Bootstrap 4", "MySQL", "Ion Auth", "jQuery DataTables", "SweetAlert2"],
+    githubUrl: "https://github.com/rohmansyah23/portal-paswcare",
+    gallery: ["/projects/pawscare.png"],
+  },
+  {
+    id: "pustaka-booking-ubsi",
+    title: "Pustaka Booking UBSI",
+    description:
+      "Library Booking System — aplikasi peminjaman dan pengembalian buku perpustakaan berbasis web dibangun dengan CodeIgniter 3, dikembangkan untuk mata kuliah Pemrograman Web di BSI.",
+    coverImage: "/projects/pustaka-booking.png",
+    tags: ["Web Development"],
+    role: "Full-Stack Developer",
+    techStack: ["PHP", "CodeIgniter 3", "MySQL"],
+    githubUrl: "https://github.com/rohmansyah23/pustaka-booking-ubsi",
+    gallery: ["/projects/pustaka-booking.png"],
+  },
+];

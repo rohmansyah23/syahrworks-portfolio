@@ -1,9 +1,19 @@
+"use client";
+
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { getDictionary, defaultLocale } from "@/lib/i18n";
+import {
+  defaultLocale,
+  getDictionary,
+  isLocale,
+  type Locale,
+} from "@/lib/i18n";
 
 export default function NotFound() {
-  const t = getDictionary(defaultLocale);
+  const raw = useParams<{ lang?: string }>().lang;
+  const lang: Locale = raw && isLocale(raw) ? raw : defaultLocale;
+  const t = getDictionary(lang);
 
   return (
     <div className="container-editorial flex min-h-[60vh] flex-col items-start justify-center py-14">
@@ -15,7 +25,7 @@ export default function NotFound() {
         {t.notFoundBody}
       </p>
       <Link
-        href={`/${defaultLocale}`}
+        href={`/${lang}`}
         className="mt-10 inline-flex h-11 items-center gap-2 bg-foreground px-6 text-sm font-medium text-background transition-all duration-200 hover:opacity-85 active:scale-[0.98]"
       >
         <ArrowLeft className="h-4 w-4" />

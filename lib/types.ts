@@ -17,6 +17,7 @@ export type GetInTouchItem = {
   value: string;
   href: string;
   icon: IconType;
+  cta?: boolean;
 };
 
 export type MainData = {
@@ -51,6 +52,7 @@ export type AboutData = {
 
 /* ---------- Journey ---------- */
 export type JourneyType =
+  | "Experience"
   | "Full-Time"
   | "Part-Time"
   | "Education"

@@ -13,17 +13,21 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import GalleryModal from "@/components/projects/GalleryModal";
+import { getDictionary, type Locale } from "@/lib/i18n";
 import type { Project } from "@/lib/types";
 
 export default function ProjectModal({
   project,
+  lang,
   open,
   onOpenChange,
 }: {
   project: Project;
+  lang: Locale;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
+  const t = getDictionary(lang);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
   const gallery = project.gallery ?? [project.coverImage];
@@ -53,12 +57,12 @@ export default function ProjectModal({
                   src={gallery[0]}
                   alt={project.title}
                   width={800}
-                  height={600}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  height={450}
+                  className="aspect-[16/9] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />
                 <span className="absolute bottom-2 right-2 inline-flex items-center gap-1.5 bg-foreground px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-wider text-background opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                   <Images className="h-3.5 w-3.5" />
-                  View
+                  {t.projectView}
                 </span>
               </button>
               {gallery.length > 1 && (
@@ -93,14 +97,18 @@ export default function ProjectModal({
               </p>
 
               <div className="mt-5">
-                <p className="micro-label text-muted-foreground">Role</p>
+                <p className="micro-label text-muted-foreground">
+                  {t.projectRole}
+                </p>
                 <p className="mt-1.5 text-sm font-medium text-foreground">
                   {project.role}
                 </p>
               </div>
 
               <div className="mt-5">
-                <p className="micro-label text-muted-foreground">Tech Stack</p>
+                <p className="micro-label text-muted-foreground">
+                  {t.projectTechStack}
+                </p>
                 <div className="mt-2.5 flex flex-wrap gap-1.5">
                   {project.techStack.map((tech) => (
                     <Badge key={tech}>{tech}</Badge>
@@ -131,7 +139,7 @@ export default function ProjectModal({
                       className="inline-flex h-9 items-center gap-2 bg-foreground px-4 text-xs font-medium text-background transition-opacity duration-200 hover:opacity-85"
                     >
                       <ExternalLink className="h-4 w-4" />
-                      Live Demo
+                      {t.projectLiveDemo}
                     </a>
                   )}
                   {project.docUrl && (
@@ -142,7 +150,7 @@ export default function ProjectModal({
                       className="inline-flex h-9 items-center gap-2 border border-border px-4 text-xs font-medium text-foreground transition-all duration-200 hover:border-foreground"
                     >
                       <ExternalLink className="h-4 w-4" />
-                      Docs
+                      {t.projectDocs}
                     </a>
                   )}
                 </div>
@@ -154,6 +162,7 @@ export default function ProjectModal({
 
       {galleryOpen && (
         <GalleryModal
+          lang={lang}
           open={galleryOpen}
           onOpenChange={setGalleryOpen}
           title={project.title}

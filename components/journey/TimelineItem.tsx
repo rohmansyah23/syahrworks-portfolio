@@ -1,14 +1,25 @@
 import { Badge } from "@/components/ui/badge";
 import { formatPeriod } from "@/lib/utils";
+import { getDictionary, type Locale } from "@/lib/i18n";
 import type { JourneyItem } from "@/lib/types";
 
 export default function TimelineItem({
   item,
+  lang,
   isLast,
 }: {
   item: JourneyItem;
+  lang: Locale;
   isLast?: boolean;
 }) {
+  const t = getDictionary(lang);
+  const workBadge =
+    item.type === "Full-Time"
+      ? t.journeyTypeFullTime
+      : item.type === "Part-Time"
+        ? t.journeyTypePartTime
+        : null;
+
   return (
     <div className="relative pl-8 sm:pl-10">
       {/* Titik pada garis */}
@@ -23,7 +34,7 @@ export default function TimelineItem({
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <p className="micro-label text-accent">
-              {formatPeriod(item.startDate, item.endDate)}
+              {formatPeriod(item.startDate, item.endDate, lang)}
             </p>
             <h3 className="mt-2 font-serif text-2xl leading-tight tracking-tight text-foreground">
               {item.title}
@@ -37,6 +48,7 @@ export default function TimelineItem({
               </p>
             )}
           </div>
+          {workBadge && <Badge variant="outline">{workBadge}</Badge>}
         </div>
 
         {item.description && (

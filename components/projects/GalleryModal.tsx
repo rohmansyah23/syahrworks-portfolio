@@ -8,20 +8,25 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function GalleryModal({
+  lang,
   open,
   onOpenChange,
   title,
   image,
   alt,
 }: {
+  lang: Locale;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
   image: string;
   alt: string;
 }) {
+  const t = getDictionary(lang);
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-5xl p-4 sm:p-5">
@@ -30,7 +35,7 @@ export default function GalleryModal({
             {title}
           </DialogTitle>
           <DialogDescription className="sr-only">
-            Tampilan penuh {alt}
+            {t.galleryFullView.replace("{alt}", alt)}
           </DialogDescription>
         </DialogHeader>
         <Image

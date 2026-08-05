@@ -1,8 +1,7 @@
 import type { JourneyItem } from "@/lib/types";
 
 export const journeyTypes = [
-  "Full-Time",
-  "Part-Time",
+  "Experience",
   "Education",
   "Certification",
   "Competition",
@@ -91,10 +90,10 @@ export const journey: JourneyItem[] = [
     endDate: "2028-08",
     title: "Network Administrator Madya",
     subtitle: "Badan Nasional Sertifikasi Profesi (BNSP)",
-    caption: "Credential ID TIK.1241.00732 2025 · Berlaku 2025–2028",
+    caption: "Credential ID TIK.1241.00732 2025 · Valid 2025–2028",
     description: [
-      "Sertifikasi kompetensi nasional dari Badan Nasional Sertifikasi Profesi (BNSP) yang memvalidasi keterampilan profesional di bidang administrasi jaringan komputer berdasarkan SKKNI.",
-      "Cakupan materi: network addressing, keamanan jaringan, disaster recovery planning, deployment jaringan nirkabel, konfigurasi switch & routing, serta monitoring keamanan jaringan.",
+      "National competency certification from the National Professional Certification Agency (BNSP) validating professional skills in computer network administration based on the Indonesian SKKNI.",
+      "Covered topics: network addressing, network security, disaster recovery planning, wireless network deployment, switch & routing configuration, and network security monitoring.",
     ],
     tools: ["ISP", "Network Administration"],
   },
@@ -105,10 +104,10 @@ export const journey: JourneyItem[] = [
     endDate: "2027-05",
     title: "Program Analyst",
     subtitle: "Badan Nasional Sertifikasi Profesi (BNSP)",
-    caption: "Credential ID TIK.1241.01755 2024 · Berlaku 2024–2027",
+    caption: "Credential ID TIK.1241.01755 2024 · Valid 2024–2027",
     description: [
-      "Tersertifikasi sebagai Program Analyst oleh Badan Nasional Sertifikasi Profesi (BNSP), membuktikan kompetensi pengembangan perangkat lunak berdasarkan SKKNI Indonesia.",
-      "Cakupan materi: SQL, akses database, algoritma pemrograman, dokumentasi kode, implementasi perangkat lunak, debugging, pengujian, version control, dan pemeliharaan perangkat lunak.",
+      "Certified as a Program Analyst by the National Professional Certification Agency (BNSP), proving software development competency based on the Indonesian SKKNI.",
+      "Covered topics: SQL, database access, programming algorithms, code documentation, software implementation, debugging, testing, version control, and software maintenance.",
     ],
     tools: ["PHP", "Programming"],
   },
@@ -119,10 +118,10 @@ export const journey: JourneyItem[] = [
     endDate: "2024-06",
     title: "Software Engineering Competency (KKNI Level II)",
     subtitle: "Badan Nasional Sertifikasi Profesi (BNSP)",
-    caption: "Credential ID J1060000542021 · Berlaku 2021–2024 (kedaluwarsa)",
+    caption: "Credential ID J1060000542021 · Valid 2021–2024 (expired)",
     description: [
-      "Sertifikasi profesi yang dikeluarkan BNSP yang memvalidasi kompetensi Rekayasa Perangkat Lunak pada KKNI Level II.",
-      "Cakupan materi: pemrograman dan Object-Oriented Programming (OOP).",
+      "Professional certification issued by BNSP validating Software Engineering competency at KKNI Level II.",
+      "Covered topics: programming and Object-Oriented Programming (OOP).",
     ],
     tools: ["Programming", "OOP"],
   },
