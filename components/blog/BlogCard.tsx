@@ -15,7 +15,7 @@ export default function BlogCard({
   return (
     <Link
       href={localePath(lang, `/blog/${post.slug}`)}
-      className="group flex flex-col overflow-hidden border border-border bg-card transition-colors duration-200 hover:bg-muted"
+      className="group flex flex-col overflow-hidden border border-border bg-background transition-colors duration-200 hover:bg-muted"
     >
       {post.coverImage && (
         <div className="relative overflow-hidden">
@@ -36,7 +36,7 @@ export default function BlogCard({
           </p>
           <ArrowUpRight className="h-4 w-4 text-accent opacity-0 transition-[opacity,transform] duration-300 ease-out group-hover:translate-x-0.5 group-hover:opacity-100 motion-reduce:group-hover:transform-none" />
         </div>
-        <h3 className="font-serif text-xl leading-snug tracking-tight text-foreground transition-opacity duration-200 group-hover:opacity-80">
+        <h3 className="font-serif text-xl leading-snug tracking-tight text-foreground">
           {post.title}
         </h3>
         <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">

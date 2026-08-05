@@ -16,7 +16,7 @@ export default function ProjectCard({
       type="button"
       onClick={onClick}
       className={cn(
-        "group flex w-full flex-col overflow-hidden border border-border bg-card text-left transition-colors duration-200 hover:bg-muted",
+        "group flex w-full flex-col overflow-hidden border border-border bg-background text-left transition-colors duration-200 hover:bg-muted",
         featured ? "sm:col-span-2 sm:row-span-2" : ""
       )}
     >
@@ -39,7 +39,7 @@ export default function ProjectCard({
             →
           </span>
         </div>
-        <h3 className="font-serif text-xl leading-snug tracking-tight text-foreground transition-opacity duration-200 group-hover:opacity-80">
+        <h3 className="font-serif text-xl leading-snug tracking-tight text-foreground">
           {project.title}
         </h3>
         <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">
