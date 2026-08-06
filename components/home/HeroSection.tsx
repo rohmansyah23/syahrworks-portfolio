@@ -88,9 +88,9 @@ export default function HeroSection({ lang }: { lang: Locale }) {
               </span>
             </h1>
 
-            <p className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-1 font-mono text-sm tracking-wide text-muted-foreground">
+            <p className="mt-4 font-mono text-sm tracking-wide text-muted-foreground lg:flex lg:flex-wrap lg:items-center lg:gap-x-1.5 lg:gap-y-1">
               {main.titles.map((title, i) => (
-                <span key={title} className="whitespace-nowrap">
+                <span key={title} className="lg:whitespace-nowrap">
                   {i > 0 && " · "}
                   {title}
                 </span>
@@ -137,7 +137,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
           <div className="lg:col-span-5">
             <div className="group relative border border-border bg-card p-3 transition-colors duration-300 hover:border-foreground/40">
               {/* Top Status Bar */}
-              <div className="mb-3 flex items-center justify-between border-b border-border pb-2.5 px-1">
+              <div className="mb-3 flex items-center justify-between gap-5 overflow-x-auto whitespace-nowrap border-b border-border pb-2.5 px-1 [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 <span className="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-accent">
                   <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
                   {isId ? "Terbuka untuk Full-Time · Remote" : "Open to Full-Time · Remote"}
