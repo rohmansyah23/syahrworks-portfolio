@@ -120,7 +120,7 @@ export default function ContactForm({ lang }: { lang: Locale }) {
               onChange={(e) => setMessage(e.target.value)}
               placeholder={t.contactMessagePlaceholder}
               rows={5}
-              className="w-full rounded-sm border border-border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-colors duration-200 focus-visible:border-foreground focus-visible:outline-none"
+              className="w-full rounded-sm border border-border bg-card px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-colors duration-200 focus-visible:border-foreground focus-visible:outline-none"
             />
           </div>
           <div className="sm:col-span-2">
