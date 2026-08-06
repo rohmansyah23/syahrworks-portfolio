@@ -25,7 +25,7 @@ Membangun ulang web portofolio dari **nol** (bukan fork template) menjadi situs 
 ## 4. Tujuan & Success Metrics
 **Tujuan:**
 1. Portfolio multi-page dengan **bahasa desain editorial yang relevan & anti AI-slop** (typography-led, whitespace besar, palet dibatasi) ala tasteskill.dev.
-2. Mempertahankan seluruh konten lama (12 proyek, pengalaman, pendidikan, skill, sosial) + menambah konten baru (sertifikasi/kompetisi, blog).
+2. Mempertahankan seluruh konten lama (13 proyek, pengalaman, pendidikan, skill, sosial) + menambah konten baru (sertifikasi/kompetisi, blog).
 3. Stack modern & maintainable (Next 16 / React 19 / Tailwind 4 / TS).
 4. SEO-friendly (metadata, sitemap, robots) dengan performa statis optimal.
 
@@ -87,7 +87,7 @@ syahrworks-portfolio/
   - Education: UBSI S1 TI (Agu 2021–Des 2025); SMKS Jakarta 1 (Jul 2018–Jun 2021)
   - Certification: **BNSP Software Engineering (KKNI II), BNSP Program Analysis, BNSP Intermediate Network Administration** (+ tambahan bila ada)
   - Competition: *(perlu data dari user)*
-- **projects**: 12 proyek (CroCode, PawsCare, QC Mobile, Auto-Refresh Bot, Red Line Guardian AI, Pustaka Booking, AI Go, Eat Scroll, Taskbar Navigator, Catering Mama Akbar, Milagros Web, Shress) → tambah `role`, `techStack[]`, `tags[]` (kategori: Web Development / Mobile / AI & Data / Desktop & Tools), `githubUrl/liveUrl/docUrl`, `gallery[]`.
+- **projects**: 13 proyek (SyahrWorks Portfolio, CroCode, PawsCare, QC Mobile, Auto-Refresh Bot, Red Line Guardian AI, Pustaka Booking, AI Go, Eat Scroll, Taskbar Navigator, Catering Mama Akbar, Milagros Web, Shress) → tambah `role`, `techStack[]`, `tags[]` (kategori: Web Development / Mobile / AI & Data / Desktop & Tools), `githubUrl/liveUrl/docUrl`, `gallery[]`.
 - **blog**: `{slug, title, date, excerpt, coverImage, tags, category, readingTime, author, featured, body(markdown)}` — mulai 1–2 artikel (Bahasa Indonesia).
 - **socials**: GitHub, Instagram, LinkedIn, YouTube, WhatsApp.
 
@@ -185,4 +185,4 @@ syahrworks-portfolio/
 - [ ] Deploy ke Vercel → `syahrworks.vercel.app`; repo baru `rohmansyah23/syahrworks-portfolio`.
 
 ## 18. Kriteria Done (Definition of Done)
-Seluruh acceptance criteria §17 terpenuhi; konten migrasi utuh (12 proyek, 3 pengalaman, 2 pendidikan, 26 skill, sosial); repo lama tidak berubah; domain lama dialihkan ke repo baru.
+Seluruh acceptance criteria §17 terpenuhi; konten migrasi utuh (13 proyek, 3 pengalaman, 2 pendidikan, 26 skill, sosial); repo lama tidak berubah; domain lama dialihkan ke repo baru.

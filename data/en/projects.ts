@@ -10,6 +10,19 @@ export const projectCategories = [
 
 export const projects: Project[] = [
   {
+    id: "syahrworks-portfolio",
+    title: "SyahrWorks Portfolio",
+    description:
+      "This very website — a multi-page editorial portfolio built 100% from scratch with Next.js 16, React 19, and Tailwind CSS 4. Fully bilingual (EN/ID), static-first, with server-fetched GitHub pinned repos.",
+    coverImage: "/projects/placeholder-project.png",
+    tags: ["Web Development"],
+    role: "Front-End Developer",
+    techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Framer Motion", "i18n"],
+    githubUrl: "https://github.com/rohmansyah23/syahrworks-portfolio",
+    liveUrl: "https://syahrworks.vercel.app",
+    gallery: ["/projects/placeholder-project.png"],
+  },
+  {
     id: "catering-mama-akbar",
     title: "Catering Mama Akbar",
     description:

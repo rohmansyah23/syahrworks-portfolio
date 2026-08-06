@@ -119,7 +119,7 @@ export const ui: UIStrings = {
   blogIntro:
     "Artikel seputar riset, pengembangan web, dan tutorial teknologi — ditulis dari pengalaman nyata.",
   projectsIntro:
-    "12 proyek pilihan — dari web development, aplikasi mobile, AI & data, hingga desktop tools. Klik kartu untuk melihat detail lengkap.",
+    "13 proyek pilihan — dari web development, aplikasi mobile, AI & data, hingga desktop tools. Klik kartu untuk melihat detail lengkap.",
   journeyIntro:
     "Pengalaman kerja, pendidikan, dan sertifikasi — disusun secara kronologis. Filter berdasarkan kategori di bawah.",
   /* 404 */

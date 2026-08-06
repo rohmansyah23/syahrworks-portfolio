@@ -43,6 +43,6 @@ export const pageMetadata = {
   projects: {
     title: "Proyek — SyahrWorks",
     description:
-      "12 proyek pilihan Muhammad Rohman Syah: web development, mobile apps, AI & data, serta desktop tools.",
+      "13 proyek pilihan Muhammad Rohman Syah: web development, mobile apps, AI & data, serta desktop tools.",
   },
 } as const;

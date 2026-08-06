@@ -10,6 +10,19 @@ export const projectCategories = [
 
 export const projects: Project[] = [
   {
+    id: "syahrworks-portfolio",
+    title: "SyahrWorks Portfolio",
+    description:
+      "Website ini sendiri — portfolio editorial multi-halaman yang dibangun 100% dari nol dengan Next.js 16, React 19, dan Tailwind CSS 4. Sepenuhnya bilingual (EN/ID), static-first, dengan Pinned Repos GitHub yang di-fetch di server.",
+    coverImage: "/projects/placeholder-project.png",
+    tags: ["Web Development"],
+    role: "Front-End Developer",
+    techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Framer Motion", "i18n"],
+    githubUrl: "https://github.com/rohmansyah23/syahrworks-portfolio",
+    liveUrl: "https://syahrworks.vercel.app",
+    gallery: ["/projects/placeholder-project.png"],
+  },
+  {
     id: "catering-mama-akbar",
     title: "Catering Mama Akbar",
     description:

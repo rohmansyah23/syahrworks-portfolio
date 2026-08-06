@@ -170,7 +170,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
                       {"\n"}    <span className="text-foreground">&quot;Flutter&quot;</span>, <span className="text-foreground">&quot;Go&quot;</span>, <span className="text-foreground">&quot;PHP&quot;</span>
                       {"\n"}  ],
                       {"\n"}  <span className="text-muted-foreground">certifications</span>:{" "}
-                      <span className="text-accent">3</span> <span className="text-muted-foreground/60">// BNSP</span>
+                      <span className="text-accent">3</span> <span className="text-muted-foreground/60">{"// BNSP"}</span>
                       {"\n"}&#125;;
                     </code>
                   </pre>

@@ -153,7 +153,7 @@ public/  (salinan aset dari repo lama)
 - [ ] `npm run build` LOLOS (statis + generateStaticParams; PinnedRepos tidak menghambat; sukses tanpa env).
 - [ ] Manual test §8 terpenuhi.
 - [ ] Anti-Slop Checklist §9 terpenuhi secara visual.
-- [ ] Konten migrasi utuh: 12 proyek, 3 pengalaman, 2 pendidikan, 26 skill, 5 sosial + 3 sertifikasi BNSP + kompetisi (bila ada).
+- [ ] Konten migrasi utuh: 13 proyek, 3 pengalaman, 2 pendidikan, 26 skill, 5 sosial + 3 sertifikasi BNSP + kompetisi (bila ada).
 - [ ] Repo lama `next-portfolio` TIDAK berubah.
 - [ ] Deploy Vercel → `syahrworks.vercel.app`.
 

@@ -151,7 +151,7 @@ export type Project = {
   githubUrl?: string; liveUrl?: string; docUrl?: string;
   gallery?: string[];                            // paths gambar (opsional, dari public/projects)
 };
-// Migrasi 12 proyek dari data.json: CroCode, PawsCare, QC Mobile, Auto-Refresh Bot, Red Line Guardian AI, Pustaka Booking, AI Go, Eat Scroll, Taskbar Navigator, Catering Mama Akbar, Milagros Web, Shress.
+// Migrasi 13 proyek dari data.json: SyahrWorks Portfolio, CroCode, PawsCare, QC Mobile, Auto-Refresh Bot, Red Line Guardian AI, Pustaka Booking, AI Go, Eat Scroll, Taskbar Navigator, Catering Mama Akbar, Milagros Web, Shress.
 // Kategori filter: Web Development / Mobile / AI & Data / Desktop & Tools (sesuaikan).
 
 // data/blog.ts

@@ -47,7 +47,7 @@ docs/                       # PRD.md, PROMPT.md (sumber spesifikasi), I18N.md, E
 - `techStack` → 3 grup: Backend / Frontend / Tools.
 - `about` → aboutImage, intro, philosophy[], workingStyle[], favoriteTech[], quote, resumeUrl.
 - `journey` → 4 tab filter: `Experience | Education | Certification | Competition`. Item kerja memakai `type: Full-Time|Part-Time` (dikumpulkan di tab Experience, urutan endDate desc dengan item berjalan "Present" di paling atas, badge tipe kecil di kartu). Konten: 1 Full-Time (Freelance), 2 Part-Time (SMKS Jakarta 1, Milagros), 2 Education (UBSI, SMKS Jakarta 1), 3 BNSP Certification, Competition (placeholder).
-- `projects` → 12 proyek: CroCode, PawsCare, QC Mobile, Auto-Refresh Bot, Red Line Guardian AI, Pustaka Booking, AI Go, Eat Scroll, Taskbar Navigator, Catering Mama Akbar, Milagros Web, Shress. Field: role, techStack[], tags[] (kategori), githubUrl/liveUrl/docUrl, gallery[].
+- `projects` → 13 proyek: SyahrWorks Portfolio, CroCode, PawsCare, QC Mobile, Auto-Refresh Bot, Red Line Guardian AI, Pustaka Booking, AI Go, Eat Scroll, Taskbar Navigator, Catering Mama Akbar, Milagros Web, Shress. Field: role, techStack[], tags[] (kategori), githubUrl/liveUrl/docUrl, gallery[].
 - `blog` → slug, title, date, excerpt, coverImage, tags, category, readingTime, author, featured, body (markdown). Mulai 1–2 artikel.
 - `socials` → GitHub, Instagram, LinkedIn, YouTube, WhatsApp.
 
