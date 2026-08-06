@@ -86,6 +86,10 @@ export default function AboutSection({ lang }: { lang: Locale }) {
               </div>
             ))}
           </dl>
+
+          <div className="mt-6">
+            <CVDialog lang={lang} resumeUrl={about.resumeUrl} />
+          </div>
         </div>
 
         {/* Konten */}
@@ -119,10 +123,6 @@ export default function AboutSection({ lang }: { lang: Locale }) {
               “{about.quote}”
             </p>
           </blockquote>
-
-          <div className="mt-10">
-            <CVDialog lang={lang} resumeUrl={about.resumeUrl} />
-          </div>
         </div>
       </div>
     </div>

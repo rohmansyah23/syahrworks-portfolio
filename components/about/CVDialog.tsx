@@ -39,9 +39,23 @@ export default function CVDialog({
         <iframe
           src={resumeUrl}
           title="Curriculum Vitae"
-          className="h-[65vh] w-full rounded-sm border border-border bg-muted"
+          className="hidden h-[65vh] w-full rounded-sm border border-border bg-muted md:block"
         />
-        <div className="flex justify-end">
+        <div className="md:hidden">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            {t.aboutCvMobileHint}
+          </p>
+          <a
+            href={resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 bg-foreground px-5 text-sm font-medium text-background transition-opacity duration-200 hover:opacity-85 active:scale-[0.98]"
+          >
+            {t.aboutOpenNewTab}
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </div>
+        <div className="hidden justify-end md:flex">
           <a
             href={resumeUrl}
             target="_blank"

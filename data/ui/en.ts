@@ -113,6 +113,8 @@ export const ui: UIStrings = {
   aboutCvButton: "View CV",
   aboutCvDialogDescription: "The document can also be opened in a new tab.",
   aboutOpenNewTab: "Open in new tab",
+  aboutCvMobileHint:
+    "PDF preview is not available on mobile — open the CV in a new tab.",
   /* Gallery */
   galleryFullView: "Full view {alt}",
   /* Intro halaman */

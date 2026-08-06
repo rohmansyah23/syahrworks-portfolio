@@ -129,6 +129,7 @@ export type UIStrings = {
   aboutCvButton: string;
   aboutCvDialogDescription: string;
   aboutOpenNewTab: string;
+  aboutCvMobileHint: string;
   /* Gallery */
   galleryFullView: string;
   /* Intro halaman */
