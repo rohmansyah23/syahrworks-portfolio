@@ -44,7 +44,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
           <div className="lg:col-span-7">
             <p className="micro-label text-accent">01 — {t.homeLabel}</p>
 
-            <h1 className="mt-4 font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-[7.5rem] lg:leading-[0.95]">
+            <h1 className="mt-4 font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-[min(7.5rem,10.5vw)] lg:leading-[0.95] lg:whitespace-nowrap">
               {/* Layar < 383px & 465px - 1023px: Normal flow */}
               <span className="max-[382px]:inline min-[465px]:inline hidden lg:hidden">
                 <span>Muhammad Rohman </span>
@@ -70,7 +70,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
                 <span
                   ref={scrollRef}
                   onScroll={checkScroll}
-                  className="block overflow-x-auto whitespace-nowrap pb-1 px-1 [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                  className="block overflow-x-auto overflow-y-hidden whitespace-nowrap pt-2 pb-3 px-1 [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
                   <span>Muhammad Rohman </span>
                   <span className="inline-block bg-accent px-2.5 py-0.5 font-serif not-italic text-background rounded-2xs leading-none align-baseline rotate-[-5.5deg]">
@@ -88,8 +88,13 @@ export default function HeroSection({ lang }: { lang: Locale }) {
               </span>
             </h1>
 
-            <p className="mt-4 font-mono text-sm tracking-wide text-muted-foreground">
-              {main.titles.join(" · ")}
+            <p className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-1 font-mono text-sm tracking-wide text-muted-foreground">
+              {main.titles.map((title, i) => (
+                <span key={title} className="whitespace-nowrap">
+                  {i > 0 && " · "}
+                  {title}
+                </span>
+              ))}
             </p>
 
             <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-muted-foreground">
