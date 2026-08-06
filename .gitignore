@@ -37,6 +37,9 @@ dev-server.log
 # vercel
 .vercel
 
+# private — interview prep (never pushed)
+/docs-private/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
