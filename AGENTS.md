@@ -4,6 +4,7 @@ Dokumen ini dibaca otomatis oleh berbagai coding agent (opencode, Cursor, Claude
 Sebelum menulis kode, agent WAJIB membaca:
 - `docs/PRD.md` — requirements lengkap
 - `docs/PROMPT.md` — super prompt eksekusi (instruksi langkah-demi-langkah)
+- `docs/COPYWRITING.md` — standar copywriting "anti AI-slop" (target HRD/full-time) — WAJIB sebelum mengubah teks konten/UI/metadata.
 
 ---
 

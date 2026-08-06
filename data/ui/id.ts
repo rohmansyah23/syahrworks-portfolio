@@ -40,9 +40,9 @@ export const ui: UIStrings = {
   blogTitle: "Catatan & tulisan.",
   all: "Semua",
   /* Get In Touch */
-  getInTouchTitle: "Mari bangun sesuatu bersama.",
+  getInTouchTitle: "Terbuka untuk posisi full-time — mari bicara.",
   getInTouchDescription:
-    "Tertarik berkolaborasi atau punya pertanyaan? Hubungi saya melalui kanal berikut.",
+    "Sedang rekrut atau sekadar penasaran? Hubungi saya lewat kanal di bawah — saya merespons cepat.",
   /* Tech Stack */
   techStackTitle: "Teknologi yang saya gunakan.",
   techStackDescription:
@@ -61,15 +61,15 @@ export const ui: UIStrings = {
   latestBlogsTitle: "Tulisan terbaru.",
   latestBlogsViewAll: "Lihat Semua Artikel",
   /* Contact Form */
-  contactTitle: "Punya proyek dalam pikiran?",
+  contactTitle: "Tertarik bekerja sama?",
   contactDescription:
-    "Isi form di bawah — saya akan merespons secepatnya melalui email.",
+    "Ceritakan proyek Anda atau posisi yang Anda tawarkan — saya biasanya membalas dalam 24 jam.",
   contactNameLabel: "Nama",
   contactEmailLabel: "Email",
   contactMessageLabel: "Pesan",
   contactNamePlaceholder: "Nama Anda",
   contactEmailPlaceholder: "you@example.com",
-  contactMessagePlaceholder: "Ceritakan tentang proyek Anda...",
+  contactMessagePlaceholder: "Ceritakan proyek Anda atau posisi yang Anda tawarkan...",
   contactSend: "Kirim Pesan",
   contactSending: "Mengirim...",
   contactErrorName: "Nama wajib diisi.",

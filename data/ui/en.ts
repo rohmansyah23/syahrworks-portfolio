@@ -40,9 +40,9 @@ export const ui: UIStrings = {
   blogTitle: "Notes & writings.",
   all: "All",
   /* Get In Touch */
-  getInTouchTitle: "Let's build something together.",
+  getInTouchTitle: "Open to full-time — let's talk.",
   getInTouchDescription:
-    "Interested in collaborating or have a question? Reach me through the channels below.",
+    "Hiring or just curious? Reach me through the channels below — I reply fast.",
   /* Tech Stack */
   techStackTitle: "Technologies I work with.",
   techStackDescription:
@@ -61,15 +61,15 @@ export const ui: UIStrings = {
   latestBlogsTitle: "Latest writings.",
   latestBlogsViewAll: "View All Articles",
   /* Contact Form */
-  contactTitle: "Have a project in mind?",
+  contactTitle: "Interested in working together?",
   contactDescription:
-    "Fill in the form below — I'll respond as soon as possible via email.",
+    "Tell me about your project or the role you have in mind — I usually reply within 24 hours.",
   contactNameLabel: "Name",
   contactEmailLabel: "Email",
   contactMessageLabel: "Message",
   contactNamePlaceholder: "Your name",
   contactEmailPlaceholder: "you@example.com",
-  contactMessagePlaceholder: "Tell me about your project...",
+  contactMessagePlaceholder: "Tell me about your project or the role you're hiring for...",
   contactSend: "Send Message",
   contactSending: "Sending...",
   contactErrorName: "Name is required.",
@@ -121,7 +121,7 @@ export const ui: UIStrings = {
   blogIntro:
     "Articles on research, web development, and technology tutorials — written from real experience.",
   projectsIntro:
-    "12 featured projects — from web development, mobile apps, AI & data, to desktop tools. Click a card to see full details.",
+    "13 featured projects — from web development, mobile apps, AI & data, to desktop tools. Click a card to see full details.",
   journeyIntro:
     "Work experience, education, and certifications — arranged chronologically. Filter by category below.",
   /* 404 */

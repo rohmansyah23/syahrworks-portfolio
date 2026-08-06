@@ -13,7 +13,7 @@ export const projects: Project[] = [
     id: "syahrworks-portfolio",
     title: "SyahrWorks Portfolio",
     description:
-      "Website ini sendiri — portfolio editorial multi-halaman yang dibangun 100% dari nol dengan Next.js 16, React 19, dan Tailwind CSS 4. Sepenuhnya bilingual (EN/ID), static-first, dengan Pinned Repos GitHub yang di-fetch di server.",
+      "Situs ini sendiri — portfolio editorial bilingual (EN/ID) yang dibangun dari nol dengan Next.js 16, React 19, dan Tailwind CSS 4. Static-first, dengan Pinned Repos GitHub yang di-fetch di server.",
     coverImage: "/projects/placeholder-project.png",
     tags: ["Web Development"],
     role: "Front-End Developer",
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     id: "catering-mama-akbar",
     title: "Catering Mama Akbar",
     description:
-      "Sistem Manajemen Menu & Katering modern untuk Catering Mama Akbar Pondok Kelapa. Mengintegrasikan katalog menu interaktif dengan panel admin back-office terautentikasi JWT.",
+      "Platform pemesanan untuk Catering Mama Akbar — katalog menu interaktif plus panel admin aman JWT, sehingga pemilik bisa mengelola menu dan pesanan tanpa menyentuh kode.",
     coverImage: "/projects/catering-mama-akbar.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     id: "shress",
     title: "Shress",
     description:
-      "Pelaporan keuangan multi-tenant untuk UMKM Indonesia. Aplikasi Flutter produksi yang berjalan offline dengan wawasan keuangan real-time, pencatatan transaksi, manajemen utang, pembayaran QRIS, dan pengawasan multi-bisnis.",
+      "Aplikasi keuangan multi-tenant yang jalan offline untuk UMKM Indonesia — pembayaran QRIS, manajemen utang, wawasan real-time, dan pengawasan multi-bisnis.",
     coverImage: "/projects/sheress.png",
     tags: ["Mobile"],
     role: "Mobile Developer",
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     id: "milagros-web",
     title: "Milagros Web",
     description:
-      "Website modern untuk agen Milagros resmi dengan landing page, katalog produk interaktif, dan panel admin untuk manajemen stok serta media. Menggunakan Prisma ORM dan shadcn/ui.",
+      "Website untuk agen Milagros resmi — landing page, katalog produk interaktif, dan panel admin untuk mengelola stok serta media.",
     coverImage: "/projects/milagros-web.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     id: "ai-go-warehouse-chatbot",
     title: "AI Go — Chatbot Gudang",
     description:
-      "Chatbot asisten gudang dibangun dengan Go (Gin Gonic) dan terintegrasi Google Gemini API. Dua mode: berbasis aturan (Chatms) dan bertenaga AI (Chatga) dengan Function Calling.",
+      "Chatbot asisten gudang dalam Go (Gin Gonic) + Google Gemini — mode berbasis aturan dan mode AI dengan function calling.",
     coverImage: "/projects/ai-go.png",
     tags: ["Web Development", "AI & Data"],
     role: "Backend Developer",
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     id: "red-line-guardian-ai",
     title: "Red Line Guardian AI",
     description:
-      "Ekosistem lengkap berisi game reaksi refleks tinggi (Pygame) dan agen Computer Vision canggih (OpenCV + PID Control) yang dirancang untuk mensimulasikan gameplay manusia tingkat profesional.",
+      "Game reaksi (Pygame) yang dipasangkan dengan agen computer vision (OpenCV + PID) untuk mensimulasikan permainan manusia tingkat profesional.",
     coverImage: "/projects/red-line-bot-game.png",
     tags: ["AI & Data", "Desktop & Tools"],
     role: "AI & Automation Developer",
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     id: "qc-mobile-app",
     title: "QC Mobile App",
     description:
-      "O&C Financial — aplikasi pencatatan keuangan pribadi full-stack untuk pasangan. UI flat-minimalis ala Skandinavia dengan integrasi Supabase real-time dan manajemen state Riverpod.",
+      "O&C Financial — aplikasi pencatatan keuangan pribadi full-stack untuk pasangan, dengan UI flat ala Skandinavia, sinkronisasi Supabase real-time, dan manajemen state Riverpod.",
     coverImage: "/projects/oc.png",
     tags: ["Mobile"],
     role: "Mobile Developer",
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     id: "eat-scroll",
     title: "Eat Scroll",
     description:
-      "Auto scroll tanpa sentuhan untuk Android. Baca Threads, komik, artikel, Reddit, dan lainnya sambil makan, bepergian, atau menggunakan satu tangan.",
+      "Auto-scroll tanpa sentuhan untuk Android — baca Threads, komik, artikel, atau Reddit sambil makan atau bepergian.",
     coverImage: "/projects/eat-scroll.png",
     tags: ["Mobile"],
     role: "Mobile Developer",
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     id: "crocode-marketplace",
     title: "CroCode Marketplace",
     description:
-      "Platform digital modern untuk menjual source code website dan aplikasi berkualitas. Berfungsi sebagai katalog produk sekaligus gerbang transaksi utama.",
+      "Marketplace untuk menjual source code website & aplikasi — katalog produk sekaligus gerbang transaksi dalam satu platform.",
     coverImage: "/projects/crocode.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",
@@ -123,7 +123,7 @@ export const projects: Project[] = [
     id: "auto-refresh-bot",
     title: "Auto-Refresh Bot",
     description:
-      "Aplikasi mini browser dibangun dengan Flutter berfitur Floating Menu UI. Dilengkapi Cloudflare Anti-Bot bypass, Multi-Popup Auth, Desktop Mode, dan zoom skala dinamis menggunakan flutter_inappwebview.",
+      "Mini-browser Flutter dengan floating menu — bypass Cloudflare anti-bot, multi-popup auth, dan desktop mode via flutter_inappwebview.",
     coverImage: "/projects/auto-refresh.png",
     tags: ["Mobile"],
     role: "Mobile Developer",
@@ -135,7 +135,7 @@ export const projects: Project[] = [
     id: "taskbar-navigator",
     title: "Taskbar Navigator",
     description:
-      "Alat otomatisasi Windows yang ringan dan cerdas untuk memetakan ulang navigasi taskbar ke tombol Alt. Memastikan aplikasi berpindah fokus dan muncul ke latar depan, menyelesaikan masalah window ter-minimize.",
+      "Alat otomatisasi Windows yang memetakan ulang navigasi taskbar ke tombol Alt — menyelesaikan masalah window yang hilang saat minimize.",
     coverImage: "/projects/taskbar-navigation.png",
     tags: ["Desktop & Tools"],
     role: "Desktop Automation Developer",
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     id: "pawscare-portal",
     title: "PawsCare Portal",
     description:
-      "Pet Health Portal — portal informasi kesehatan hewan dan anjing dengan admin CMS, galeri, dan fitur pencarian. Dibangun dengan CodeIgniter 3 dan Ion Auth.",
+      "Portal kesehatan hewan — konten informasi dengan admin CMS, galeri, dan pencarian, dibangun dengan CodeIgniter 3 dan Ion Auth.",
     coverImage: "/projects/pawscare.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     id: "pustaka-booking-ubsi",
     title: "Pustaka Booking UBSI",
     description:
-      "Library Booking System — aplikasi peminjaman dan pengembalian buku perpustakaan berbasis web dibangun dengan CodeIgniter 3, dikembangkan untuk mata kuliah Pemrograman Web di BSI.",
+      "Sistem peminjaman dan pengembalian buku perpustakaan berbasis web untuk mata kuliah Pemrograman Web di BSI — CodeIgniter 3 dan MySQL.",
     coverImage: "/projects/pustaka-booking.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",

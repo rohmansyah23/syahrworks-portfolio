@@ -4,18 +4,24 @@ export const siteMetadata: SiteMetadata = {
   siteUrl: "https://syahrworks.vercel.app",
   title: "SyahrWorks — Muhammad Rohman Syah",
   description:
-    "Portofolio Muhammad Rohman Syah (SyahrWorks) — Full-Stack Developer. Aplikasi web & mobile dengan fokus pada performa, skalabilitas, dan clean code.",
+    "Portofolio Muhammad Rohman Syah (SyahrWorks) — Full-Stack Developer (Next.js · Flutter · Go) di Jakarta. 13+ proyek shipped, 3× sertifikasi BNSP. Terbuka untuk full-time & remote.",
   keywords: [
     "SyahrWorks",
     "Muhammad Rohman Syah",
     "Full-Stack Developer",
-    "Next.js",
-    "Flutter",
-    "Go",
+    "Full-Stack Developer Jakarta",
+    "Next.js Developer",
+    "Flutter Developer",
+    "Go Developer",
+    "Web Development",
+    "Mobile Development",
+    "Junior Developer",
+    "Remote Developer",
+    "Clean Code",
     "Portfolio",
   ],
   author: "Muhammad Rohman Syah",
-  ogImage: "/profile-me.png",
+  ogImage: "/og-syahrworks.png",
   twitterHandle: "@syahrworks",
 };
 
@@ -23,12 +29,12 @@ export const pageMetadata = {
   home: {
     title: "SyahrWorks — Muhammad Rohman Syah",
     description:
-      "Full-Stack Developer dari Jakarta, Indonesia. Membangun web & mobile applications yang reliable, scalable, dan berfokus pada clean code.",
+      "Full-Stack Developer (Next.js · Flutter · Go) di Jakarta — 13+ proyek shipped, 3× sertifikasi BNSP. Terbuka untuk full-time & remote.",
   },
   about: {
     title: "Tentang — SyahrWorks",
     description:
-      "Tentang Muhammad Rohman Syah: Full-Stack Developer dengan 12+ proyek, 3 sertifikasi BNSP, dan pengalaman freelance serta industri.",
+      "Tentang Muhammad Rohman Syah: Full-Stack Developer dengan 13+ proyek, 3 sertifikasi BNSP, dan pengalaman freelance serta industri.",
   },
   journey: {
     title: "Perjalanan — SyahrWorks",

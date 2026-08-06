@@ -16,6 +16,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
   ).length;
 
   const isId = lang === "id";
+  const resumeUrl = data.about.about.resumeUrl;
 
   const scrollRef = useRef<HTMLSpanElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -96,16 +97,24 @@ export default function HeroSection({ lang }: { lang: Locale }) {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link
-                href={localePath(lang, "/projects")}
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 items-center gap-2 bg-foreground px-6 text-sm font-medium text-background transition-all duration-200 hover:opacity-85 active:scale-[0.98]"
               >
-                {t.heroViewProjects}
+                {t.aboutCvButton}
                 <ArrowRight className="h-4 w-4" />
+              </a>
+              <Link
+                href={localePath(lang, "/projects")}
+                className="inline-flex h-11 items-center gap-2 border border-border px-6 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground active:scale-[0.98]"
+              >
+                {t.heroViewProjects}
               </Link>
               <Link
                 href={localePath(lang, "/journey")}
-                className="inline-flex h-11 items-center gap-2 border border-border px-6 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground active:scale-[0.98]"
+                className="inline-flex h-11 items-center gap-2 px-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
               >
                 {t.heroViewJourney}
               </Link>
@@ -126,7 +135,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
               <div className="mb-3 flex items-center justify-between border-b border-border pb-2.5 px-1">
                 <span className="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-accent">
                   <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                  {isId ? "Tersedia untuk Proyek" : "Available for Projects"}
+                  {isId ? "Terbuka untuk Full-Time · Remote" : "Open to Full-Time · Remote"}
                 </span>
                 <span className="font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground">
                   Jakarta, ID
@@ -163,7 +172,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
                       <span className="text-foreground font-medium">&quot;Jakarta, ID&quot;</span>,
                       {"\n"}  <span className="text-muted-foreground">status</span>:{" "}
                       <span className="text-accent font-medium">
-                        &quot;{isId ? "Tersedia untuk Proyek" : "Available for Work"}&quot;
+                        &quot;{isId ? "Terbuka untuk Full-Time · Remote" : "Open to Full-Time · Remote"}&quot;
                       </span>,
                       {"\n"}  <span className="text-muted-foreground">stack</span>: [
                       {"\n"}    <span className="text-foreground">&quot;Next.js&quot;</span>, <span className="text-foreground">&quot;React&quot;</span>, <span className="text-foreground">&quot;TypeScript&quot;</span>,

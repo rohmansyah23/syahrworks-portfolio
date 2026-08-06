@@ -13,7 +13,7 @@ export const projects: Project[] = [
     id: "syahrworks-portfolio",
     title: "SyahrWorks Portfolio",
     description:
-      "This very website — a multi-page editorial portfolio built 100% from scratch with Next.js 16, React 19, and Tailwind CSS 4. Fully bilingual (EN/ID), static-first, with server-fetched GitHub pinned repos.",
+      "This site — a bilingual (EN/ID) editorial portfolio built from scratch on Next.js 16, React 19, and Tailwind CSS 4. Static-first, with server-fetched GitHub pinned repos.",
     coverImage: "/projects/placeholder-project.png",
     tags: ["Web Development"],
     role: "Front-End Developer",
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     id: "catering-mama-akbar",
     title: "Catering Mama Akbar",
     description:
-      "Modern Catering & Menu Management System for Catering Mama Akbar Pondok Kelapa. Integrates an interactive menu catalog with a JWT-authenticated back-office admin panel.",
+      "Ordering platform for Catering Mama Akbar — interactive menu catalog plus a JWT-secured admin panel, so the owner updates menus and tracks orders without touching code.",
     coverImage: "/projects/catering-mama-akbar.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     id: "shress",
     title: "Shress",
     description:
-      "Multi-tenant financial reporting for Indonesian SMEs. A production-grade, offline-aware Flutter application with real-time financial insights, transaction tracking, debt management, QRIS payments, and multi-business oversight.",
+      "Offline-aware, multi-tenant finance app for Indonesian SMEs — QRIS payments, debt tracking, real-time insights, and multi-business oversight.",
     coverImage: "/projects/sheress.png",
     tags: ["Mobile"],
     role: "Mobile Developer",
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     id: "milagros-web",
     title: "Milagros Web",
     description:
-      "A modern website for an authorized Milagros agent featuring a landing page, interactive product catalog, and admin panel for stock and media management. Uses Prisma ORM and shadcn/ui.",
+      "Website for an authorized Milagros agent — landing page, interactive product catalog, and an admin panel to manage stock and media.",
     coverImage: "/projects/milagros-web.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     id: "ai-go-warehouse-chatbot",
     title: "AI Go — Warehouse Chatbot",
     description:
-      "Warehouse assistant chatbot built with Go (Gin Gonic) and integrated with Google Gemini API. Two modes: rule-based (Chatms) and AI-powered (Chatga) with Function Calling.",
+      "Warehouse assistant chatbot in Go (Gin Gonic) + Google Gemini — rule-based and AI modes with function calling.",
     coverImage: "/projects/ai-go.png",
     tags: ["Web Development", "AI & Data"],
     role: "Backend Developer",
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     id: "red-line-guardian-ai",
     title: "Red Line Guardian AI",
     description:
-      "A complete ecosystem consisting of a high-reflex reaction game (Pygame) and an advanced Computer Vision Agent (OpenCV + PID Control) designed to simulate professional-level human gameplay.",
+      "A reaction game (Pygame) paired with a computer-vision agent (OpenCV + PID) that simulates professional-level human play.",
     coverImage: "/projects/red-line-bot-game.png",
     tags: ["AI & Data", "Desktop & Tools"],
     role: "AI & Automation Developer",
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     id: "qc-mobile-app",
     title: "QC Mobile App",
     description:
-      "O&C Financial — a full-stack personal finance tracking app for couples. Flat-minimalist Scandinavian-style UI with real-time Supabase integration and Riverpod state management.",
+      "O&C Financial — a full-stack personal finance app for couples, with a flat Scandinavian UI, real-time Supabase sync, and Riverpod state management.",
     coverImage: "/projects/oc.png",
     tags: ["Mobile"],
     role: "Mobile Developer",
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     id: "eat-scroll",
     title: "Eat Scroll",
     description:
-      "Hands-free auto scrolling for Android. Read Threads, comics, articles, Reddit, and more while eating, commuting, or using one hand.",
+      "Hands-free auto-scrolling for Android — read Threads, comics, articles, or Reddit while eating or commuting.",
     coverImage: "/projects/eat-scroll.png",
     tags: ["Mobile"],
     role: "Mobile Developer",
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     id: "crocode-marketplace",
     title: "CroCode Marketplace",
     description:
-      "A modern digital platform for selling high-quality website and application source code. Serves as both a product catalog and primary transaction gateway.",
+      "A marketplace for selling website & app source code — product catalog and transaction gateway in one.",
     coverImage: "/projects/crocode.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",
@@ -123,7 +123,7 @@ export const projects: Project[] = [
     id: "auto-refresh-bot",
     title: "Auto-Refresh Bot",
     description:
-      "A mini browser app built with Flutter featuring a Floating Menu UI. Equipped with Cloudflare Anti-Bot bypass, Multi-Popup Auth, Desktop Mode, and dynamic-scale zoom using flutter_inappwebview.",
+      "Flutter mini-browser with a floating menu — Cloudflare anti-bot bypass, multi-popup auth, and desktop mode via flutter_inappwebview.",
     coverImage: "/projects/auto-refresh.png",
     tags: ["Mobile"],
     role: "Mobile Developer",
@@ -135,7 +135,7 @@ export const projects: Project[] = [
     id: "taskbar-navigator",
     title: "Taskbar Navigator",
     description:
-      "A lightweight and smart Windows automation tool that re-maps taskbar navigation to the Alt key. Ensures applications switch focus and pop to the foreground, solving the minimized window issue.",
+      "Windows automation tool that re-maps taskbar navigation to the Alt key — fixes the 'minimized window lost' problem.",
     coverImage: "/projects/taskbar-navigation.png",
     tags: ["Desktop & Tools"],
     role: "Desktop Automation Developer",
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     id: "pawscare-portal",
     title: "PawsCare Portal",
     description:
-      "Pet Health Portal — a health information portal for pets and dogs featuring admin CMS, gallery, and search functionality. Built with CodeIgniter 3 and Ion Auth.",
+      "Pet health portal — informational content with admin CMS, gallery, and search, built with CodeIgniter 3 and Ion Auth.",
     coverImage: "/projects/pawscare.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     id: "pustaka-booking-ubsi",
     title: "Pustaka Booking UBSI",
     description:
-      "Library Booking System — a web-based library book borrowing and returning application built with CodeIgniter 3, developed for a Web Programming course at BSI.",
+      "Web-based library borrow/return system for the Web Programming course at BSI — CodeIgniter 3 and MySQL.",
     coverImage: "/projects/pustaka-booking.png",
     tags: ["Web Development"],
     role: "Full-Stack Developer",

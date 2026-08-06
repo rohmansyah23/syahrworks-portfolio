@@ -6,7 +6,7 @@ export const main: MainData = {
   name: "Muhammad Rohman Syah",
   logo: "SyahrWorks",
   tagline:
-    "Building reliable web & mobile applications that deliver great user experiences, with a strong focus on performance, scalability, and clean code.",
+    "Full-stack developer in Jakarta — I design, build, and ship web & mobile products that stay fast, scale cleanly, and are easy to maintain.",
   titles: [
     "Full-Stack Developer",
     "Next.js & TypeScript",
@@ -45,8 +45,8 @@ export const main: MainData = {
       icon: MessageCircle,
     },
     {
-      label: "Start a Project",
-      value: "Let's build something →",
+      label: "Hire Me",
+      value: "Open to full-time roles →",
       href: "mailto:syahr642@gmail.com",
       icon: Rocket,
       cta: true,

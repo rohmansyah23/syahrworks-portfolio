@@ -17,8 +17,8 @@ export const journey: JourneyItem[] = [
     title: "Freelance Full-Stack Developer",
     subtitle: "Self-Employed",
     description: [
-      "Design, develop, deploy, and maintain web and mobile applications throughout the full software development lifecycle (SDLC).",
-      "Build and customize solutions based on client requirements, focusing on performance, scalability, and maintainability.",
+      "Deliver complete web & mobile products for clients — from requirements to live deployment — on Next.js, Flutter, and Go.",
+      "Own the full lifecycle: shipped solutions stay maintained, monitored, and iterated on after launch.",
     ],
     tools: ["Next.js", "TypeScript", "Flutter", "Go"],
   },
@@ -32,9 +32,9 @@ export const journey: JourneyItem[] = [
     title: "IT Support & Teaching Assistant Intern",
     subtitle: "SMKS Jakarta 1 Pondok Kopi",
     description: [
-      "Developed and implemented an integrated student admission (PPDB) system with payment gateway integration.",
-      "Built an academic website that streamlined student data management and administrative workflows.",
-      "Maintained laboratory IT infrastructure and provided network troubleshooting and technical support.",
+      "Built the school's integrated admission (PPDB) system — registration, payment gateway, and secure online exams — accepted with a 'Very Good' 4.48/5.00 rating.",
+      "Shipped an academic website that streamlined student data and admin workflows.",
+      "Kept the IT lab running — network troubleshooting and technical support for staff and students.",
     ],
     tools: ["PHP", "CodeIgniter", "MySQL", "Bootstrap"],
   },
@@ -46,9 +46,9 @@ export const journey: JourneyItem[] = [
     title: "Operational Administrator & Stockist",
     subtitle: "Milagros Pondok Kelapa",
     description: [
-      "Prepared daily and monthly sales reports while maintaining 100% inventory accuracy.",
-      "Managed inventory distribution and logistics for up to 60 product boxes per month.",
-      "Processed more than 20 customer orders per week while ensuring operational efficiency.",
+      "Maintained 100% inventory accuracy across daily and monthly sales reporting.",
+      "Managed stock distribution and logistics — up to 60 product boxes a month.",
+      "Processed 20+ customer orders a week while keeping operations efficient.",
     ],
     tools: ["Inventory Management", "Reporting", "Logistics"],
   },
@@ -62,8 +62,8 @@ export const journey: JourneyItem[] = [
     title: "Bachelor of Information Technology",
     subtitle: "Universitas Bina Sarana Informatika, Jakarta",
     description: [
-      "Thesis: Development of an Integrated Web-Based Student Admission (PPDB) Information System with Payment Gateway Integration.",
-      "Published research on secure online student admission systems with integrated payment gateway functionality.",
+      "Thesis: an integrated web-based student admission (PPDB) system with payment gateway integration.",
+      "Published the research — accepted with a 4.48/5.00 'Very Good' rating.",
     ],
     tools: ["Web Development", "Research", "Payment Gateway"],
   },
@@ -94,6 +94,7 @@ export const journey: JourneyItem[] = [
     description: [
       "National competency certification from the National Professional Certification Agency (BNSP) validating professional skills in computer network administration based on the Indonesian SKKNI.",
       "Covered topics: network addressing, network security, disaster recovery planning, wireless network deployment, switch & routing configuration, and network security monitoring.",
+      "Practical skills for keeping systems online and secure.",
     ],
     tools: ["ISP", "Network Administration"],
   },
@@ -108,6 +109,7 @@ export const journey: JourneyItem[] = [
     description: [
       "Certified as a Program Analyst by the National Professional Certification Agency (BNSP), proving software development competency based on the Indonesian SKKNI.",
       "Covered topics: SQL, database access, programming algorithms, code documentation, software implementation, debugging, testing, version control, and software maintenance.",
+      "Covers the full software lifecycle — SQL, testing, version control, and maintenance.",
     ],
     tools: ["PHP", "Programming"],
   },
@@ -122,6 +124,7 @@ export const journey: JourneyItem[] = [
     description: [
       "Professional certification issued by BNSP validating Software Engineering competency at KKNI Level II.",
       "Covered topics: programming and Object-Oriented Programming (OOP).",
+      "Foundation in programming and object-oriented design.",
     ],
     tools: ["Programming", "OOP"],
   },

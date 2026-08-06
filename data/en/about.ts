@@ -3,7 +3,7 @@ import type { AboutData } from "@/lib/types";
 export const about: AboutData = {
   aboutImage: "/about-me.png",
   intro:
-    "I'm Rohman, a Full-Stack Developer from Indonesia with hands-on experience building web and mobile applications. Across 12+ projects, I've developed business dashboards, information systems, mobile applications, and backend services. I'm currently working as a freelance developer while completing my Bachelor's degree in Information Technology at Universitas Bina Sarana Informatika. I've earned three BNSP certifications in Software Engineering (KKNI Level II), Program Analysis, and Intermediate Network Administration, reflecting my commitment to continuous learning and professional growth.",
+    "I'm Rohman — a full-stack developer in Jakarta who takes products from idea to production: design, build, deploy, maintain. Across 13+ shipped projects and 3 BNSP certifications, I build web & mobile systems that real businesses use every day — and I'm ready to bring that into a full-time team.",
   philosophy: [
     "Clean code over clever code — software should be readable first, impressive second.",
     "Performance is a feature. Fast, responsive apps are the baseline of good UX.",
@@ -11,8 +11,8 @@ export const about: AboutData = {
     "Data-driven decisions: measure, iterate, and improve continuously.",
   ],
   workingStyle: [
-    "Full-cycle ownership — from requirements to design, build, deploy, and maintain.",
-    "Client-focused delivery — custom solutions aligned with real business needs.",
+    "Full-cycle ownership — from requirements to maintenance, I handle the whole loop.",
+    "Client-focused delivery — solutions shaped around real business needs, not templates.",
     "Documentation and clean git history as a habit, not an afterthought.",
     "Continuous learning — new tools adopted through practical projects.",
   ],

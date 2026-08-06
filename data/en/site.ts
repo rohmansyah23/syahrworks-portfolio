@@ -4,18 +4,24 @@ export const siteMetadata: SiteMetadata = {
   siteUrl: "https://syahrworks.vercel.app",
   title: "SyahrWorks — Muhammad Rohman Syah",
   description:
-    "Portfolio of Muhammad Rohman Syah (SyahrWorks) — Full-Stack Developer. Web & mobile applications focused on performance, scalability, and clean code.",
+    "Portfolio of Muhammad Rohman Syah (SyahrWorks) — Full-Stack Developer (Next.js · Flutter · Go) in Jakarta. 13+ shipped projects, 3× BNSP certified. Open to full-time & remote.",
   keywords: [
     "SyahrWorks",
     "Muhammad Rohman Syah",
     "Full-Stack Developer",
-    "Next.js",
-    "Flutter",
-    "Go",
+    "Full-Stack Developer Jakarta",
+    "Next.js Developer",
+    "Flutter Developer",
+    "Go Developer",
+    "Web Development",
+    "Mobile Development",
+    "Junior Developer",
+    "Remote Developer",
+    "Clean Code",
     "Portfolio",
   ],
   author: "Muhammad Rohman Syah",
-  ogImage: "/profile-me.png",
+  ogImage: "/og-syahrworks.png",
   twitterHandle: "@syahrworks",
 };
 
@@ -23,12 +29,12 @@ export const pageMetadata = {
   home: {
     title: "SyahrWorks — Muhammad Rohman Syah",
     description:
-      "Full-Stack Developer from Jakarta, Indonesia. Building reliable, scalable web & mobile applications focused on clean code.",
+      "Full-Stack Developer (Next.js · Flutter · Go) in Jakarta — 13+ shipped projects, 3× BNSP certified. Open to full-time & remote.",
   },
   about: {
     title: "About — SyahrWorks",
     description:
-      "About Muhammad Rohman Syah: Full-Stack Developer with 12+ projects, 3 BNSP certifications, and freelance and industry experience.",
+      "About Muhammad Rohman Syah: Full-Stack Developer with 13+ projects, 3 BNSP certifications, and freelance and industry experience.",
   },
   journey: {
     title: "Journey — SyahrWorks",
@@ -43,6 +49,6 @@ export const pageMetadata = {
   projects: {
     title: "Projects — SyahrWorks",
     description:
-      "12 featured projects by Muhammad Rohman Syah: web development, mobile apps, AI & data, and desktop tools.",
+      "13 featured projects by Muhammad Rohman Syah: web development, mobile apps, AI & data, and desktop tools.",
   },
 } as const;
