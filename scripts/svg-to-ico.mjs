@@ -6,7 +6,8 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const sizes = [16, 32, 48, 64, 128, 256];
 
-const svg = await readFile(resolve(root, "public", "logo-dark.svg"));
+const [src = "public/logo-dark.svg", out = "app/favicon.ico"] = process.argv.slice(2);
+const svg = await readFile(resolve(root, src));
 
 const pngs = [];
 for (const size of sizes) {
@@ -39,7 +40,7 @@ for (let i = 0; i < count; i++) {
 
 const ico = Buffer.concat([header, ...pngs.map((p) => p.png)]);
 
-const out = resolve(root, "app", "favicon.ico");
-await mkdir(dirname(out), { recursive: true });
-await writeFile(out, ico);
-console.log(`Wrote ${out} (${ico.length} bytes, ${count} sizes: ${pngs.map((p) => p.size).join(", ")})`);
+const outPath = resolve(root, out);
+await mkdir(dirname(outPath), { recursive: true });
+await writeFile(outPath, ico);
+console.log(`Wrote ${outPath} (${ico.length} bytes, ${count} sizes: ${pngs.map((p) => p.size).join(", ")})`);
