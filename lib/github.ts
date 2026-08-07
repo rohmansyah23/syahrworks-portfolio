@@ -67,7 +67,6 @@ export async function getPinnedRepos(): Promise<PinnedRepo[]> {
     if (!Array.isArray(nodes) || nodes.length === 0) return [];
 
     return nodes
-      .filter((node) => !node.isFork)
       .map((node, index) => ({
         id: node.databaseId ?? index,
         name: node.name,

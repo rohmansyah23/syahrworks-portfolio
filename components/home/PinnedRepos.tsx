@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, FolderGit2, Star } from "lucide-react";
+import { ArrowUpRight, FolderGit2, GitFork, Star } from "lucide-react";
 import { getPinnedRepos } from "@/lib/github";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import SectionHeader from "@/components/home/SectionHeader";
@@ -74,6 +74,10 @@ export default async function PinnedRepos({ lang }: { lang: Locale }) {
                   <span className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5" />
                     {repo.stargazers_count}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <GitFork className="h-3.5 w-3.5" />
+                    {repo.forks_count}
                   </span>
                 </div>
               </a>
