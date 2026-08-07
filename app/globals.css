@@ -152,7 +152,10 @@
 
 .prose-editorial h3 {
   font-size: 1.375rem;
-  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
 }
 
 .prose-editorial h4 {
