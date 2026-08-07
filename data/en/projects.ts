@@ -14,13 +14,13 @@ export const projects: Project[] = [
     title: "SyahrWorks Portfolio",
     description:
       "This site — a bilingual (EN/ID) editorial portfolio built from scratch on Next.js 16, React 19, and Tailwind CSS 4. Static-first, with server-fetched GitHub pinned repos.",
-    coverImage: "/projects/placeholder-project.png",
+    coverImage: "/projects/syahrworks-portfolio.png",
     tags: ["Web Development"],
     role: "Front-End Developer",
     techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Framer Motion", "i18n"],
     githubUrl: "https://github.com/rohmansyah23/syahrworks-portfolio",
     liveUrl: "https://syahrworks.vercel.app",
-    gallery: ["/projects/placeholder-project.png"],
+    gallery: ["/projects/syahrworks-portfolio.png"],
   },
   {
     id: "catering-mama-akbar",

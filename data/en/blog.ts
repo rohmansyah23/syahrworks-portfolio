@@ -12,7 +12,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-01-01",
     excerpt:
       "Research on developing an integrated admission system for SMKS Jakarta 1 Pondok Kopi: registration, digital payments via payment gateway, anti-cheating online exams, and centralized announcements — with a 'Very Good' acceptance rating (4.48/5.00).",
-    coverImage: "/blog/placeholder-blog.png",
+    coverImage: "/blog/ppdb-sistem-terpadu-payment-gateway-ujian-aman.png",
     tags: ["Research", "PPDB", "Payment Gateway", "Online Exam", "Waterfall"],
     category: "Research & Development",
     readingTime: "6 min read",
@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-05",
     excerpt:
       "Learning material on the most-used basic to intermediate commands in Command Prompt (CMD) and Windows PowerShell — complete with syntax, examples, their differences, and a suggested learning path.",
-    coverImage: "/blog/placeholder-blog.png",
+    coverImage: "/blog/panduan-perintah-cmd-powershell.png",
     tags: ["Windows", "CMD", "PowerShell", "Tutorial"],
     category: "Tutorial",
     readingTime: "12 min read",

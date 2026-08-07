@@ -12,7 +12,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-01-01",
     excerpt:
       "Riset pengembangan sistem PPDB terpadu untuk SMKS Jakarta 1 Pondok Kopi: pendaftaran, pembayaran digital melalui payment gateway, ujian online anti-kecurangan, dan pengumuman terpusat — dengan penilaian penerimaan 'Sangat Baik' (4,48/5,00).",
-    coverImage: "/blog/placeholder-blog.png",
+    coverImage: "/blog/ppdb-sistem-terpadu-payment-gateway-ujian-aman.png",
     tags: ["Riset", "PPDB", "Payment Gateway", "Ujian Online", "Waterfall"],
     category: "Riset & Pengembangan",
     readingTime: "6 mnt baca",
@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-05",
     excerpt:
       "Materi pembelajaran perintah paling umum dari tingkat dasar hingga menengah di Command Prompt (CMD) dan Windows PowerShell — lengkap dengan sintaks, contoh, perbedaannya, dan alur belajar yang disarankan.",
-    coverImage: "/blog/placeholder-blog.png",
+    coverImage: "/blog/panduan-perintah-cmd-powershell.png",
     tags: ["Windows", "CMD", "PowerShell", "Tutorial"],
     category: "Tutorial",
     readingTime: "12 mnt baca",
