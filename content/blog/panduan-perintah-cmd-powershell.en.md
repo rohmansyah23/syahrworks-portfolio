@@ -1,5 +1,3 @@
-# The Complete Guide to CMD & PowerShell Commands
-
 *This material is written for Windows 10 and Windows 11. All syntax follows modern versions and is presented in standard English.*
 
 ## Table 1: Command Prompt (CMD)

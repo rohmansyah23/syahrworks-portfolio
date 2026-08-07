@@ -1,5 +1,3 @@
-# Panduan Lengkap Perintah CMD & PowerShell
-
 *Materi ini disusun untuk Windows 10 dan Windows 11. Semua sintaks mengikuti versi modern dan disajikan dalam bahasa Indonesia baku.*
 
 ## Tabel 1: Command Prompt (CMD)

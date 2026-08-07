@@ -1,5 +1,3 @@
-# The Git Guide: From Beginner to Recovery, Step by Step
-
 *Written for learners who are new to Git. Commands follow modern Git versions and work on Windows, macOS, and Linux.*
 
 ## Why Git?

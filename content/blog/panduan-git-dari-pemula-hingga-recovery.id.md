@@ -1,5 +1,3 @@
-# Panduan Git dari Pemula hingga Pemulihan: Langkah demi Langkah
-
 *Ditulis untuk pembelajar yang baru mengenal Git. Perintah mengikuti versi Git modern dan berlaku di Windows, macOS, maupun Linux.*
 
 ## Mengapa Git?
