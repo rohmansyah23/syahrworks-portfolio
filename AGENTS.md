@@ -32,7 +32,7 @@ Sebelum menulis kode, agent WAJIB membaca:
   - `npm run dev`
   - `npm run lint`
   - `npm run build`
-- **Di Android/Termux:** JANGAN jalankan perintah npm langsung di `/storage/emulated/0` (filesystem FUSE: tanpa symlink, sangat lambat). WAJIB pakai `scripts/android-build.sh` (mirror di filesystem internal) — lihat `docs/ANDROID.md`.
+- **Di Android/Termux:** JANGAN jalankan perintah npm langsung di `/storage/emulated/0` (filesystem FUSE: tanpa symlink, sangat lambat). WAJIB pakai `~/.local/bin/android-build.sh` (helper global di filesystem internal). Lihat `docs/ANDROID.md` untuk detail root cause/troubleshooting.
 
 ## 4. Arsitektur File
 ```
@@ -76,6 +76,15 @@ docs/                       # PRD.md, PROMPT.md (sumber spesifikasi), I18N.md, E
 - Tidak menambah fitur dinamis lain (visitor counter, R2, KV, database, auth).
 - Tidak membuat dashboard admin/CMS.
 - Tidak mengubah repo lama.
+
+---
+
+## 9. Catatan Lokal Proyek (Local Projects)
+
+- **Helper global** `~/.local/bin/android-build.sh` (di filesystem internal) berlaku untuk **SEMUA** proyek lokal di perangkat ini (Next.js, Node.js, atau lainnya). Helper mendeteksi root repo dari CWD — jarak lokasi repos tidak relevan.
+- **Mirror path**: `~/build/<nama-repo>` (dari `basename` root repo).
+- Jika Anda ingin menggunakan `~/.local/bin/android-build.sh` dari **proyek lain** (bukan syahrworks-portfolio), cukup jalankan dari folder project tersebut.
+- **Untuk proyek yang bukan syahrworks-portfolio** — silakan baca `docs/ANDROID.md` di repo asal (lokasi-agnostik).
 
 ## 8. Verification Checklist
 - [ ] `npm install` tanpa error peer deps.
