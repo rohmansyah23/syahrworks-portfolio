@@ -33,4 +33,17 @@ export const blogPosts: BlogPost[] = [
     author: "Muhammad Rohman Syah",
     featured: false,
   },
+  {
+    slug: "panduan-git-dari-pemula-hingga-recovery",
+    title: "The Git Guide: From Beginner to Recovery, Step by Step",
+    date: "2026-08-07",
+    excerpt:
+      "Learn Git without fear: from saving your daily changes, working with a team through branches and Pull Requests, to recovering commits that seemed lost forever — with real command examples at every step.",
+    coverImage: "/blog/placeholder-blog.png",
+    tags: ["Git", "GitHub", "Version Control", "Tutorial"],
+    category: "Tutorial",
+    readingTime: "10 min read",
+    author: "Muhammad Rohman Syah",
+    featured: false,
+  },
 ];

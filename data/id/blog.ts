@@ -33,4 +33,17 @@ export const blogPosts: BlogPost[] = [
     author: "Muhammad Rohman Syah",
     featured: false,
   },
+  {
+    slug: "panduan-git-dari-pemula-hingga-recovery",
+    title: "Panduan Git dari Pemula hingga Pemulihan: Langkah demi Langkah",
+    date: "2026-08-07",
+    excerpt:
+      "Belajar Git tanpa rasa takut: mulai dari cara menyimpan perubahan harian, bekerja dengan tim lewat branch dan Pull Request, sampai memulihkan commit yang sepertinya sudah hilang — dengan contoh perintah nyata di tiap langkahnya.",
+    coverImage: "/blog/placeholder-blog.png",
+    tags: ["Git", "GitHub", "Version Control", "Tutorial"],
+    category: "Tutorial",
+    readingTime: "10 mnt baca",
+    author: "Muhammad Rohman Syah",
+    featured: false,
+  },
 ];

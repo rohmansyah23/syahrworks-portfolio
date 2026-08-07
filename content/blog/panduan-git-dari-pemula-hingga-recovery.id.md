@@ -1,36 +1,12 @@
-# Draft Artikel Blog #3 — Panduan Git: Dari Pemula hingga Pemulihan
+# Panduan Git dari Pemula hingga Pemulihan: Langkah demi Langkah
 
-> **Status:** DRAFT — menunggu review user sebelum dimigrasi ke `data/blog.ts`
-> **Metadata mengikuti tipe `BlogPost`** (slug, title, date, excerpt, coverImage, tags, category, readingTime, author, featured, body).
-> **Sumber:** ringkasan dari panduan Git komprehensif (konten pribadi). Copywriting ditargetkan untuk pembelajar yang baru ingin mulai.
+*Ditulis untuk pembelajar yang baru mengenal Git. Perintah mengikuti versi Git modern dan berlaku di Windows, macOS, maupun Linux.*
 
----
+## Mengapa Git?
 
-```ts
-// Metadata (untuk data/blog.ts)
-{
-  slug: "panduan-git-dari-pemula-hingga-recovery",
-  title: "Panduan Git dari Pemula hingga Pemulihan: Langkah demi Langkah",
-  date: "2026-08-07",
-  excerpt:
-    "Belajar Git tanpa rasa takut: mulai dari cara menyimpan perubahan harian, bekerja dengan tim lewat branch dan Pull Request, sampai memulihkan commit yang sepertinya sudah hilang — dengan contoh perintah nyata di tiap langkahnya.",
-  coverImage: "/blog/placeholder-blog.png",
-  tags: ["Git", "GitHub", "Version Control", "Tutorial"],
-  category: "Tutorial",
-  readingTime: "10 min read",
-  author: "Muhammad Rohman Syah",
-  featured: false,
-  body: `... (di bawah)`,
-}
-```
+Git adalah alat untuk mencatat **setiap perubahan** kode secara kronologis. Bayangkan seperti "save point" di game: kapan saja kamu bisa mundur ke kondisi sebelumnya kalau ada yang rusak. Bedanya, Git juga bisa dipakai ramai-ramai tanpa saling menimpa — itulah yang membuatnya menjadi standar industri.
 
----
-
-## Pendahuluan: Mengapa Git?
-
-Git adalah alat untuk mencatat **setiap perubahan kode** secara kronologis. Bayangkan seperti "save point" di game: kapan saja kamu bisa mundur ke kondisi sebelumnya kalau ada yang rusak. Bedanya, Git juga bisa dipakai ramai-ramai tanpa saling menimpa — itulah yang membuatnya menjadi standar industri.
-
-Banyak pemula menghindari Git karena terasa rumit dan "menakutkan". Padahal, dengan memahami tiga level sederhana, Git justru menjadi alat yang membuat kamu berani mencoba-coba: semua bisa di-undo.
+Banyak pemula menghindari Git karena terasa rumit dan menakutkan. Padahal, dengan memahami tiga level sederhana, Git justru menjadi alat yang membuat kamu **berani mencoba-coba** — karena hampir semuanya bisa di-undo.
 
 ---
 
@@ -42,7 +18,7 @@ Setelah menginstal Git, beri tahu siapa kamu. Ini yang akan tercatat di setiap c
 
 ```bash
 git config --global user.name "Muhammad Rohman Syah"
-git config --global user.email "email@contoh.com"
+git config --global user.email "kamu@contoh.com"
 ```
 
 `--global` berlaku untuk semua project di komputer. Dua perintah lain yang berguna sejak awal:
