@@ -32,6 +32,7 @@ Sebelum menulis kode, agent WAJIB membaca:
   - `npm run dev`
   - `npm run lint`
   - `npm run build`
+- **Di Android/Termux:** JANGAN jalankan perintah npm langsung di `/storage/emulated/0` (filesystem FUSE: tanpa symlink, sangat lambat). WAJIB pakai `scripts/android-build.sh` (mirror di filesystem internal) — lihat `docs/ANDROID.md`.
 
 ## 4. Arsitektur File
 ```
