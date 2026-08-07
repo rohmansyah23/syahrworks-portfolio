@@ -56,7 +56,7 @@ export default function StackBackdrop() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-x-0 top-0 z-0 h-svh select-none overflow-hidden text-muted-foreground/5 will-change-transform"
+      className="pointer-events-none fixed inset-x-0 top-0 z-0 h-svh select-none overflow-hidden text-muted-foreground/5"
     >
       {items.map((item, i) => {
         const p = POSITIONS[i % POSITIONS.length];
