@@ -46,7 +46,7 @@ export const main: MainData = {
     },
     {
       label: "Hire Me",
-      value: "Open to full-time roles →",
+      value: "Open to full-time roles",
       href: "mailto:syahr642@gmail.com",
       icon: Rocket,
       cta: true,

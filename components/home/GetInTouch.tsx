@@ -103,14 +103,24 @@ export default function GetInTouch({ lang }: { lang: Locale }) {
                       : "border border-border bg-background hover:bg-muted"
                   )}
                 >
-                  <item.icon
-                    className={cn(
-                      "h-5 w-5 transition-colors duration-200",
-                      isCTA
-                        ? "text-background/70 group-hover:text-background"
-                        : "text-muted-foreground group-hover:text-foreground"
-                    )}
-                  />
+                  <div className="flex items-center justify-between">
+                    <item.icon
+                      className={cn(
+                        "h-5 w-5 transition-colors duration-200",
+                        isCTA
+                          ? "text-background/70 group-hover:text-background"
+                          : "text-muted-foreground group-hover:text-foreground"
+                      )}
+                    />
+                    <ArrowUpRight
+                      className={cn(
+                        "h-4 w-4 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5",
+                        isCTA
+                          ? "text-background/70 group-hover:text-background"
+                          : "text-muted-foreground/60 group-hover:text-foreground"
+                      )}
+                    />
+                  </div>
                   <div>
                     <p
                       className={cn(
@@ -122,17 +132,11 @@ export default function GetInTouch({ lang }: { lang: Locale }) {
                     </p>
                     <p
                       className={cn(
-                        "mt-2 flex items-center gap-1.5 text-sm font-medium",
+                        "mt-2 text-sm font-medium",
                         isCTA ? "text-background" : "text-foreground"
                       )}
                     >
                       {item.value}
-                      <ArrowUpRight
-                        className={cn(
-                          "h-3.5 w-3.5 opacity-0 transition-opacity duration-200 group-hover:opacity-100",
-                          isCTA ? "text-background" : ""
-                        )}
-                      />
                     </p>
                   </div>
                 </a>

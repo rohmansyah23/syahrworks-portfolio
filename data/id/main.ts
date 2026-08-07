@@ -46,7 +46,7 @@ export const main: MainData = {
     },
     {
       label: "Rekrut Saya",
-      value: "Terbuka untuk posisi full-time →",
+      value: "Terbuka untuk posisi full-time",
       href: "mailto:syahr642@gmail.com",
       icon: Rocket,
       cta: true,
