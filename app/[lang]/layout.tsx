@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReset from "@/components/ScrollReset";
+import StackBackdrop from "@/components/StackBackdrop";
 import {
   defaultLocale,
   getData,
@@ -107,10 +108,13 @@ export default async function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <ScrollReset />
-          <Header lang={lang} />
-          <main className="flex-1">{children}</main>
-          <Footer lang={lang} />
+          <StackBackdrop />
+          <div className="relative z-10 flex flex-1 flex-col">
+            <ScrollReset />
+            <Header lang={lang} />
+            <main className="flex-1">{children}</main>
+            <Footer lang={lang} />
+          </div>
         </ThemeProvider>
       </body>
     </html>
