@@ -134,7 +134,7 @@
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  margin-top: 2.75rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
@@ -145,17 +145,17 @@
 
 .prose-editorial h2 {
   color: var(--accent);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
 }
 
 .prose-editorial h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .prose-editorial h4 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 
 .prose-editorial p {
