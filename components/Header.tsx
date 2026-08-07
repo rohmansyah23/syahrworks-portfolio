@@ -72,7 +72,6 @@ function LanguageSwitcher({
 export default function Header({ lang }: { lang: Locale }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const t = getDictionary(lang);
   const main = getData(lang).main.main;
 
@@ -97,24 +96,9 @@ export default function Header({ lang }: { lang: Locale }) {
     };
   }, [open]);
 
-  // Transparan saat di paling atas, warna asli (bg + blur + border) setelah scroll > 8px
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <>
-      <header
-        className={cn(
-          "sticky top-0 z-40 transition-all duration-300",
-          scrolled
-            ? "border-b border-border bg-background/85 backdrop-blur-md"
-            : "border-b border-transparent bg-transparent"
-        )}
-      >
+      <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
         <div className="container-editorial flex h-16 items-center justify-between">
           <Link
             href={`/${lang}`}
