@@ -14,7 +14,7 @@ Dibaca oleh coding agent/sesi lain agar paham status produksi sebelum melakukan 
 | **Path di server** | `/home/deploy/syahrworks-portfolio` |
 | **Auto-deploy** | GitHub Actions `.github/workflows/deploy.yml` |
 | **Pemicu deploy** | push ke branch `master` (atau `workflow_dispatch` manual) |
-| **DNS** | A record `syahrworks.com` → `103.160.213.205` |
+| **DNS** | Registrar **Dewabiz**: A `@` & `www` → `103.160.213.205`, TXT verifikasi GSC (detail: [§ Konfigurasi DNS](#konfigurasi-dns-registrar-dewabiz)) |
 
 > **Catatan penting:** `syahrworks.vercel.app` adalah domain **arsip/versi lama**
 > (repo `rohmansyah23/next-portofolio`). Proyek ini sudah pindah ke VPS dengan
@@ -61,6 +61,38 @@ ssh syahrworks-root   # user: root
 
 Perintah cek service: `sudo systemctl status syahrworks` · log: `journalctl -u syahrworks -f`.
 
+## Konfigurasi DNS (Registrar Dewabiz)
+
+Domain dikelola di **Dewabiz**: https://my.dewabiz.com/clientarea.php?action=domaindns
+
+### Record aktif (terverifikasi propagasi global via 8.8.8.8 & 1.1.1.1)
+
+| Host | Tipe | Nilai | Keterangan |
+| --- | --- | --- | --- |
+| `@` | A | `103.160.213.205` | Root domain → IP VPS |
+| `www` | A | `103.160.213.205` | Subdomain www → IP VPS |
+| `@` | TXT | `google-site-verification=XwwdKNvthYP9Cxubcnhzhlqakn7dAaQ-vLgF2A1agO4` | Verifikasi Google Search Console |
+
+### Catatan penting
+
+- **Label "SPF (txt)" di UI Dewabiz = TXT record asli.** Opsi `<option value="TXT">SPF (txt)</option>`
+  menulis **TXT record polos** — aman untuk verifikasi GSC. Jangan dipakai untuk SPF email
+  sungguhan (itu harus `v=spf1 ...`).
+- **Token harus PERSIS** dengan meta tag di `app/[lang]/layout.tsx` (`verification.google`).
+  Nilai terpotong/salah huruf → verifikasi GSC gagal.
+- Metode verifikasi GSC: **meta tag** (URL-prefix property, sudah aktif) **dan** TXT DNS
+  (memungkinkan **Domain property** — mencakup http/https + www sekaligus).
+- `www` & non-`www` sama-sama live; konsolidasi 301 `www → non-www` belum dipasang
+  (lihat `docs/SEO.md` §3.2).
+- **JANGAN** menambah record SPF/MX terpisah tanpa kebutuhan email yang nyata.
+
+### Cek propagasi
+
+```sh
+nslookup -type=A   syahrworks.com 8.8.8.8   # harus 103.160.213.205
+nslookup -type=TXT syahrworks.com 8.8.8.8   # harus menampilkan google-site-verification=...
+```
+
 ## Fallback ke Vercel (Sementara)
 
 Jika VPS habis masa aktif dan harus dipindah **sementara** ke Vercel tanpa
@@ -73,3 +105,4 @@ Vercel `76.76.21.21`, dan rollback balik ke VPS).
 - [ ] `https://syahrworks.com` merespons (A record → `103.160.213.205`).
 - [ ] `gh run list` menunjukkan workflow "Deploy to VPS" `success` untuk commit terakhir di `master`.
 - [ ] Konten di produksi sesuai HEAD `master` lokal.
+- [ ] DNS: A `@`/`www` → `103.160.213.205` dan TXT verifikasi GSC (lihat [§ Konfigurasi DNS](#konfigurasi-dns-registrar-dewabiz)).
