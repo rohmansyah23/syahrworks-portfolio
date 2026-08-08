@@ -69,7 +69,8 @@ export async function generateMetadata({
       ],
     },
     twitter: {
-      card: "summary",
+      // og:image sudah 1200×630 — pakai summary_large_image agar gambar tampil besar.
+      card: "summary_large_image",
       title: meta.title,
       description: meta.description,
       images: [meta.ogImage],

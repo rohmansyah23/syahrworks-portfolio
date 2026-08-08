@@ -36,6 +36,8 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
 | JSON-LD `BlogPosting` (tiap artikel) | `app/[lang]/blog/[slug]/page.tsx` |
 | `og:image` diubah ke 1200×630 + gambar baru | `public/og-syahrworks.png` |
 | Sitemap: `lastmod` stabil (tanggal artikel), tambah `x-default` | `app/sitemap.ts` |
+| Favicon.ico di-generate ulang dari `public/logo-light.svg` (16–256) + `icon.svg` (browser modern) + `apple-icon.png` (iOS) — mengatasi ikon globe di tab & SERP | `app/favicon.ico`, `app/icon.svg`, `app/apple-icon.png` |
+| Twitter card dinaikkan ke `summary_large_image` (og:image 1200×630) | `app/[lang]/layout.tsx` |
 
 ## 3. Runbook Manual (WAJIB DILAKUKAN) — Fase B
 
@@ -52,6 +54,10 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
 5. Pantau **Indexing → Pages**: pastikan tidak ada `Excluded`, `Soft 404`, atau `Duplicate`.
 6. Pantau **Queries** (Search results → Queries) untuk keyword **"syahrworks"**.
    Target realistis: 2–6 minggu sejak indexing.
+7. **Ikon situs (favicon di SERP)**: GSC → **Branding → Ikon situs** → upload logo
+   dari `app/favicon.ico` (min. 48×48, disarankan 256×256). Google butuh beberapa
+   hari–minggu untuk menampilkan ikon di hasil pencarian; selama itu yang tampil bisa
+   ikon globe/default.
 
 ### 3.2 Konsolidasi Brand (hilangkan duplikat & bangun asosiasi)
 1. **Redirect `syahrworks.vercel.app` → `syahrworks.com` (301)**:
@@ -69,6 +75,14 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
    - YouTube About → website syahrworks.com.
 4. *(Opsional)* **Bing Webmaster Tools** (https://www.bing.com/webmasters) → import dari GSC,
    submit sitemap — gratis menambah peluang traffic.
+5. **Konsolidasi `www` vs non-`www`**: saat ini `https://syahrworks.com` dan
+   `https://www.syahrworks.com` sama-sama aktif (keduanya 307 → `/en`). Agar sinyal
+   brand tidak terpecah:
+   - Pilih satu domain utama (disarankan non-`www`: `syahrworks.com`).
+   - Di nginx VPS, tambahkan redirect **301 permanen** `www.syahrworks.com` →
+     `syahrworks.com` (canonical non-www sudah dipakai di seluruh halaman).
+   - Di GSC gunakan **Domain property** (mencakup http/https + www) atau dua
+     URL-prefix property, lalu request indexing `www.syahrworks.com` sekali.
 
 ### 3.3 Jangka Panjang (Fase C)
 - Perbanyak artikel blog bertarget keyword lokal:
@@ -82,6 +96,7 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
 
 - [ ] GSC → sitemap.xml "Success", tidak ada error di Coverage.
 - [ ] GSC → Queries: muncul keyword "syahrworks" / "syahrworks developer"?
+- [ ] GSC → Branding: ikon situs sudah tampil di SERP (bukan globe default).
 - [ ] `https://syahrworks.com` tetap di Google (URL-prefix property konsisten).
 - [ ] `syahrworks.vercel.app` sudah 301 (tidak ada duplikat).
 - [ ] JSON-LD valid: cek dengan https://search.google.com/test/rich-results untuk
