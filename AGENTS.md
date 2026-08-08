@@ -7,6 +7,7 @@ Sebelum menulis kode, agent WAJIB membaca:
 - `docs/DEPLOY.md` — hosting & deploy produksi (WAJIB sebelum push ke `master`)
 - `docs/DEPLOY-VERCEL-FALLBACK.md` — runbook fallback sementara ke Vercel saat VPS habis (domain tetap `syahrworks.com`)
 - `docs/COPYWRITING.md` — standar copywriting "anti AI-slop" (target HRD/full-time) — WAJIB sebelum mengubah teks konten/UI/metadata.
+- `docs/SEO.md` — strategi SEO, runbook GSC & konsolidasi brand (WAJIB sebelum mengubah metadata/canonical/hreflang/JSON-LD).
 
 ---
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AboutSection from "@/components/about/AboutSection";
 import { getData, resolveLang } from "@/lib/i18n";
+import { pageAlternates, pageOpenGraph } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -9,7 +10,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = await resolveLang(params);
   const page = getData(lang).site.pageMetadata.about;
-  return { title: page.title, description: page.description };
+  return {
+    title: page.title,
+    description: page.description,
+    alternates: pageAlternates(lang, "/about"),
+    openGraph: pageOpenGraph(lang, "/about", page.title, page.description),
+  };
 }
 
 export default async function AboutPage({

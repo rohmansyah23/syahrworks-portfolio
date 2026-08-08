@@ -5,7 +5,9 @@ import TechStack from "@/components/home/TechStack";
 import PinnedRepos from "@/components/home/PinnedRepos";
 import LatestBlogs from "@/components/home/LatestBlogs";
 import ContactForm from "@/components/home/ContactForm";
+import JsonLd from "@/components/JsonLd";
 import { getData, resolveLang } from "@/lib/i18n";
+import { pageAlternates, pageOpenGraph, personJsonLd } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -14,7 +16,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = await resolveLang(params);
   const page = getData(lang).site.pageMetadata.home;
-  return { title: page.title, description: page.description };
+  return {
+    title: page.title,
+    description: page.description,
+    alternates: pageAlternates(lang, "/"),
+    openGraph: pageOpenGraph(lang, "/", page.title, page.description),
+  };
 }
 
 export default async function HomePage({
@@ -26,6 +33,7 @@ export default async function HomePage({
 
   return (
     <>
+      <JsonLd data={personJsonLd(lang)} />
       <HeroSection lang={lang} />
       <GetInTouch lang={lang} />
       <TechStack lang={lang} />

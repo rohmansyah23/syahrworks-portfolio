@@ -4,6 +4,8 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReset from "@/components/ScrollReset";
+import JsonLd from "@/components/JsonLd";
+import { websiteJsonLd } from "@/lib/seo";
 import {
   defaultLocale,
   getData,
@@ -63,7 +65,7 @@ export async function generateMetadata({
       description: meta.description,
       siteName: "SyahrWorks",
       images: [
-        { url: meta.ogImage, width: 512, height: 512, alt: meta.author },
+        { url: meta.ogImage, width: 1200, height: 630, alt: meta.author },
       ],
     },
     twitter: {
@@ -104,6 +106,7 @@ export default async function RootLayout({
       className={`${instrument.variable} ${inter.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <JsonLd data={websiteJsonLd(lang)} />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

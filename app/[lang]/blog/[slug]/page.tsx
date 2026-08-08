@@ -16,6 +16,8 @@ import {
   type Locale,
 } from "@/lib/i18n";
 import { formatDate } from "@/lib/utils";
+import { canonicalUrl, pageAlternates, blogPostJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 function getMarkdown(slug: string, lang: Locale): string | null {
   const filePath = path.join(
@@ -48,15 +50,22 @@ export async function generateMetadata({
   const t = getDictionary(lang);
   const post = getData(lang).blog.blogPosts.find((p) => p.slug === slug);
   if (!post) return { title: t.blogNotFound };
+  const canonical = canonicalUrl(lang, `/blog/${post.slug}`);
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: pageAlternates(lang, `/blog/${post.slug}`),
     openGraph: {
       type: "article",
+      locale: lang === "id" ? "id_ID" : "en_US",
+      url: canonical,
+      siteName: "SyahrWorks",
       title: post.title,
       description: post.excerpt,
       publishedTime: post.date,
-      images: post.coverImage ? [{ url: post.coverImage }] : undefined,
+      images: post.coverImage
+        ? [{ url: post.coverImage, width: 1200, height: 675 }]
+        : undefined,
     },
   };
 }
@@ -77,6 +86,7 @@ export default async function BlogPostPage({
 
   return (
     <article className="container-editorial py-14 sm:py-20">
+      <JsonLd data={blogPostJsonLd(post, lang)} />
       <Link
         href={localePath(lang, "/blog")}
         className="group inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
