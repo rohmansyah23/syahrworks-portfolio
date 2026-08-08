@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { notFound } from "next/navigation";
 import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
@@ -7,7 +8,6 @@ import ScrollReset from "@/components/ScrollReset";
 import JsonLd from "@/components/JsonLd";
 import { websiteJsonLd } from "@/lib/seo";
 import {
-  defaultLocale,
   getData,
   isLocale,
   locales,
@@ -44,7 +44,9 @@ export async function generateMetadata({
   params: Promise<{ lang?: string }>;
 }): Promise<Metadata> {
   const { lang: raw } = await params;
-  const lang: Locale = raw && isLocale(raw) ? raw : defaultLocale;
+  // Soft-404 guard: segmen [lang] dengan nilai invalid harus 404, bukan fallback.
+  if (!raw || !isLocale(raw)) notFound();
+  const lang: Locale = raw;
   const data = getData(lang);
   const meta = data.site.siteMetadata;
 
@@ -98,7 +100,9 @@ export default async function RootLayout({
   params: Promise<{ lang?: string }>;
 }>) {
   const { lang: raw } = await params;
-  const lang: Locale = raw && isLocale(raw) ? raw : defaultLocale;
+  // Soft-404 guard: segmen [lang] dengan nilai invalid harus 404, bukan fallback.
+  if (!raw || !isLocale(raw)) notFound();
+  const lang: Locale = raw;
 
   return (
     <html

@@ -3,6 +3,8 @@ import { ui as idUI } from "@/data/ui/id";
 import * as enData from "@/data/en";
 import * as idData from "@/data/id";
 
+import { notFound } from "next/navigation";
+
 export type Locale = "en" | "id";
 
 export const locales = ["en", "id"] as const;
@@ -13,12 +15,17 @@ export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }
 
-/** Await params Next.js lalu kembalikan locale valid (fallback: defaultLocale). */
+/**
+ * Await params Next.js lalu kembalikan locale valid.
+ * Lang invalid/absent di segmen `[lang]` TIDAK boleh fallback ke defaultLocale —
+ * itu menyebabkan soft-404 (URL tak dikenal dirender 200). Panggil notFound().
+ */
 export async function resolveLang(
   params: Promise<{ lang?: string }>
 ): Promise<Locale> {
   const { lang } = await params;
-  return lang && isLocale(lang) ? lang : defaultLocale;
+  if (!lang || !isLocale(lang)) notFound();
+  return lang;
 }
 
 export type UIStrings = {
