@@ -45,7 +45,8 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
 1. Buka https://search.google.com/search-console.
 2. Pastikan property **`syahrworks.com`** ada (verifikasi meta tag sudah terpasang:
    `XwwdKNvthYP9Cxubcnhzhlqakn7dAaQ-vLgF2A1agO4` di `app/[lang]/layout.tsx`).
-   Disarankan tambah **Domain property** (bukan URL-prefix) agar mencakup http/https + www.
+   Disarankan tambah **Domain property** (bukan URL-prefix) agar mencakup http/https + www
+   (langkah lengkap: §3.5).
 3. **Sitemaps** → submit `https://syahrworks.com/sitemap.xml`.
 4. **URL Inspection** → masukkan dan klik **Request Indexing** untuk:
    - `https://syahrworks.com/en` (dan `/id`)
@@ -139,6 +140,30 @@ commit `675cf2d`) dan **favicon baru dari `logo-light.svg`** (commit `bd7978c`).
 | Halaman valid | Sebagian URL | Semua halaman nyata |
 | Ikon SERP | Globe/default | Favicon SyahrWorks (1–6 minggu) |
 
+### 3.5 Checklist: Menambah Domain Property (Verifikasi DNS TXT)
+
+**Latar:** record TXT `google-site-verification=...` SUDAH terpasang & terverifikasi
+propagasi (lihat `docs/DEPLOY.md` → § Konfigurasi DNS). Domain property mencakup
+http/https + www + semua subdomain dalam satu property.
+
+- [ ] Buka https://search.google.com/search-console → **Add property**.
+- [ ] Pilih tipe **Domain** (bukan URL prefix), ketik `syahrworks.com` **tanpa** `https://`
+      → **Continue**.
+- [ ] Pilih metode verifikasi **DNS** (TXT record). Google menampilkan nilai:
+      `google-site-verification=<TOKEN>`.
+  - [ ] Jika token **sama** dengan record TXT yang sudah ada → langsung klik **Verify**
+        (seharusnya langsung sukses).
+  - [ ] Jika token **berbeda** (Google memberi token baru khusus property ini) →
+        tambahkan **record TXT baru** di Dewabiz dengan token baru tersebut
+        (**jangan menimpa** record lama), tunggu propagasi, lalu **Verify**.
+- [ ] Jika status belum terverifikasi: tunggu 10–60 menit (propagasi) lalu klik **Verify**
+      lagi — GSC mengecek ulang secara berkala, tidak perlu reset apa pun.
+- [ ] Setelah sukses, di property baru: **Sitemaps** → submit `https://syahrworks.com/sitemap.xml`.
+- [ ] **Request Indexing** untuk halaman kunci (lihat §3.4 bagian A).
+- [ ] Catatan: data di property baru butuh **beberapa hari** untuk terisi; property
+      URL-prefix lama tetap bisa dipakai berdampingan.
+- [ ] Setelah ±1 minggu: cek **Performance → Queries** untuk keyword "syahrworks" (lihat §3.4 bagian D).
+
 ## 4. Checklist Monitoring (bulanan)
 
 - [ ] GSC → sitemap.xml "Success", tidak ada error di Coverage.
@@ -146,6 +171,7 @@ commit `675cf2d`) dan **favicon baru dari `logo-light.svg`** (commit `bd7978c`).
 - [ ] GSC → Queries: muncul keyword "syahrworks" / "syahrworks developer"?
 - [ ] GSC → Branding: ikon situs sudah tampil di SERP (bukan globe default).
 - [ ] `https://syahrworks.com` tetap di Google (URL-prefix property konsisten).
+- [ ] **Domain property** `syahrworks.com` aktif (verifikasi DNS TXT §3.5) dan datanya terisi.
 - [ ] `syahrworks.vercel.app` sudah 301 (tidak ada duplikat).
 - [ ] JSON-LD valid: cek dengan https://search.google.com/test/rich-results untuk
       `https://syahrworks.com/en` dan satu artikel blog.
