@@ -24,6 +24,10 @@ jobs:
             set -e
             cd /home/deploy/syahrworks-portfolio
             git pull origin master
+            cat > /home/deploy/syahrworks-portfolio/.env.production << 'EOF'
+            NEXT_PUBLIC_FORMSPREE_ENDPOINT=${{ secrets.NEXT_PUBLIC_FORMSPREE_ENDPOINT }}
+            GITHUB_API_TOKEN=${{ secrets.GH_API_TOKEN }}
+            EOF
             npm ci
             npm run build
             sudo systemctl restart syahrworks
