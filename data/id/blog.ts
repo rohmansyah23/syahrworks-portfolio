@@ -42,7 +42,7 @@ export const blogPosts: BlogPost[] = [
     coverImage: "/blog/placeholder-blog.png",
     tags: ["Git", "GitHub", "Version Control", "Tutorial"],
     category: "Tutorial",
-    readingTime: "10 mnt baca",
+    readingTime: "17 mnt baca",
     author: "Muhammad Rohman Syah",
     featured: false,
   },

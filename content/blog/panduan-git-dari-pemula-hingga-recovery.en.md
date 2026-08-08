@@ -2,210 +2,497 @@
 
 ## Why Git?
 
-Git is a tool that records **every change** to your code in chronological order. Think of it as "save points" in a game: whenever something breaks, you can rewind to an earlier state. On top of that, Git lets many people work together without overwriting each other — which is why it has become the industry standard.
+Ever changed your code, broken everything, and wished you could go back to how things were 30 minutes ago? Git solves exactly that.
 
-Many beginners avoid Git because it feels complicated and intimidating. But once you understand three simple levels, Git becomes the tool that makes you *brave enough to experiment*: almost everything can be undone.
+But Git is not just an "undo" button. It is a system for:
+
+- recording changes,
+- creating checkpoints,
+- working in parallel,
+- sharing changes,
+- and recovering lost work.
+
+This guide's goal is not to make you memorize commands. It's to build a mental model — to understand where you are, what each command changes, and how to get back when something goes wrong.
 
 ---
 
-## Level 1 — Beginner: Saving Your Daily Changes
+## The Mental Model: Four Areas
 
-### First-Time Setup
+Every Git workflow lives in four areas:
 
-After installing Git, tell it who you are. This is recorded in every commit.
+```
+Working Tree        →  the files on your disk, where you edit
+     ↓
+Staging Area        →  the changes you've selected for the next commit
+     ↓
+Commit              →  changes recorded permanently in history
+     ↓
+Remote              →  the shared repository (GitHub, GitLab, etc.)
+```
+
+Keep this model in mind — every command in this guide moves something between these four areas.
+
+---
+
+## Part 1 — The Daily Workflow
+
+### Setting Up Git for the First Time
+
+After installing Git, tell it who you are. This identity is recorded in every commit.
 
 ```bash
 git config --global user.name "Muhammad Rohman Syah"
 git config --global user.email "you@example.com"
 ```
 
-`--global` applies to every project on your machine. Two other commands worth knowing from day one:
+`--global` applies to every project on your machine. Check your configuration anytime with `git config --list`.
 
-- `git config --global init.defaultBranch main` — the default branch becomes `main`.
-- `git config --global core.editor "code --wait"` — your default editor when Git needs you to write a message.
+Two more settings worth having from day one:
 
-**Common mistake:** forgetting to set `user.email` → Git refuses to commit with "Please tell me who you are." The fix is simply running the commands above.
+- `git config --global init.defaultBranch main` — new repositories default to a `main` branch.
+- `git config --global core.editor "code --wait"` — the editor Git opens when it needs a message from you.
 
-### The Core Loop: Status → Add → Commit
+**Common mistake:** forgetting `user.email` → Git refuses with "Please tell me who you are". The fix is running the two commands above.
 
-Understand three areas: the **working tree** (files on disk), **staging** (changes ready to be saved), and **commit** (changes recorded permanently).
+### Creating a Repository
+
+For a new project:
 
 ```bash
-git status              # see the situation: what changed?
-git add <file>          # move a file into staging
-git add .               # stage all changed files
-git commit -m "message" # save staged changes as one commit
+git init
 ```
 
-A real example — you just edited `data/blog.ts`:
+This creates a hidden `.git` folder that starts tracking your files. Run `git status` right away — it becomes the command you use every single day.
+
+### Reading the Repository State
+
+`git status` tells you exactly where your changes are. A file can be in one of these states:
+
+- **Untracked** — new, Git hasn't seen it yet.
+- **Modified** — changed since the last commit.
+- **Staged** — selected for the next commit.
+- **Committed** — safely recorded in history.
+
+### Add: Selecting, Not Saving
+
+`git add` does not save changes to history. It only chooses which changes will enter the next commit.
 
 ```bash
-git status
-#   modified:   data/blog.ts
-git add data/blog.ts
+git add app/page.tsx   # stage one file
+git add .              # stage all changes
+git add -p             # pick changes piece by piece
+```
+
+`git add -p` is how you keep a "fix typo" commit separate from an "add feature" commit.
+
+### Commit: A Clean Unit of Work
+
+```bash
 git commit -m "feat(blog): add git guide article"
 ```
 
-The `type(scope): description` pattern (e.g. `fix(home): fix truncated heading`) is a widely used convention that keeps history readable for everyone.
+A good commit has one purpose, a clear message, and doesn't mix unrelated changes. The `type(scope): description` pattern (`fix(home): ...`, `feat(blog): ...`) keeps history readable for everyone.
 
-### Viewing History and Changes
+### Seeing What Changed
 
-```bash
-git log --oneline -5    # last 5 commits, compact
-git show <commit>       # details of one commit
-git diff                # unstaged changes
-git diff --staged       # changes ready to be committed
-```
-
-### Don't Commit Everything at Once
-
-`git add -p` lets you pick changes piece by piece, so a "fix typo" commit stays separate from an "add feature" commit. History stays clean — and three months from now, your future self will thank you.
-
-### Ignoring Files (.gitignore)
-
-Files like `node_modules/`, `.env`, and build output should **never** be committed. Create a `.gitignore` file:
-
-```gitignore
-node_modules/
-.env
-.next/
-```
-
-`.env` must not be committed because it can contain secrets (API tokens, passwords). If your project needs an example, create `.env.example` with variable names only, no values.
-
-### Undoing Changes (Basics)
+| Command | Answers the question |
+| --- | --- |
+| `git status` | What changed? |
+| `git diff` | What's inside the changes not yet staged? |
+| `git diff --staged` | What will go into the next commit? |
+| `git log` | What has happened so far? |
+| `git show <commit>` | What's inside a specific commit? |
 
 ```bash
-git restore <file>            # discard working tree changes
-git restore --staged <file>   # unstage a file, keep its content
-git revert <commit>           # a NEW commit that reverses an old one
+git log --oneline -5
 ```
-
-`git revert` is safe for commits already pushed: the original commit stays in history, with a new commit on top that cancels it. This is the correct way to "undo" work on a shared repo — not by rewriting history.
-
-### Your First Branch and Remote
-
-A branch is a "parallel working lane." You can build a new feature without touching the main line.
-
-```bash
-git checkout -b feature-login     # create + switch to a new branch
-git push -u origin feature-login  # push to GitHub, remember the link
-```
-
-- `-u` means subsequent commits only need `git push`.
-- `git merge <branch>` merges another branch into the current one.
 
 ---
 
-## Level 2 — Intermediate: Teamwork & a Clean History
+## Part 2 — From Local to GitHub
 
-### Merge vs Rebase
+This is the first milestone: connecting your local repository to a shared one.
 
-Both combine changes, but in different ways:
+### What Is a Remote?
 
-```bash
-git merge main     # creates a "merge commit"; original history intact
-git rebase main    # "moves" your commits on top of main; history is linear
+```
+Laptop            GitHub
+└── Local repo    └── Remote repo
 ```
 
-| | `merge` | `rebase` |
-|---|---|---|
-| History | A merge commit appears (branches visible) | Linear, like sequential work |
-| When to use | Public/shared branches | Private branches not yet pushed |
+`origin` is just a name — the conventional name for your main remote.
 
-**Golden rule:** never rebase commits that are already pushed and used by others — you'll only create a chain of conflicts.
-
-### Tidying History with rebase -i
-
-Working on a feature often produces many messy small commits. Clean them up before pushing:
+### Connecting the Repository
 
 ```bash
-git rebase -i HEAD~5    # open an editor with the last 5 commits
+git remote add origin https://github.com/yourname/your-project.git
+git remote -v
 ```
 
-In the editor, change each line's verb: `fixup` (merge into the commit above, keep its message), `squash` (merge and edit the combined message), `reword` (change the message).
-
-### Cherry-Pick and Stash
+### The First Push
 
 ```bash
-git cherry-pick <commit>   # take ONE commit from another branch
-git stash                  # save changes temporarily, tree becomes clean
-git stash pop              # restore the saved changes
+git push -u origin main
 ```
 
-The classic `stash` situation: you're halfway through a feature when an urgent fix forces you to switch branches. Committing feels heavy — stash is the answer.
+`-u` ("upstream") remembers the link, so from now on a plain `git push` is enough.
 
-### Facing Conflicts
+### The Daily Loop (With Push)
 
-A conflict happens when two people change the same lines. Git can't decide who's right — you do. The problematic file contains markers:
+Committing saves changes locally. Pushing sends them to the shared repository.
+
+```bash
+git status
+git add .
+git commit -m "..."
+git push
+```
+
+### Pull, Fetch, and Push
+
+```
+remote
+  │
+  ├── fetch  → downloads changes/information
+  │
+  └── pull   → fetch + integrate into your branch
+
+local
+  │
+  └── push   → sends your commits to the remote
+```
+
+- `git fetch` only updates your view of the remote — safe, nothing is changed.
+- `git pull` fetches *and* merges the changes into your current branch.
+- `git push` sends your local commits to the remote.
+
+---
+
+## Part 3 — Undoing Mistakes Without Panic
+
+You will make mistakes. Git is designed so almost all of them are fixable.
+
+### Change Not Yet Staged
+
+```bash
+git restore <file>
+```
+
+Discards working-tree changes for that file.
+
+### Already Staged
+
+```bash
+git restore --staged <file>
+```
+
+Removes the file from staging, keeping its content.
+
+### Commit Already Made
+
+```bash
+git revert <commit>
+```
+
+Creates a **new** commit that reverses an old one. Safe for pushed commits — the original stays in history.
+
+### restore vs revert vs reset
+
+| Command | Purpose |
+| --- | --- |
+| `git restore` | Discard/restore file changes |
+| `git revert` | New commit that cancels an old commit |
+| `git reset` | Move a branch/HEAD pointer |
+
+**Warning:** `git reset --hard` is where beginners panic. It discards both staged and working-tree changes. Only use it when you are sure — and remember that reflog (Part 7) can still help.
+
+---
+
+## Part 4 — Branch: Working Without Touching Main
+
+Scenario: you're building a login feature, but production needs a hotfix today.
+
+Without branches:
+
+```
+main
+└── all work mixed together
+```
+
+With branches:
+
+```
+main
+├── hotfix
+└── feature-login
+```
+
+### Creating and Switching
+
+The modern commands use `git switch`, not `git checkout` (which still works, but is the legacy name):
+
+```bash
+git switch -c feature-login   # create + switch to a new branch
+git switch main               # switch back
+```
+
+### Pushing a Branch
+
+```bash
+git push -u origin feature-login
+```
+
+### Merging
+
+```bash
+git switch main
+git merge feature-login
+```
+
+---
+
+## Part 5 — Team Workflow and Pull Request
+
+Once branches make sense, collaboration follows a pattern:
+
+```
+main
+ ↓
+create feature branch
+ ↓
+make changes
+ ↓
+commit
+ ↓
+push
+ ↓
+Pull Request
+ ↓
+code review
+ ↓
+merge
+```
+
+- **Branch protection** prevents direct pushes to `main`.
+- A **Pull Request** proposes changes from your branch.
+- **Code review** lets others check before merging.
+
+GitHub details matter less than the flow — the focus here is Git itself.
+
+---
+
+## Part 6 — Merge vs Rebase
+
+Both combine changes, but differently. Start from a feature branched off `main`:
+
+```
+main
+A---B---C
+     \
+      D---E feature
+```
+
+### Merge
+
+```
+A---B---C-------M
+     \         /
+      D---E----
+```
+
+A merge creates a merge commit and keeps the original branch history visible.
+
+### Rebase
+
+```
+A---B---C---D'---E'
+```
+
+Rebase doesn't magically "change the past". Git creates **new** commits with a different parent, placed on top of `main`.
+
+### When to Use Which
+
+> Rebase a private branch that no one else uses; merge a branch that is already part of shared history.
+
+And avoid absolutism. The practical rule:
+
+> Don't casually rebase a branch other people are using — rebase rewrites commits and forces everyone else to re-sync their branches.
+
+---
+
+## Part 7 — Cleaning Up History
+
+Feature work often produces messy small commits. Tidy them before they join shared history:
+
+```bash
+git rebase -i HEAD~5
+```
+
+In the editor, change each line's verb:
+
+- `pick` — keep the commit.
+- `reword` — keep the change, edit the message.
+- `squash` — merge into the previous commit and edit the combined message.
+- `fixup` — merge into the previous commit, keep its message.
+
+Example:
+
+```
+fix typo
+fix typo again
+fix typo final
+add blog
+```
+
+becomes:
+
+```
+feat(blog): add git guide article
+```
+
+Tidy before the history becomes part of a shared branch — not after.
+
+---
+
+## Part 8 — Stash and Cherry-Pick
+
+### When You Must Leave Work Unfinished
+
+You're halfway through feature A when an urgent hotfix demands a branch switch. Committing feels heavy — stash is the answer:
+
+```bash
+git stash
+git switch main
+# ...fix the hotfix...
+git switch feature-a
+git stash pop
+```
+
+`git stash list` shows your saved stacks; `git stash apply` restores one without removing it from the list.
+
+### Taking a Single Commit From Another Branch
+
+```bash
+git cherry-pick <commit>
+```
+
+Cherry-pick creates a **new** commit based on the changes of that commit — without pulling in the whole branch.
+
+---
+
+## Part 9 — Conflict: When Git Can't Choose
+
+A conflict happens when two people change the same lines. Git can't decide who is right — you do. The file contains markers:
 
 ```text
 <<<<<<< HEAD
 your version
 =======
-version from main
->>>>>>> main
+version from the other branch
+>>>>>>> feature
 ```
 
-The steps: open the file, keep one version (or combine both), remove the markers, then `git add <file>` and `git merge --continue`. If it gets messier, back out entirely with `git merge --abort`. Conflicts are normal — not the enemy.
+The workflow:
 
-### Syncing a Fork with Upstream
+```
+merge/rebase
+ ↓
+conflict
+ ↓
+open the file
+ ↓
+decide the final result
+ ↓
+remove markers
+ ↓
+git add
+ ↓
+continue the operation
+```
 
-The pattern used when contributing to a forked repository:
+For a **merge**, finish with a normal commit:
 
 ```bash
-git remote add upstream https://github.com/rohmansyah23/syahrworks-portfolio.git
-git fetch upstream
-git checkout main
-git merge --ff-only upstream/main   # fast-forward only; refuses on divergence
-git push origin main
+git add <file>
+git commit
 ```
 
-`--ff-only` forces the merge to happen only if it can move straight ahead. If Git refuses, that's a signal you have local commits not yet merged — valuable information, not a dead end.
+For a **rebase**, continue the rebase:
+
+```bash
+git add <file>
+git rebase --continue
+```
+
+To back out entirely:
+
+```bash
+git merge --abort
+git rebase --abort
+```
+
+Conflicts are normal — not the enemy.
 
 ---
 
-## Level 3 — Recovery: Git's First-Aid Kit
+## Part 10 — Recovery: When Things Really Go Wrong
 
-This level isn't for daily study. Keep it in mind as a lifesaver when something goes wrong.
+This section isn't for daily study. Keep it as a first-aid kit.
 
 ### Reflog — Finding "Lost" Commits
 
-The most common situation: you ran `git reset --hard` to an old commit, then realized a more recent commit is "gone." Stay calm — Git keeps a record of every HEAD movement for 90 days.
+Scenario: you ran `git reset --hard HEAD~3`, then realized recent commits are "gone".
+
+Stay calm. `git reflog` is a **local** record of every reference movement:
 
 ```bash
 git reflog
-# b455499 HEAD@{0}: commit: fix: stabilkan StackBackdrop
-# d012bb7 HEAD@{1}: commit: fix: StackBackdrop tetap diam saat scroll
 ```
 
-Recovery:
+Recovery — turn the lost commit into a safe branch:
 
 ```bash
-git checkout b455499
-git checkout -b recovery-branch   # make it a branch so it's safe
+git switch -c recovery-branch <sha>
 ```
 
-As long as the SHA is still in the reflog, a "deleted" commit can always be restored.
+Two honest caveats: reflog is a local record, not a cloud backup — the same machine you broke is the one holding the log. And not everything is always recoverable; that's why this section is named "recovery", not "guarantee".
 
 ### Bisect — Finding the Culprit Commit
 
-A bug appears in the latest version, but you don't know which commit caused it:
+A bug appears, but you don't know which commit caused it — and there are 200 commits since the last healthy version:
 
 ```bash
 git bisect start
 git bisect bad            # current commit is broken
-git bisect good <commit>  # last commit that was healthy
-git bisect bad            # still broken? mark it again
-git bisect good           # clean? mark it again
-git bisect reset          # back to normal once found
+git bisect good <commit>  # last healthy commit
 ```
 
-Git halves the search space each time: with 200 commits, the culprit is found in at most 8 steps — not 200.
+Test each candidate; mark `bad` or `good`. Git halves the search every time:
 
-### Removing a File from History
+```
+200 → 100 → 50 → 25 → ... → 1 culprit
+```
 
-Ever committed a `.env` containing a token? Deleting the file isn't enough — history still keeps it. The modern solution is `git-filter-repo`.
+With 200 commits you find the culprit in at most 8 steps — not 200.
+
+```bash
+git bisect reset
+```
+
+---
+
+## Part 11 — Secrets and Serious Mistakes
+
+Deleting a file is not enough — history still keeps it.
+
+```
+.env
+API_KEY=secret
+```
+
+> Removing `.env` from the working tree does not remove it from history.
+
+For a history rewrite, `git-filter-repo` is the modern tool:
 
 ```bash
 git filter-repo --path .env --invert-paths
@@ -213,12 +500,140 @@ git remote add origin <url>
 git push --force origin main
 ```
 
-Even after removal, **rotate every secret** that was ever exposed — assume it's leaked.
+But the order that matters most is:
+
+```
+Secret leaked
+ ↓
+REVOKE / ROTATE the secret
+ ↓
+clean the history
+ ↓
+force push if needed
+ ↓
+audit the repository
+```
+
+Cleaning history does **not** make a leaked secret safe again. Rotate first, always.
+
+Prevention: add `.gitignore` early, and document variable names in `.env.example` without any values.
 
 ---
 
-## Conclusion: Where to Start?
+## Part 12 — Fork and Upstream (Advanced)
 
-Git feels big, but you don't need to memorize everything. Start with Level 1: setup, then make `add`–`commit`–`push` a daily habit. Add branches and merges once you start working on separate features. And keep the Recovery chapter in mind — not to memorize, but to know that **nothing is truly lost in Git**.
+Optional — most beginners don't need this yet. This is the pattern for contributing to a repository you forked:
 
-**Learning tip:** create a practice repo, break it on purpose, then fix it. Git is the tool that makes you brave enough to experiment — because almost everything can be brought back.
+```
+Original repository
+        ↓
+      Fork
+        ↓
+Your repository
+        ↓
+Local clone
+```
+
+```bash
+git remote add upstream https://github.com/owner/original.git
+git fetch upstream
+git switch main
+git merge --ff-only upstream/main
+git push origin main
+```
+
+The two remotes:
+
+- `origin` → your repository.
+- `upstream` → the source repository.
+
+`--ff-only` only moves forward if it can go straight — if Git refuses, you have local commits not yet merged. That's valuable information.
+
+---
+
+## Quick Reference (by Situation)
+
+**I just changed code:**
+
+```bash
+git status
+git diff
+git add .
+git commit -m "..."
+git push
+```
+
+**I want to discard file changes:**
+
+```bash
+git restore <file>
+```
+
+**I made a commit by mistake:**
+
+- History not shared yet → `git reset` (understand the consequences).
+- Commit already shared → `git revert <commit>`.
+
+**I want to build a feature:**
+
+```bash
+git switch -c new-feature
+```
+
+**I must switch work temporarily:**
+
+```bash
+git stash
+git switch <branch>
+```
+
+**I got a conflict:**
+
+```
+open the file → resolve → git add → continue merge/rebase
+```
+
+**I lost a commit:**
+
+```bash
+git reflog
+```
+
+**I don't know which commit broke things:**
+
+```bash
+git bisect
+```
+
+---
+
+## Conclusion
+
+Git is not about memorizing commands.
+
+It's about understanding:
+
+1. the state of your repository,
+2. the changes you want to save,
+3. the history you want to share,
+4. and how to get back when you make a mistake.
+
+**Your daily minimum:**
+
+```bash
+git status
+git add .
+git commit -m "..."
+git push
+```
+
+**Once you work with branches:**
+
+```bash
+git switch -c new-feature
+git add .
+git commit -m "..."
+git push -u origin new-feature
+```
+
+Start with the daily loop until it becomes a habit. Add branches, then teamwork. And keep the Recovery section in mind — not to memorize, but to know that **nothing is truly lost in Git**.
