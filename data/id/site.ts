@@ -1,7 +1,7 @@
 import type { SiteMetadata } from "@/lib/types";
 
 export const siteMetadata: SiteMetadata = {
-  siteUrl: "https://syahrworks.vercel.app",
+  siteUrl: "https://syahrworks.com",
   title: "SyahrWorks — Muhammad Rohman Syah",
   description:
     "Portofolio Muhammad Rohman Syah (SyahrWorks) — Full-Stack Developer (Next.js · Flutter · Go) di Jakarta. 13+ proyek shipped, 3× sertifikasi BNSP. Terbuka untuk full-time & remote.",

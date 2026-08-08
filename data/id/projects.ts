@@ -19,7 +19,7 @@ export const projects: Project[] = [
     role: "Front-End Developer",
     techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Framer Motion", "i18n"],
     githubUrl: "https://github.com/rohmansyah23/syahrworks-portfolio",
-    liveUrl: "https://syahrworks.vercel.app",
+    liveUrl: "https://syahrworks.com",
     gallery: ["/projects/syahrworks-portfolio.png"],
   },
   {
