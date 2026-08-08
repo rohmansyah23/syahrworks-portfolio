@@ -2,7 +2,7 @@ name: Deploy to VPS
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
           script: |
             set -e
             cd /home/deploy/syahrworks-portfolio
-            git pull origin main
+            git pull origin master
             npm ci
             npm run build
             sudo systemctl restart syahrworks
