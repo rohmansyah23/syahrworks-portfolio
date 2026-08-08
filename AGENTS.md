@@ -5,6 +5,7 @@ Sebelum menulis kode, agent WAJIB membaca:
 - `docs/PRD.md` — requirements lengkap
 - `docs/PROMPT.md` — super prompt eksekusi (instruksi langkah-demi-langkah)
 - `docs/DEPLOY.md` — hosting & deploy produksi (WAJIB sebelum push ke `master`)
+- `docs/DEPLOY-VERCEL-FALLBACK.md` — runbook fallback sementara ke Vercel saat VPS habis (domain tetap `syahrworks.com`)
 - `docs/COPYWRITING.md` — standar copywriting "anti AI-slop" (target HRD/full-time) — WAJIB sebelum mengubah teks konten/UI/metadata.
 
 ---

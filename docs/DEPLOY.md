@@ -61,6 +61,13 @@ ssh syahrworks-root   # user: root
 
 Perintah cek service: `sudo systemctl status syahrworks` · log: `journalctl -u syahrworks -f`.
 
+## Fallback ke Vercel (Sementara)
+
+Jika VPS habis masa aktif dan harus dipindah **sementara** ke Vercel tanpa
+mengganti domain `syahrworks.com`, ikuti runbook lengkap di
+**`docs/DEPLOY-VERCEL-FALLBACK.md`** (cara deploy, pindah DNS di Dewabiz ke IP
+Vercel `76.76.21.21`, dan rollback balik ke VPS).
+
 ## Verifikasi
 
 - [ ] `https://syahrworks.com` merespons (A record → `103.160.213.205`).
