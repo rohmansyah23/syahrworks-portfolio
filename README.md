@@ -55,4 +55,4 @@ docs/        # PRD.md, PROMPT.md, PLAN.md, I18N.md, ENGLISH.md
 
 ## Deploy
 
-Vercel → `syahrworks.vercel.app`. Instruksi lengkap untuk coding agent di `AGENTS.md`.
+Produksi di **VPS** → `https://syahrworks.com` (bukan Vercel). Auto-deploy via GitHub Actions setiap push ke `master`. Detail hosting, alur deploy, dan peringatan di `docs/DEPLOY.md`. Instruksi lengkap untuk coding agent di `AGENTS.md`.

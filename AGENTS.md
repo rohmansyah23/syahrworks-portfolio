@@ -4,6 +4,7 @@ Dokumen ini dibaca otomatis oleh berbagai coding agent (opencode, Cursor, Claude
 Sebelum menulis kode, agent WAJIB membaca:
 - `docs/PRD.md` — requirements lengkap
 - `docs/PROMPT.md` — super prompt eksekusi (instruksi langkah-demi-langkah)
+- `docs/DEPLOY.md` — hosting & deploy produksi (WAJIB sebelum push ke `master`)
 - `docs/COPYWRITING.md` — standar copywriting "anti AI-slop" (target HRD/full-time) — WAJIB sebelum mengubah teks konten/UI/metadata.
 
 ---
@@ -12,7 +13,7 @@ Sebelum menulis kode, agent WAJIB membaca:
 - Portfolio v2 milik **Muhammad Rohman Syah (SyahrWorks)**, dibangun 100% dari nol.
 - Stack: **Next.js 16 · React 19 · TypeScript 5 · Tailwind CSS 4** (CSS-first, tanpa `tailwind.config.js`).
 - Arsitektur: App Router, multi-page 5 halaman: **Home, About, Journey, Blog (+detail), Projects** + 404.
-- Deploy: Vercel → `syahrworks.vercel.app` · Repo: `rohmansyah23/syahrworks-portfolio`.
+- Deploy: **VPS produksi** → `https://syahrworks.com` · auto-deploy via `.github/workflows/deploy.yml` pada setiap push ke `master` (detail: `docs/DEPLOY.md`) · Repo: `rohmansyah23/syahrworks-portfolio`.
 - Bahasa percakapan dengan user: **Bahasa Indonesia**. Konten proyek/pengalaman boleh English (konsisten data lama), artikel blog Bahasa Indonesia.
 
 ## 2. Rules Wajib (Hard Constraints)

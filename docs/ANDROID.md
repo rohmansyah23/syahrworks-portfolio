@@ -49,8 +49,8 @@ Script otomatis menangani: override `--bin-links=true`, pemanggilan via `node` (
 ### Soal workaround `app/layout.tsx` (penting)
 
 - Repo asli **tidak punya** `app/layout.tsx` — root layout-nya adalah `[lang]/layout.tsx` (berisi `<html lang={locale}>`).
-- Turbopack (Vercel/deploy normal) menerima struktur itu, tetapi **webpack (android) menolak**: `page.tsx doesn't have a root layout`.
-- Solusi: script membuat `app/layout.tsx` minimal (fragment passthrough) **di mirror saja** — repo asli dan deploy Vercel tidak tersentuh.
+- Turbopack (deploy normal) menerima struktur itu, tetapi **webpack (android) menolak**: `page.tsx doesn't have a root layout`.
+- Solusi: script membuat `app/layout.tsx` minimal (fragment passthrough) **di mirror saja** — repo asli dan deploy produksi tidak tersentuh.
 - Jika suatu saat repo asli menambahkan `app/layout.tsx` asli, file mirror akan otomatis tertimpa oleh versi repo (aman).
 
 ---
@@ -216,8 +216,8 @@ Script otomatis menangani: override `--bin-links=true`, pemanggilan via `node` (
 ### Soal workaround `app/layout.tsx` (penting)
 
 - Repo asli **tidak punya** `app/layout.tsx` — root layout-nya adalah `[lang]/layout.tsx` (berisi `<html lang={locale}>`).
-- Turbopack (Vercel/deploy normal) menerima struktur itu, tetapi **webpack (android) menolak**: `page.tsx doesn't have a root layout`.
-- Solusi: script membuat `app/layout.tsx` minimal (fragment passthrough) **di mirror saja** — repo asli dan deploy Vercel tidak tersentuh.
+- Turbopack (deploy normal) menerima struktur itu, tetapi **webpack (android) menolak**: `page.tsx doesn't have a root layout`.
+- Solusi: script membuat `app/layout.tsx` minimal (fragment passthrough) **di mirror saja** — repo asli dan deploy produksi tidak tersentuh.
 - Jika suatu saat repo asli menambahkan `app/layout.tsx` asli, file mirror akan otomatis tertimpa oleh versi repo (aman).
 
 ---

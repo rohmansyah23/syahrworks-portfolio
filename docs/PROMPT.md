@@ -8,8 +8,8 @@ Prompt siap pakai untuk sesi eksekusi (coding agent/AI). Pendamping PRD di `docs
 ## 1. KONTEKS & TUJUAN
 Buat web portofolio BARU 100% dari nol (bukan fork/kloning template orang lain, bukan modifikasi repo lama).
 - Folder project baru: `D:\A-Projek\Web\syahrworks-portfolio`
-- Repo lama `D:\A-Projek\Web\next-portfolio` (GitHub: rohmansyah23/next-portofolio, live: syahrworks.vercel.app) TIDAK BOLEH disentuh — biarkan apa adanya sebagai versi arsip. Hanya dipakai sebagai SUMBER KONTEN (data.json + aset gambar di public/).
-- Repo baru akan menggantikan domain `syahrworks.vercel.app` (repo GitHub baru di bawah akun rohmansyah23, nama repo: syahrworks-portfolio, sudah dibuat — cukup hubungkan remote).
+- Repo lama `D:\A-Projek\Web\next-portfolio` (GitHub: rohmansyah23/next-portofolio, live lama: syahrworks.vercel.app) TIDAK BOLEH disentuh — biarkan apa adanya sebagai versi arsip. Hanya dipakai sebagai SUMBER KONTEN (data.json + aset gambar di public/).
+- Repo baru menggantikan domain lama `syahrworks.vercel.app` dan kini live di **`https://syahrworks.com`** (VPS, auto-deploy via GitHub Actions — detail `docs/DEPLOY.md`).
 - Referensi DESAIN: https://www.tasteskill.dev/ — bahasa desain editorial "anti slop AI": typography-led, whitespace besar, palet dibatasi, detail halus (hairline border, index number, micro-label uppercase). Jangan tiru 1:1, ambil prinsipnya.
 - Referensi STRUKTUR (arsitektur halaman saja): https://github.com/ShinyQ/ShinyQ-Playground (live: https://kurniadi.pages.dev/) — adopsi struktur 5 halaman, timeline ber-tab, project modal, blog search+filter. JANGAN meniru bahasa desain ShinyQ (label `//`, logo `> nama_`, typewriter) dan JANGAN menyalin teks/konten milik ShinyQ (Kurniadi).
 
@@ -164,7 +164,7 @@ export type BlogPost = {
 // Mulai dengan 1-2 artikel (draftkan jika user tidak punya).
 
 // data/site.ts
-export const siteMetadata = { siteUrl: "https://syahrworks.vercel.app", ... } // + title/description per halaman
+export const siteMetadata = { siteUrl: "https://syahrworks.com", ... } // + title/description per halaman
 ```
 
 ## 5. SPESIFIKASI HALAMAN & KOMPONEN (struktur ala ShinyQ, DESAIN editorial anti-slop, konten sendiri)
@@ -227,7 +227,7 @@ Prinsip: typography-led, whitespace besar, palet dibatasi, detail halus. Jangan 
 - CSS variables (light & dark): `--background, --foreground, --card, --border, --primary, --muted, --muted-foreground, --accent` (HSL/OKLCH). Default **light**, toggle dark.
 
 ## 8. SEO & PERFORMANCE
-- `app/sitemap.ts` & `app/robots.ts` (siteUrl syahrworks.vercel.app).
+- `app/sitemap.ts` & `app/robots.ts` (siteUrl syahrworks.com).
 - Metadata per halaman (generateMetadata): title, description, openGraph, twitter.
 - `next/image` untuk gambar statis & **screenshot proyek** (beri `sizes`, `priority` hanya hero). `loading="lazy"` untuk non-hero.
 - Pastikan build memakai static generation (semua halaman bisa statis; tidak ada data dinamis yang mengharuskan SSR runtime kecuali PinnedRepos yang tetap bisa di-revalidate).

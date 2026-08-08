@@ -155,7 +155,7 @@ public/  (salinan aset dari repo lama)
 - [ ] Anti-Slop Checklist §9 terpenuhi secara visual.
 - [ ] Konten migrasi utuh: 13 proyek, 3 pengalaman, 2 pendidikan, 26 skill, 5 sosial + 3 sertifikasi BNSP + kompetisi (bila ada).
 - [ ] Repo lama `next-portfolio` TIDAK berubah.
-- [ ] Deploy Vercel → `syahrworks.vercel.app`.
+- [x] Deploy **VPS** → `https://syahrworks.com` (auto-deploy GitHub Actions; detail `docs/DEPLOY.md`).
 
 ## 12. Non-Goals (pengingat)
 

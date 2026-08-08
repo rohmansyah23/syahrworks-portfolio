@@ -9,7 +9,7 @@
 | **Author** | Muhammad Rohman Syah (SyahrWorks) |
 | **Repo lama (arsip)** | `rohmansyah23/next-portofolio` — **tidak boleh disentuh** |
 | **Repo baru** | `rohmansyah23/syahrworks-portfolio` |
-| **Domain** | `syahrworks.vercel.app` |
+| **Domain** | `https://syahrworks.com` (VPS, bukan `syahrworks.vercel.app` — lihat `docs/DEPLOY.md`) |
 | **Referensi desain** | `https://www.tasteskill.dev/` — desain editorial "anti slop AI" |
 | **Referensi struktur** | `ShinyQ/ShinyQ-Playground` (live: kurniadi.pages.dev) — hanya struktur & arsitektur halaman, BUKAN gaya/konten |
 
@@ -182,7 +182,7 @@ syahrworks-portfolio/
 - [ ] Manual test `npm run dev`: semua 5 halaman, 404, dark/light toggle, responsive, filter Journey (5 tab), search+filter Blog + detail artikel, filter Projects + modal + galeri, form kontak (validasi + toast), PinnedRepos tampil.
 - [ ] Build tetap sukses tanpa env (fallback PinnedRepos).
 - [ ] Anti-Slop Checklist §12 terpenuhi (tidak ada gradient ungu/blob/typewriter/emoji-label).
-- [ ] Deploy ke Vercel → `syahrworks.vercel.app`; repo baru `rohmansyah23/syahrworks-portfolio`.
+- [x] Deploy ke **VPS** → `https://syahrworks.com`; repo baru `rohmansyah23/syahrworks-portfolio` (auto-deploy via GitHub Actions, detail `docs/DEPLOY.md`).
 
 ## 18. Kriteria Done (Definition of Done)
 Seluruh acceptance criteria §17 terpenuhi; konten migrasi utuh (13 proyek, 3 pengalaman, 2 pendidikan, 26 skill, sosial); repo lama tidak berubah; domain lama dialihkan ke repo baru.
