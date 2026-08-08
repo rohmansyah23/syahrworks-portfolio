@@ -74,6 +74,9 @@ export async function generateMetadata({
       creator: meta.twitterHandle,
     },
     robots: { index: true, follow: true },
+    verification: {
+      google: "XwwdKNvthYP9Cxubcnhzhlqakn7dAaQ-vLgF2A1agO4",
+    },
   };
 }
 
