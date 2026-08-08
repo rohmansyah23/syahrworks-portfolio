@@ -35,7 +35,7 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
 | JSON-LD `Person` (home) | `app/[lang]/page.tsx` |
 | JSON-LD `BlogPosting` (tiap artikel) | `app/[lang]/blog/[slug]/page.tsx` |
 | `og:image` diubah ke 1200×630 + gambar baru | `public/og-syahrworks.png` |
-| Sitemap: `lastmod` stabil (tanggal artikel), tambah `x-default` | `app/sitemap.ts` |
+| Sitemap: `lastmod` stabil (artikel = tanggal terbit, statis = tanggal commit git terakhir), tambah `x-default` | `app/sitemap.ts` |
 | Favicon.ico di-generate ulang dari `public/logo-light.svg` (16–256) + `icon.svg` (browser modern) + `apple-icon.png` (iOS) — mengatasi ikon globe di tab & SERP | `app/favicon.ico`, `app/icon.svg`, `app/apple-icon.png` |
 | Twitter card dinaikkan ke `summary_large_image` (og:image 1200×630) | `app/[lang]/layout.tsx` |
 
@@ -162,5 +162,8 @@ commit `675cf2d`) dan **favicon baru dari `logo-light.svg`** (commit `bd7978c`).
 - **Soft-404 sudah diperbaiki di kode** (`resolveLang` + guard layout, commit `675cf2d`):
   segmen `[lang]` dengan nilai invalid kini `notFound()` — **jangan** mengembalikan
   fallback ke `defaultLocale` di segmen tersebut (lihat `docs/FIX-SOFT-404.md`).
+- `lastmod` halaman statis di sitemap = **tanggal commit git terakhir** (`app/sitemap.ts`,
+  `git log -1 --format=%cI`) — otomatis update tiap deploy dan stabil per commit.
+  Fallback ke tanggal hari ini bila git tidak tersedia (mis. Vercel fallback).
 - Jangan ubah `siteUrl` di `data/en/site.ts` & `data/id/site.ts` — tetap
   `https://syahrworks.com` (dipakai canonical, sitemap, robots, dan JSON-LD).
