@@ -151,8 +151,9 @@
 }
 
 .prose-editorial h3 {
-  color: var(--muted-foreground);
   font-size: 1.375rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.7rem;
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
