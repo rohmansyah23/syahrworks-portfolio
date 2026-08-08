@@ -92,9 +92,57 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
   (dipakai untuk BlogPosting JSON-LD + sitemap lastmod).
 - Jaga copywriting sesuai `docs/COPYWRITING.md` (anti AI-slop).
 
+### 3.4 Checklist GSC Pasca-Fix (Soft-404 & Ikon Situs)
+
+Berlaku setelah dua perubahan ini live: **fix soft-404** (`docs/FIX-SOFT-404.md`,
+commit `675cf2d`) dan **favicon baru dari `logo-light.svg`** (commit `bd7978c`).
+
+**A. Persiapan (sekali jalan, ±5 menit)**
+- [ ] Pastikan versi live sudah berisi fix: `curl -s -o /dev/null -w '%{http_code}' https://syahrworks.com/tidak-ada` → harus `404`. Jika masih `200`, jangan lanjut.
+- [ ] GSC → **Sitemaps**: `https://syahrworks.com/sitemap.xml` status **Success** (submit ulang jika belum).
+- [ ] GSC → **URL Inspection → Request Indexing** untuk: `/en`, `/id`, `/en/about`,
+      `/en/journey`, `/en/blog`, `/en/projects`, dan 3 artikel blog.
+
+**B. Pantau Indexing → Pages (cek 1×/minggu, 1–4 minggu)**
+- [ ] Buka **Indexing → Pages**. Harapan: kartu **"Halaman valid"** bertambah hingga
+      mencakup semua halaman nyata (statis 5×2 locale + 3 artikel ×2).
+- [ ] Kartu **"Soft 404" / "Page with soft 404"** harus **0** — sebelum fix, URL seperti
+      `/tidak-ada`, `/xyz/about`, dan file gambar terhapus dirender 200.
+- [ ] Kartu **"Excluded"** → periksa kategori. Yang wajar: `Duplicate without user-selected
+      canonical` (karena `/en` & `/id`) dan `Crawled – currently not indexed` (baru, sementara).
+- [ ] **URL Inspection** pada `https://syahrworks.com/en` → harus **"URL is on Google"**.
+- [ ] **URL Inspection** pada `https://syahrworks.com/tidak-ada` (atau `/about-me.png`) →
+      harus melaporkan **"Page not found (404)"** / tidak terindeks. URL soft-404 lama akan
+      dikoreksi Google pada rekraw berikutnya — **tidak perlu redirect manual**.
+
+**C. Ikon situs di SERP (cek 1×/minggu, bisa 1–6 minggu)**
+- [ ] GSC → **Branding → Ikon situs**: pastikan favicon sudah di-upload
+      (dari `app/favicon.ico` baru — kotak hitam + monogram terang, 256×256; min 48×48).
+      Klik **Simpan** / **Minta ulasan** bila tersedia.
+- [ ] Cek pratinjau: Google.com (mode incognito) → cari "syahrworks" atau
+      "Muhammad Rohman Syah" → ikon harus logo baru, bukan globe/default.
+- [ ] Ekspektasi waktu: Google butuh **hari–minggu** untuk memproses ikon; penggantian
+      bisa bertahap. Google juga tidak menjamin favicon tampil di semua hasil (kebijakan
+      authority domain).
+
+**D. Pantau keyword brand (mulai minggu ke-2)**
+- [ ] **Performance → Queries**: filter query berisi "syahrworks" → amati impression/posisi.
+- [ ] Target realistis: "syahrworks" posisi 1–3 dalam 2–6 minggu pasca-indexing;
+      "syahrworks.com" / "www.syahrworks.com" menyusul.
+
+**Tabel rekap harapan:**
+
+| Item | Sebelum fix | Sesudah fix (harapan) |
+| --- | --- | --- |
+| Soft 404 di Indexing | Ada (URL tak dikenal 200) | 0 |
+| `/tidak-ada` di URL Inspection | Soft-404 / terindeks | "Page not found (404)" |
+| Halaman valid | Sebagian URL | Semua halaman nyata |
+| Ikon SERP | Globe/default | Favicon SyahrWorks (1–6 minggu) |
+
 ## 4. Checklist Monitoring (bulanan)
 
 - [ ] GSC → sitemap.xml "Success", tidak ada error di Coverage.
+- [ ] GSC → Indexing → Pages: tidak ada **Soft 404** (hasil fix `docs/FIX-SOFT-404.md`).
 - [ ] GSC → Queries: muncul keyword "syahrworks" / "syahrworks developer"?
 - [ ] GSC → Branding: ikon situs sudah tampil di SERP (bukan globe default).
 - [ ] `https://syahrworks.com` tetap di Google (URL-prefix property konsisten).
@@ -111,5 +159,8 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
 - Meta `keywords` tidak dipakai Google untuk ranking — aman dibiarkan.
 - Root `/` sengaja **307-redirect ke `/en`** (struktur multi-bahasa). Canonical di
   `/en` dan `/id` sudah konsisten, jadi tidak masalah untuk SEO.
+- **Soft-404 sudah diperbaiki di kode** (`resolveLang` + guard layout, commit `675cf2d`):
+  segmen `[lang]` dengan nilai invalid kini `notFound()` — **jangan** mengembalikan
+  fallback ke `defaultLocale` di segmen tersebut (lihat `docs/FIX-SOFT-404.md`).
 - Jangan ubah `siteUrl` di `data/en/site.ts` & `data/id/site.ts` — tetap
   `https://syahrworks.com` (dipakai canonical, sitemap, robots, dan JSON-LD).
