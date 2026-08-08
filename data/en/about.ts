@@ -1,7 +1,7 @@
 import type { AboutData } from "@/lib/types";
 
 export const about: AboutData = {
-  aboutImage: "/about-me.png",
+  aboutImage: "/about-me.webp",
   intro:
     "I'm Rohman — a full-stack developer in Jakarta who takes products from idea to production: design, build, deploy, maintain. Across 13+ shipped projects and 3 BNSP certifications, I build web & mobile systems that real businesses use every day — and I'm ready to bring that into a full-time team.",
   philosophy: [

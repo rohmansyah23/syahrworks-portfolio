@@ -1,7 +1,7 @@
 import type { AboutData } from "@/lib/types";
 
 export const about: AboutData = {
-  aboutImage: "/about-me.png",
+  aboutImage: "/about-me.webp",
   intro:
     "Saya Rohman — full-stack developer di Jakarta yang membawa produk dari ide sampai produksi: desain, build, deploy, hingga pemeliharaan. Di 13+ proyek yang sudah dirilis dan 3 sertifikasi BNSP, saya membangun sistem web & mobile yang benar-benar dipakai bisnis — dan saya siap membawa itu ke dalam tim kerja full-time.",
   philosophy: [

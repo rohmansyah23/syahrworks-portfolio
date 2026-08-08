@@ -21,7 +21,7 @@ Membangun ulang portfolio dari **nol** (bukan fork template) di `D:\A-Projek\Web
 | `app/` & `public/` | ❌ Masih template | `globals.css`, `layout.tsx`, `page.tsx` default; `public/` berisi svg default next.js; belum ada `components/`, `data/`, `lib/` |
 | `.env*` | ❌ Belum | Buat `.env.local` + `.env.local.example` (Formspree + GITHUB_API_TOKEN) |
 | `data.json` lama | ✅ Ada | `next-portfolio\data.json` (14.7 KB) → main, about, socials(5), skills(26), projects(12), experiences(3), educations(2) |
-| Aset gambar lama | ✅ Ada | `public/`: profile-me.png, about-me.png, contact.png, logo-light.svg, logo-dark.svg, waving-hand.gif + `projects/` (12 screenshot). `favicon.svg`, `logo-md.svg`, `logo-sm.svg`, `herobgc.jpg` sudah dihapus (tak terpakai) |
+| Aset gambar lama | ✅ Ada | `public/`: about-me.webp, logo-light.svg, logo-dark.svg + `projects/` (12 screenshot). `favicon.svg`, `logo-md.svg`, `logo-sm.svg`, `herobgc.jpg`, `profile-me.png`, `contact.png`, `waving-hand.gif`, `portfolio-fork.png` sudah dihapus (tak terpakai); `about-me.png` → `about-me.webp` (27KB, −98%) |
 | Draft konten baru | ✅ Dibuat | `docs/content-drafts/` → 2 artikel blog + data sertifikasi BNSP |
 
 ## 2b. Resume Point (sesi terputus)
