@@ -82,8 +82,9 @@ Domain dikelola di **Dewabiz**: https://my.dewabiz.com/clientarea.php?action=dom
   Nilai terpotong/salah huruf → verifikasi GSC gagal.
 - Metode verifikasi GSC: **meta tag** (URL-prefix property, sudah aktif) **dan** TXT DNS
   (memungkinkan **Domain property** — mencakup http/https + www sekaligus).
-- `www` & non-`www` sama-sama live; konsolidasi 301 `www → non-www` belum dipasang
-  (lihat `docs/SEO.md` §3.2).
+- `www` & non-`www` sama-sama live; konsolidasi **308 `www → non-www` sudah terpasang**
+  via `redirects()` di `next.config.ts` (auto-deploy tiap push ke `master`). Sisa tugas
+  manual hanya GSC/Vercel (lihat `docs/SEO.md` §3.2).
 - **JANGAN** menambah record SPF/MX terpisah tanpa kebutuhan email yang nyata.
 
 ### Cek propagasi

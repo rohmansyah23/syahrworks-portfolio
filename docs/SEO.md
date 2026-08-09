@@ -38,6 +38,7 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
 | Sitemap: `lastmod` stabil (artikel = tanggal terbit, statis = tanggal commit git terakhir), tambah `x-default` | `app/sitemap.ts` |
 | Favicon.ico di-generate ulang dari `public/logo-light.svg` (16–256) + `icon.svg` (browser modern) + `apple-icon.png` (iOS) — mengatasi ikon globe di tab & SERP | `app/favicon.ico`, `app/icon.svg`, `app/apple-icon.png` |
 | Twitter card dinaikkan ke `summary_large_image` (og:image 1200×630) | `app/[lang]/layout.tsx` |
+| Redirect 308 permanen `www.syahrworks.com` → `syahrworks.com` (konsolidasi host, kondisi `host` header) | `next.config.ts` (`redirects()`) |
 
 ## 3. Runbook Manual (WAJIB DILAKUKAN) — Fase B
 
@@ -76,14 +77,14 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
    - YouTube About → website syahrworks.com.
 4. *(Opsional)* **Bing Webmaster Tools** (https://www.bing.com/webmasters) → import dari GSC,
    submit sitemap — gratis menambah peluang traffic.
-5. **Konsolidasi `www` vs non-`www`**: saat ini `https://syahrworks.com` dan
-   `https://www.syahrworks.com` sama-sama aktif (keduanya 307 → `/en`). Agar sinyal
-   brand tidak terpecah:
-   - Pilih satu domain utama (disarankan non-`www`: `syahrworks.com`).
-   - Di nginx VPS, tambahkan redirect **301 permanen** `www.syahrworks.com` →
-     `syahrworks.com` (canonical non-www sudah dipakai di seluruh halaman).
-   - Di GSC gunakan **Domain property** (mencakup http/https + www) atau dua
-     URL-prefix property, lalu request indexing `www.syahrworks.com` sekali.
+5. **Konsolidasi `www` vs non-`www`**: redirect **308 permanen** `www.syahrworks.com`
+   → `syahrworks.com` **sudah terpasang di kode** (`redirects()` di `next.config.ts`,
+   kondisi `has: host = www.syahrworks.com`) dan auto-deploy tiap push ke `master`.
+   Canonical non-www sudah dipakai di seluruh halaman.
+   - Verifikasi live: `curl -s -o NUL -w '%{http_code} %{redirect_url}' https://www.syahrworks.com`
+     → harus `308 https://syahrworks.com/en`.
+   - Di GSC gunakan **Domain property** (mencakup http/https + www) — tidak perlu
+     request indexing `www.syahrworks.com` lagi.
 
 ### 3.3 Jangka Panjang (Fase C)
 - Perbanyak artikel blog bertarget keyword lokal:
@@ -173,6 +174,7 @@ http/https + www + semua subdomain dalam satu property.
 - [ ] `https://syahrworks.com` tetap di Google (URL-prefix property konsisten).
 - [ ] **Domain property** `syahrworks.com` aktif (verifikasi DNS TXT §3.5) dan datanya terisi.
 - [ ] `syahrworks.vercel.app` sudah 301 (tidak ada duplikat).
+- [ ] `www.syahrworks.com` → `308` ke `syahrworks.com` (redirect `next.config.ts`), canonical non-www konsisten.
 - [ ] JSON-LD valid: cek dengan https://search.google.com/test/rich-results untuk
       `https://syahrworks.com/en` dan satu artikel blog.
 - [ ] Tiap artikel blog baru: sitemap otomatis ter-update (build) + Request Indexing.
