@@ -62,9 +62,11 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
    ikon globe/default.
 
 ### 3.2 Konsolidasi Brand (hilangkan duplikat & bangun asosiasi)
-1. **Redirect `syahrworks.vercel.app` → `syahrworks.com` (301)**:
-   - Vercel Dashboard → project `syahrworks` → Settings → Domain.
-   - Atau tambah rule redirect di **Redirects** project (vercel.app → syahrworks.com).
+1. **Redirect `syahrworks.vercel.app` → `syahrworks.com` (301/308)**:
+   - Dashboard Vercel "Redirects" **terkunci di plan Hobby**, tapi redirect via config file
+     (`vercel.json` / `next.config`) tetap jalan di Hobby.
+   - Runbook lengkap 2 opsi (redirect via `next.config.js` repo lama **vs** delete project):
+     `docs/VERCELAPP-REDIRECT.md`.
    - Tujuannya agar brand + konten tidak terpecah dua domain.
 2. **Backlink brand di GitHub**:
    - Repo `rohmansyah23/syahrworks-portfolio` → **About → Website**: `https://syahrworks.com`.
@@ -132,6 +134,20 @@ commit `675cf2d`) dan **favicon baru dari `logo-light.svg`** (commit `bd7978c`).
 - [ ] Target realistis: "syahrworks" posisi 1–3 dalam 2–6 minggu pasca-indexing;
       "syahrworks.com" / "www.syahrworks.com" menyusul.
 
+**E. Baseline Indexing → Pages (diambil 10 Agu 2026, domain baru umur 2 hari)**
+
+Angka awal ini NORMAL untuk situs baru + struktur bilingual — bukan error. Canonical, hreflang,
+dan `robots: index, follow` sudah terverifikasi benar di semua halaman live.
+
+| Kategori (Excluded) | Domain property | URL-prefix | Arti & tindakan |
+| --- | --- | --- | --- |
+| Duplicate without user-selected canonical | 3 | 2 | Pasangan `/en` vs `/id` (hreflang) yang sedang diproses Google — kosmetik, biarkan. |
+| Page with redirect | 1 | 0 | Root `/` (307 → `/en`) — sengaja, biarkan. |
+| Crawled – currently not indexed | 5 | 4 | Authority rendah (baru) + konten tipis — turun dengan backlink, konten baru, dan waktu 2–6 minggu. |
+
+- [ ] Pantau tren tiap minggu: **"Halaman valid"** bertambah, **"Crawled – currently not indexed"** menyusut.
+- [ ] Jangan spam **Request Indexing** (1× per URL sudah cukup) — mengulang bisa menurunkan prioritas.
+
 **Tabel rekap harapan:**
 
 | Item | Sebelum fix | Sesudah fix (harapan) |
@@ -173,7 +189,8 @@ http/https + www + semua subdomain dalam satu property.
 - [ ] GSC → Branding: ikon situs sudah tampil di SERP (bukan globe default).
 - [ ] `https://syahrworks.com` tetap di Google (URL-prefix property konsisten).
 - [ ] **Domain property** `syahrworks.com` aktif (verifikasi DNS TXT §3.5) dan datanya terisi.
-- [ ] `syahrworks.vercel.app` sudah 301 (tidak ada duplikat).
+- [ ] `syahrworks.vercel.app` sudah 301/308 (redirect config repo lama, lihat `docs/VERCELAPP-REDIRECT.md`).
+- [ ] GSC → Indexing → Pages: tren "Halaman valid" naik & "Crawled – currently not indexed" turun (baseline §3.4 bagian E).
 - [ ] `www.syahrworks.com` → `308` ke `syahrworks.com` (redirect `next.config.ts`), canonical non-www konsisten.
 - [ ] JSON-LD valid: cek dengan https://search.google.com/test/rich-results untuk
       `https://syahrworks.com/en` dan satu artikel blog.
