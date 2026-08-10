@@ -70,7 +70,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
                 <span
                   ref={scrollRef}
                   onScroll={checkScroll}
-                  className="block overflow-x-auto overflow-y-hidden whitespace-nowrap pt-2 pb-3 px-1 [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                  className="block overflow-x-auto overflow-y-hidden whitespace-nowrap pt-2 pb-3 px-1 no-scrollbar"
                 >
                   <span>Muhammad Rohman </span>
                   <span className="inline-block bg-accent px-2.5 py-0.5 font-serif not-italic text-background rounded-2xs leading-none align-baseline rotate-[-5.5deg]">
@@ -137,7 +137,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
           <div className="lg:col-span-5">
             <div className="group relative border border-border bg-card p-3 transition-colors duration-300 hover:border-foreground/40">
               {/* Top Status Bar */}
-              <div className="mb-3 flex items-center justify-between gap-5 overflow-x-auto whitespace-nowrap border-b border-border pb-2.5 px-1 [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              <div className="mb-3 flex items-center justify-between gap-5 overflow-x-auto whitespace-nowrap border-b border-border pb-2.5 px-1 no-scrollbar">
                 <span className="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-accent">
                   <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
                   {isId ? "Terbuka untuk Full-Time · Remote" : "Open to Full-Time · Remote"}
@@ -163,7 +163,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
                 </div>
 
                 {/* Body Snippet */}
-                <div className="p-4 overflow-x-auto leading-relaxed">
+                <div className="p-4 overflow-x-auto leading-relaxed no-scrollbar">
                   <pre className="text-foreground/90 font-mono text-[0.72rem] leading-6">
                     <code>
                       <span className="text-accent font-semibold">const</span>{" "}

@@ -112,6 +112,17 @@
     padding-inline: 1.5rem;
   }
 
+  /* Utility untuk menyembunyikan UI scrollbar tanpa mematikan fungsi scroll */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
   @media (min-width: 640px) {
     .container-editorial {
       padding-inline: 2rem;
