@@ -171,17 +171,17 @@ export const siteMetadata = { siteUrl: "https://syahrworks.com", ... } // + titl
 - **Header**: logo **wordmark "SyahrWorks"** (bukan `> syahrworks_`), nav 5 halaman (aktif state), theme toggle (Sun/Moon), mobile: hamburger → drawer. Sticky, backdrop-blur, border-b. `Header` & `Footer` dipasang di `layout.tsx`.
 - **Footer**: kolom Navigations, Contact (email/lokasi), sosial icons, `© <tahun> Muhammad Rohman Syah`.
 - **Home** (urutan section, micro-label bernomor):
-  1. Hero — micro-label `01 — HOME`, nama besar SERIF statis "Muhammad Rohman Syah" (TANPA typewriter), subtitle `main.tagline`, 2 CTA ke `/journey` & `/about`.
-  2. Get In Touch — micro-label `02 — GET IN TOUCH`, kartu info minimal dengan ikon lucide (Location/Email/GitHub/LinkedIn/WhatsApp).
-  3. Tech Stack — micro-label `03 — TECH STACK`, 3 grup (Backend/Frontend/Tools) ikon tech, tiap ikon punya title tooltip.
-  4. GitHub Pinned Repos — micro-label `04 — PINNED REPOS`, 6 kartu repo yang di-pin (nama, bahasa, deskripsi, ★, 🍴) + link "View All Repositories". Server component (lihat §6).
-  5. Latest Blog — micro-label `05 — FROM THE BLOG`, 1-2 kartu artikel terbaru + "View All".
-  6. Contact form Formspree — micro-label `06 — CONTACT`, form (name/email/message) + toast, VALIDASI email.
-- **About**: micro-label `01 — ABOUT`, judul besar serif, foto (sticky di desktop), bio (`about.intro`), lalu section: ⚙️ Engineering Philosophy, 💻 Working Style, ✨ Technologies I Love (bullet dengan ▹), blockquote `about.quote`, tombol **View CV** (buka modal PDF `resumeUrl`).
-- **Journey**: micro-label `01 — JOURNEY`, heading + deskripsi, tabs filter (5 type). Klik tab → filter item. Timeline: garis tengah (desktop) / garis kiri (mobile), tiap item: logo perusahaan, periode, judul, subtitle/caption, bullet deskripsi, chips tools. Urutan kronologis terbaru di atas.
-- **Blog**: micro-label `01 — BLOG`, search input (cari title/excerpt) + tag chips filter (All + semua tags), grid kartu (cover, tags, title, excerpt, tanggal, "Read more"), kosong → "No posts found".
+  1. Hero — micro-label `01 / HOME`, nama besar SERIF statis "Muhammad Rohman Syah" (TANPA typewriter), subtitle `main.tagline`, 2 CTA ke `/journey` & `/about`.
+  2. Get In Touch — micro-label `02 / GET IN TOUCH`, kartu info minimal dengan ikon lucide (Location/Email/GitHub/LinkedIn/WhatsApp).
+  3. Tech Stack — micro-label `03 / TECH STACK`, 3 grup (Backend/Frontend/Tools) ikon tech, tiap ikon punya title tooltip.
+  4. GitHub Pinned Repos — micro-label `04 / PINNED REPOS`, 6 kartu repo yang di-pin (nama, bahasa, deskripsi, ★, 🍴) + link "View All Repositories". Server component (lihat §6).
+  5. Latest Blog — micro-label `05 / FROM THE BLOG`, 1-2 kartu artikel terbaru + "View All".
+  6. Contact form Formspree — micro-label `06 / CONTACT`, form (name/email/message) + toast, VALIDASI email.
+- **About**: micro-label `01 / ABOUT`, judul besar serif, foto (sticky di desktop), bio (`about.intro`), lalu section: ⚙️ Engineering Philosophy, 💻 Working Style, ✨ Technologies I Love (bullet dengan ▹), blockquote `about.quote`, tombol **View CV** (buka modal PDF `resumeUrl`).
+- **Journey**: micro-label `01 / JOURNEY`, heading + deskripsi, tabs filter (5 type). Klik tab → filter item. Timeline: garis tengah (desktop) / garis kiri (mobile), tiap item: logo perusahaan, periode, judul, subtitle/caption, bullet deskripsi, chips tools. Urutan kronologis terbaru di atas.
+- **Blog**: micro-label `01 / BLOG`, search input (cari title/excerpt) + tag chips filter (All + semua tags), grid kartu (cover, tags, title, excerpt, tanggal, "Read more"), kosong → "No posts found".
 - **Blog detail** `[slug]`: layout artikel — cover, judul, meta (tanggal, readingTime, category, author), render `body` markdown (react-markdown), back link, prev/next (opsional). `generateStaticParams` dari semua slug.
-- **Projects**: micro-label `01 — PROJECTS`, heading + deskripsi, filter kategori chips, grid **asimetris/bento** (featured besar + kecil — hierarki jelas, BUKAN 3 kolom seragam), kartu (cover, title, tags, desc singkat) → klik buka **ProjectModal** (deskripsi lengkap, role, techStack chips, links: GitHub/Live/Doc, galeri → GalleryModal).
+- **Projects**: micro-label `01 / PROJECTS`, heading + deskripsi, filter kategori chips, grid **asimetris/bento** (featured besar + kecil — hierarki jelas, BUKAN 3 kolom seragam), kartu (cover, title, tags, desc singkat) → klik buka **ProjectModal** (deskripsi lengkap, role, techStack chips, links: GitHub/Live/Doc, galeri → GalleryModal).
 - **404**: micro-label `404`, "Page not found", tombol back home.
 
 ## 6. FITUR DINAMIS — GITHUB PINNED REPOS (server-side)
@@ -214,7 +214,7 @@ Prinsip: typography-led, whitespace besar, palet dibatasi, detail halus. Jangan 
 - **Display (serif):** Instrument Serif — heading utama, ukuran besar (`clamp`), line-height tight.
 - **Body (sans):** Inter — teks & UI.
 - **Mono:** JetBrains Mono — micro-label, angka, kode.
-- **Micro-label:** uppercase, mono, `tracking-widest`, ~`0.7rem`. Contoh: `01 — ABOUT`, `SELECTED WORK`. BUKAN `// about me`.
+- **Micro-label:** uppercase, mono, `tracking-widest`, ~`0.7rem`. Contoh: `01 / ABOUT`, `SELECTED WORK`. BUKAN `// about me`.
 
 ### Layout & Komponen
 - Container max ~`72rem`, whitespace generatif antar section (`py-20/28`).

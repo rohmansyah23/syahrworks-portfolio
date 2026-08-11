@@ -72,7 +72,7 @@ docs/                       # PRD.md, PROMPT.md (sumber spesifikasi), I18N.md, E
 
 ### Palet & Tipografi
 - Background `#FAFAF9` (default **light**) / dark `#0A0A0A` · Ink `#111111` / `#E6E6E6` · Muted `#6B7280`/`#A1A1AA` · Accent **deep violet (hemat)** · Hairline `#E5E5E5`/`#262626`.
-- Heading: Instrument Serif. Body: Inter. Mono: JetBrains Mono (micro-label uppercase `tracking-widest` ~0.7rem, contoh `01 — ABOUT`).
+- Heading: Instrument Serif. Body: Inter. Mono: JetBrains Mono (micro-label uppercase `tracking-widest` ~0.7rem, contoh `01 / ABOUT`).
 - Kartu flat hairline, radius kecil (2–6px); button primary **solid ink** (bukan pill ungu); grid proyek **asimetris/bento**.
 
 ## 7. Non-Goals
