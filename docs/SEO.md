@@ -189,23 +189,26 @@ http/https + www + semua subdomain dalam satu property.
 `| SyahrWorks`. Perubahan title **tidak** menurunkan index (canonical/hreflang/robots
 `index, follow` tidak berubah) — hanya butuh re-crawl agar title baru tampil di SERP.
 
+> **Status: ✅ EKSEKUSI 11 Agu 2026** — A (verifikasi live) & B (Request Indexing) selesai.
+> C (pantau) berjalan 1–4 minggu ke depan — cek sekali/minggu.
+
 **A. Verifikasi live dulu (sebelum request indexing):**
-- [ ] `curl -s https://syahrworks.com/en | grep -o '<title>.*</title>'` → harus
+- [x] `curl -s https://syahrworks.com/en | grep -o '<title>.*</title>'` → harus
       `Muhammad Rohman Syah — SyahrWorks | Full-Stack Developer`.
-- [ ] `curl -s https://syahrworks.com/en/about | grep -o '<title>.*</title>'` → `About | SyahrWorks`.
-- [ ] `curl -s https://syahrworks.com/en/blog | grep -o '<title>.*</title>'` → `Blog | SyahrWorks`.
-- [ ] Semua halaman kunci tetap `200` dan meta `robots: index, follow` (tidak ada regresi).
+- [x] `curl -s https://syahrworks.com/en/about | grep -o '<title>.*</title>'` → `About | SyahrWorks`.
+- [x] `curl -s https://syahrworks.com/en/blog | grep -o '<title>.*</title>'` → `Blog | SyahrWorks`.
+- [x] Semua halaman kunci tetap `200` dan meta `robots: index, follow` (tidak ada regresi).
 
 **B. Request Indexing (1× per URL — jangan spam):**
 GSC → **URL Inspection** → tempel URL → **Request Indexing**:
-- [ ] `https://syahrworks.com/en` dan `https://syahrworks.com/id`
-- [ ] `https://syahrworks.com/en/about` (dan `/id/about`)
-- [ ] `https://syahrworks.com/en/journey` (dan `/id/journey`)
-- [ ] `https://syahrworks.com/en/projects` (dan `/id/projects`)
-- [ ] `https://syahrworks.com/en/blog` (dan `/id/blog`)
-- [ ] 3 artikel blog: `.../en/blog/ppdb-sistem-terpadu-payment-gateway-ujian-aman`,
+- [x] `https://syahrworks.com/en` dan `https://syahrworks.com/id`
+- [x] `https://syahrworks.com/en/about` (dan `/id/about`)
+- [x] `https://syahrworks.com/en/journey` (dan `/id/journey`)
+- [x] `https://syahrworks.com/en/projects` (dan `/id/projects`)
+- [x] `https://syahrworks.com/en/blog` (dan `/id/blog`)
+- [x] 3 artikel blog: `.../en/blog/ppdb-sistem-terpadu-payment-gateway-ujian-aman`,
       `.../en/blog/panduan-perintah-cmd-powershell`, `.../en/blog/panduan-git-dari-pemula-hingga-recovery`
-- [ ] **Sitemaps**: pastikan `https://syahrworks.com/sitemap.xml` status **Success**
+- [x] **Sitemaps**: pastikan `https://syahrworks.com/sitemap.xml` status **Success**
       (submit ulang bila perlu — `lastmod` otomatis ter-update saat build).
 
 **C. Pantau (1×/minggu, 1–4 minggu):**
