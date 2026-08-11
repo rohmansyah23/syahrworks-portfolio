@@ -9,7 +9,6 @@ export default function Footer({ lang }: { lang: Locale }) {
   const data = getData(lang);
   const main = data.main.main;
   const year = new Date().getFullYear();
-  const domain = new URL(data.site.siteMetadata.siteUrl).hostname;
 
   const navLinks = [
     { href: `/${lang}`, label: t.navHome },
@@ -122,9 +121,9 @@ export default function Footer({ lang }: { lang: Locale }) {
       </div>
 
       <div className="border-t border-border">
-        <div className="container-editorial flex flex-col items-center justify-between gap-2 py-6 sm:flex-row">
-          <p className="micro-label text-muted-foreground">
-            © {year} {main.name} · {domain}
+        <div className="container-editorial flex flex-col items-center justify-between gap-2 py-6 text-center sm:flex-row sm:text-left">
+          <p className="micro-label text-balance text-muted-foreground">
+            © {year} {main.name}
           </p>
           <p className="micro-label text-muted-foreground">
             {t.footerBuiltWith}
