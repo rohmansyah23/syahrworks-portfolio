@@ -20,7 +20,7 @@ export const ui: UIStrings = {
   footerSocial: "Sosial",
   footerBuiltWith: "Dibangun dengan Next.js & Tailwind",
   /* Hero */
-  heroViewProjects: "Lihat Proyek",
+  heroViewProjects: "Lihat Proyek Saya",
   heroAboutMe: "Tentang Saya",
   heroGetInTouch: "Hubungi Saya",
   /* Label micro editorial */
@@ -109,7 +109,7 @@ export const ui: UIStrings = {
   aboutFactCertifications: "Sertifikasi",
   aboutFactCurrent: "Saat Ini",
   aboutShipped: "dirilis",
-  aboutCvButton: "Lihat CV",
+  aboutCvButton: "CV",
   aboutCvDialogDescription: "Dokumen bisa juga dibuka di tab baru.",
   aboutOpenNewTab: "Buka di tab baru",
   aboutCvMobileHint:

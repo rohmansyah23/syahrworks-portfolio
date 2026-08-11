@@ -22,7 +22,6 @@ export default function HeroSection({
   ).length;
 
   const isId = lang === "id";
-  const resumeUrl = data.about.about.resumeUrl;
 
   const scrollRef = useRef<HTMLSpanElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -115,14 +114,12 @@ export default function HeroSection({
                 {t.heroViewProjects}
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <a
-                href={resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={localePath(lang, "/about")}
                 className="inline-flex h-11 items-center gap-2 border border-border px-6 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground active:scale-[0.98]"
               >
-                {t.aboutCvButton}
-              </a>
+                {t.heroAboutMe}
+              </Link>
               <a
                 href="#get-in-touch"
                 className="inline-flex h-11 items-center gap-2 px-3 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"

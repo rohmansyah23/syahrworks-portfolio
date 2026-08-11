@@ -20,7 +20,7 @@ export const ui: UIStrings = {
   footerSocial: "Social",
   footerBuiltWith: "Built with Next.js & Tailwind",
   /* Hero */
-  heroViewProjects: "View Projects",
+  heroViewProjects: "See My Projects",
   heroAboutMe: "About Me",
   heroGetInTouch: "Get in touch",
   /* Label micro editorial */

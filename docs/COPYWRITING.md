@@ -62,7 +62,7 @@ Turunan yang dipakai di hero/home:
 
 ### Hero / Home (`data/{en,id}/main.ts`, `components/home/HeroSection.tsx`)
 - 1 kalimat posisi (role + stack + lokasi) → 1 kalimat nilai (buat apa) → 1 kalimat bukti (13+, 3× BNSP) → status lowongan **"Open to Full-Time · Remote"**.
-- CTA: **View CV** (solid, `about.resumeUrl` + `t.aboutCvButton`) → View Projects (outline) → View Journey / Get in touch (link).
+- CTA: **See My Projects** (`t.heroViewProjects`, solid) → **About Me** (`t.heroAboutMe`, outline, `localePath(lang, "/about")`) → Get in touch (`t.heroGetInTouch`, link).
 - Bukan: "Hello, I'm a developer" tanpa konteks; bukan effect typewriter.
 
 ### About (`data/{en,id}/about.ts`)
