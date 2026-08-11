@@ -182,6 +182,15 @@ export default function HeroSection({
                       {"\n"}  ],
                       {"\n"}  <span className="text-muted-foreground">certifications</span>:{" "}
                       <span className="text-accent">3</span> <span className="text-muted-foreground/60">{"// BNSP"}</span>
+                      {visitorCount != null && (
+                        <>
+                          {"\n"}  <span className="text-muted-foreground">visits</span>:{" "}
+                          <span className="text-accent font-medium">
+                            &quot;{visitorCount.toLocaleString(isId ? "id-ID" : "en-US")}&quot;
+                          </span>{" "}
+                          <span className="text-muted-foreground/60">{"// CountAPI"}</span>
+                        </>
+                      )}
                       {"\n"}&#125;;
                     </code>
                   </pre>
@@ -206,16 +215,6 @@ export default function HeroSection({
                     {certsCount}× BNSP
                   </p>
                 </div>
-                {visitorCount != null && (
-                  <div className="col-span-2 border border-border/50 bg-background/50 p-2.5">
-                    <p className="uppercase tracking-wider text-muted-foreground">
-                      {isId ? "Kunjungan" : "Visited"}
-                    </p>
-                    <p className="mt-0.5 font-medium text-foreground">
-                      {visitorCount.toLocaleString(isId ? "id-ID" : "en-US")}×
-                    </p>
-                  </div>
-                )}
               </div>
             </div>
           </div>
