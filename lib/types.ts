@@ -71,6 +71,8 @@ export type JourneyItem = {
   tools?: string[];
   logo?: string;
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 };
 
 /* ---------- Projects ---------- */

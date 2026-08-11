@@ -92,6 +92,8 @@ export const journey: JourneyItem[] = [
     subtitle: "Badan Nasional Sertifikasi Profesi (BNSP)",
     caption: "Credential ID TIK.1241.00732 2025 · Valid 2025–2028",
     image: "/certificates/bnsp-network-administrator-madya-v2.webp",
+    imageWidth: 2000,
+    imageHeight: 2828,
     description: [
       "National competency certification from the National Professional Certification Agency (BNSP) validating professional skills in computer network administration based on the Indonesian SKKNI.",
       "Covered topics: network addressing, network security, disaster recovery planning, wireless network deployment, switch & routing configuration, and network security monitoring.",
@@ -108,6 +110,8 @@ export const journey: JourneyItem[] = [
     subtitle: "Badan Nasional Sertifikasi Profesi (BNSP)",
     caption: "Credential ID TIK.1241.01755 2024 · Valid 2024–2027",
     image: "/certificates/bnsp-program-analyst-v2.webp",
+    imageWidth: 2000,
+    imageHeight: 2979,
     description: [
       "Certified as a Program Analyst by the National Professional Certification Agency (BNSP), proving software development competency based on the Indonesian SKKNI.",
       "Covered topics: SQL, database access, programming algorithms, code documentation, software implementation, debugging, testing, version control, and software maintenance.",
@@ -124,6 +128,8 @@ export const journey: JourneyItem[] = [
     subtitle: "Badan Nasional Sertifikasi Profesi (BNSP)",
     caption: "Credential ID J1060000542021 · Valid 2021–2024 (expired)",
     image: "/certificates/bnsp-software-engineering-kkni-ii-v2.webp",
+    imageWidth: 2000,
+    imageHeight: 3007,
     description: [
       "Professional certification issued by BNSP validating Software Engineering competency at KKNI Level II.",
       "Covered topics: programming and Object-Oriented Programming (OOP).",

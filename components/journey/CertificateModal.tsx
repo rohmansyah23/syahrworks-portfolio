@@ -36,8 +36,8 @@ export default function CertificateModal({
             <Image
               src={item.image ?? ""}
               alt={item.title}
-              width={2000}
-              height={2979}
+              width={item.imageWidth ?? 2000}
+              height={item.imageHeight ?? 2979}
               sizes="(min-width: 1024px) 56rem, 100vw"
               className="block h-auto w-full object-contain sm:mx-auto sm:h-auto sm:max-h-[80vh] sm:w-auto"
             />
