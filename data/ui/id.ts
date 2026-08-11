@@ -99,6 +99,7 @@ export const ui: UIStrings = {
   journeyTypeEducation: "Pendidikan",
   journeyTypeCertification: "Sertifikasi",
   journeyTypeCompetition: "Kompetisi",
+  certificationView: "Lihat Sertifikat",
   /* About */
   aboutTitle: "Seorang developer yang memperhatikan detail.",
   aboutEngineeringPhilosophy: "Filosofi Rekayasa",

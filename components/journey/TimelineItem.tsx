@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatPeriod } from "@/lib/utils";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import type { JourneyItem } from "@/lib/types";
+import CertificateViewer from "@/components/journey/CertificateViewer";
 
 export default function TimelineItem({
   item,
@@ -70,6 +71,12 @@ export default function TimelineItem({
             {item.tools.map((tool) => (
               <Badge key={tool}>{tool}</Badge>
             ))}
+          </div>
+        )}
+
+        {item.image && (
+          <div className="mt-5">
+            <CertificateViewer item={item} lang={lang} />
           </div>
         )}
       </div>

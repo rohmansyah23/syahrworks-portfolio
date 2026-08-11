@@ -99,6 +99,7 @@ export const ui: UIStrings = {
   journeyTypeEducation: "Education",
   journeyTypeCertification: "Certification",
   journeyTypeCompetition: "Competition",
+  certificationView: "View Certificate",
   /* About */
   aboutTitle: "A developer who cares about the details.",
   aboutEngineeringPhilosophy: "Engineering Philosophy",

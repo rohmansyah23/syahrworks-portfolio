@@ -122,6 +122,7 @@ export type UIStrings = {
   journeyTypeEducation: string;
   journeyTypeCertification: string;
   journeyTypeCompetition: string;
+  certificationView: string;
   /* About */
   aboutTitle: string;
   aboutEngineeringPhilosophy: string;

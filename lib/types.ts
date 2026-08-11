@@ -70,6 +70,7 @@ export type JourneyItem = {
   description?: string[];
   tools?: string[];
   logo?: string;
+  image?: string;
 };
 
 /* ---------- Projects ---------- */
