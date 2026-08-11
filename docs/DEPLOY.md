@@ -40,7 +40,7 @@ GitHub Secrets yang dipakai workflow:
 
 ## Implikasi untuk Coding Agent (WAJIB BACA)
 
-- **Push ke `master` = langsung masuk produksi.** Jangan push hasil setengah
+- **Push ke `master` (via `git push upstream master`) = langsung masuk produksi.** Jangan push hasil setengah
   jadi/sedang broken; pastikan `npm run lint` dan `npm run build` LOLOS dulu.
 - Untuk mengecek status deploy terbaru: `gh run list`.
 - Untuk memicu deploy ulang manual (tanpa push): jalankan workflow
@@ -88,7 +88,7 @@ Domain dikelola di **Dewabiz**: https://my.dewabiz.com/clientarea.php?action=dom
 - Metode verifikasi GSC: **meta tag** (URL-prefix property, sudah aktif) **dan** TXT DNS
   (memungkinkan **Domain property** — mencakup http/https + www sekaligus).
 - `www` & non-`www` sama-sama live; konsolidasi **308 `www → non-www` sudah terpasang**
-  via `redirects()` di `next.config.ts` (auto-deploy tiap push ke `master`). Sisa tugas
+  via `redirects()` di `next.config.ts` (auto-deploy tiap `git push upstream master`). Sisa tugas
   manual hanya GSC/Vercel (lihat `docs/SEO.md` §3.2).
 - **JANGAN** menambah record SPF/MX terpisah tanpa kebutuhan email yang nyata.
 

@@ -55,4 +55,4 @@ docs/        # PRD.md, PROMPT.md, PLAN.md, I18N.md, ENGLISH.md
 
 ## Deploy
 
-Produksi di **VPS** → `https://syahrworks.com` (bukan Vercel). Auto-deploy via GitHub Actions setiap push ke `master`. Detail hosting, alur deploy, dan peringatan di `docs/DEPLOY.md`. Instruksi lengkap untuk coding agent di `AGENTS.md`.
+Produksi di **VPS** → `https://syahrworks.com` (bukan Vercel). Auto-deploy via GitHub Actions setiap `git push upstream master` (push ke fork `origin` TIDAK memicu deploy). Detail hosting, alur deploy, dan peringatan di `docs/DEPLOY.md`. Instruksi lengkap untuk coding agent di `AGENTS.md`.

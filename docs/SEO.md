@@ -81,7 +81,7 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
    submit sitemap — gratis menambah peluang traffic.
 5. **Konsolidasi `www` vs non-`www`**: redirect **308 permanen** `www.syahrworks.com`
    → `syahrworks.com` **sudah terpasang di kode** (`redirects()` di `next.config.ts`,
-   kondisi `has: host = www.syahrworks.com`) dan auto-deploy tiap push ke `master`.
+   kondisi `has: host = www.syahrworks.com`) dan auto-deploy tiap `git push upstream master`.
    Canonical non-www sudah dipakai di seluruh halaman.
    - Verifikasi live: `curl -s -o NUL -w '%{http_code} %{redirect_url}' https://www.syahrworks.com`
      → harus `308 https://syahrworks.com/en`.
