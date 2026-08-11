@@ -110,7 +110,7 @@ export const ui: UIStrings = {
   aboutFactCertifications: "Sertifikasi",
   aboutFactCurrent: "Saat Ini",
   aboutShipped: "dirilis",
-  aboutCvButton: "CV",
+  aboutCvButton: "Lihat CV",
   aboutCvDialogDescription: "Dokumen bisa juga dibuka di tab baru.",
   aboutOpenNewTab: "Buka di tab baru",
   aboutCvMobileHint:
