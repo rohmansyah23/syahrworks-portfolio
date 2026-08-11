@@ -4,7 +4,7 @@ Dokumen ini dibaca otomatis oleh berbagai coding agent (opencode, Cursor, Claude
 Sebelum menulis kode, agent WAJIB membaca:
 - `docs/PRD.md` — requirements lengkap
 - `docs/PROMPT.md` — super prompt eksekusi (instruksi langkah-demi-langkah)
-- `docs/DEPLOY.md` — hosting & deploy produksi (WAJIB sebelum push ke `master`)
+- `docs/DEPLOY.md` — hosting & deploy produksi (WAJIB dibaca sebelum push; push deploy = `git push upstream master`)
 - `docs/DEPLOY-VERCEL-FALLBACK.md` — runbook fallback sementara ke Vercel saat VPS habis (domain tetap `syahrworks.com`)
 - `docs/COPYWRITING.md` — standar copywriting "anti AI-slop" (target HRD/full-time) — WAJIB sebelum mengubah teks konten/UI/metadata.
 - `docs/SEO.md` — strategi SEO, runbook GSC & konsolidasi brand (WAJIB sebelum mengubah metadata/canonical/hreflang/JSON-LD).
@@ -15,7 +15,7 @@ Sebelum menulis kode, agent WAJIB membaca:
 - Portfolio v2 milik **Muhammad Rohman Syah (SyahrWorks)**, dibangun 100% dari nol.
 - Stack: **Next.js 16 · React 19 · TypeScript 5 · Tailwind CSS 4** (CSS-first, tanpa `tailwind.config.js`).
 - Arsitektur: App Router, multi-page 5 halaman: **Home, About, Journey, Blog (+detail), Projects** + 404.
-- Deploy: **VPS produksi** → `https://syahrworks.com` · auto-deploy via `.github/workflows/deploy.yml` pada setiap push ke `master` (detail: `docs/DEPLOY.md`) · Repo: `rohmansyah23/syahrworks-portfolio`.
+- Deploy: **VPS produksi** → `https://syahrworks.com` · auto-deploy via `.github/workflows/deploy.yml` pada `git push upstream master` (detail: `docs/DEPLOY.md`) · Repo deploy: `rohmansyah23/syahrworks-portfolio` (remote `upstream`) · Fork pribadi: `syahrworks/syahrworks-portfolio` (remote `origin` — TIDAK memicu deploy) · Akun `gh` aktif: `syahrworks` (collaborator write di repo deploy).
 - Bahasa percakapan dengan user: **Bahasa Indonesia**. Konten proyek/pengalaman boleh English (konsisten data lama), artikel blog Bahasa Indonesia.
 
 ## 2. Rules Wajib (Hard Constraints)

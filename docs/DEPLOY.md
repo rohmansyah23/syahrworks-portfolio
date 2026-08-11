@@ -13,7 +13,7 @@ Dibaca oleh coding agent/sesi lain agar paham status produksi sebelum melakukan 
 | **Service systemd** | `syahrworks` |
 | **Path di server** | `/home/deploy/syahrworks-portfolio` |
 | **Auto-deploy** | GitHub Actions `.github/workflows/deploy.yml` |
-| **Pemicu deploy** | push ke branch `master` (atau `workflow_dispatch` manual) |
+| **Pemicu deploy** | `git push upstream master` (atau `workflow_dispatch` manual) |
 | **DNS** | Registrar **Dewabiz**: A `@` & `www` → `103.160.213.205`, TXT verifikasi GSC (detail: [§ Konfigurasi DNS](#konfigurasi-dns-registrar-dewabiz)) |
 
 > **Catatan penting:** `syahrworks.vercel.app` adalah domain **arsip/versi lama**
@@ -22,7 +22,7 @@ Dibaca oleh coding agent/sesi lain agar paham status produksi sebelum melakukan 
 
 ## Alur Deploy Otomatis
 
-Setiap push ke `master` memicu workflow `Deploy to VPS` (`.github/workflows/deploy.yml`):
+Setiap `git push upstream master` memicu workflow `Deploy to VPS` (`.github/workflows/deploy.yml`):
 
 1. SSH ke VPS (`appleboy/ssh-action`) menggunakan secret `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`.
 2. `cd /home/deploy/syahrworks-portfolio && git pull origin master`.
@@ -45,10 +45,15 @@ GitHub Secrets yang dipakai workflow:
 - Untuk mengecek status deploy terbaru: `gh run list`.
 - Untuk memicu deploy ulang manual (tanpa push): jalankan workflow
   `Deploy to VPS` via `gh workflow run deploy.yml`.
-- Remote git sekarang **HTTPS** (`https://github.com/rohmansyah23/syahrworks-portfolio.git`),
-  karena SSH key GitHub tidak terpasang di mesin dev. Autentikasi push via `gh` CLI
-  (token scope `repo`). Jangan ganti remote kembali ke `git@github.com:` tanpa memastikan
-  SSH key GitHub valid.
+- **Push deploy WAJIB via `git push upstream master`.** Repo lokal punya **2 remote**:
+  - `origin` → fork **`syahrworks/syahrworks-portfolio`** (milik akun aktif).
+  - `upstream` → repo deploy **`rohmansyah23/syahrworks-portfolio`** (tempat workflow
+    `Deploy to VPS` aktif & sumber `git pull` di VPS).
+  - `git push origin master` HANYA meng-update fork — **tidak** memicu deploy.
+  - Akun `gh` aktif: **`syahrworks`** (HTTPS, token scope `repo`). Sudah menjadi
+    collaborator dengan akses **write** di `rohmansyah23/syahrworks-portfolio`,
+    sehingga push ke `upstream` diperbolehkan. Jangan ganti remote ke `git@github.com:`
+    tanpa SSH key GitHub yang valid.
 
 ## SSH ke VPS (untuk troubleshooting)
 
@@ -104,6 +109,6 @@ Vercel `76.76.21.21`, dan rollback balik ke VPS).
 ## Verifikasi
 
 - [ ] `https://syahrworks.com` merespons (A record → `103.160.213.205`).
-- [ ] `gh run list` menunjukkan workflow "Deploy to VPS" `success` untuk commit terakhir di `master`.
+- [ ] `gh run list -R rohmansyah23/syahrworks-portfolio` menunjukkan workflow "Deploy to VPS" `success` untuk commit terakhir di `master`.
 - [ ] Konten di produksi sesuai HEAD `master` lokal.
 - [ ] DNS: A `@`/`www` → `103.160.213.205` dan TXT verifikasi GSC (lihat [§ Konfigurasi DNS](#konfigurasi-dns-registrar-dewabiz)).
