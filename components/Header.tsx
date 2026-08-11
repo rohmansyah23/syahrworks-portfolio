@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore, type MouseEvent } from "react";
 import { useTheme } from "@/components/ThemeProvider";
 import { Languages, Menu, Moon, Sun, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -74,6 +74,15 @@ export default function Header({ lang }: { lang: Locale }) {
   const [open, setOpen] = useState(false);
   const t = getDictionary(lang);
   const main = getData(lang).main.main;
+  const isHome = pathname === `/${lang}`;
+
+  const scrollTopIfHome = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === `/${lang}` && isHome) {
+      e.preventDefault();
+      document.body.style.overflow = "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   const navItems = [
     { href: `/${lang}`, label: t.navHome },
@@ -103,6 +112,7 @@ export default function Header({ lang }: { lang: Locale }) {
           <Link
             href={`/${lang}`}
             aria-label="SyahrWorks Home"
+            onClick={(e) => scrollTopIfHome(e, `/${lang}`)}
             className="flex items-center gap-3 font-serif text-2xl sm:text-3xl tracking-tight text-foreground transition-opacity duration-200 hover:opacity-85"
           >
             <img
@@ -128,6 +138,7 @@ export default function Header({ lang }: { lang: Locale }) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={(e) => scrollTopIfHome(e, item.href)}
                   className={cn(
                     "rounded-sm px-3.5 py-2 text-sm transition-colors duration-200",
                     active
@@ -217,7 +228,10 @@ export default function Header({ lang }: { lang: Locale }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    setOpen(false);
+                    scrollTopIfHome(e, item.href);
+                  }}
                   className={cn(
                     "border-b border-border py-3.5 text-base transition-colors duration-200",
                     active
