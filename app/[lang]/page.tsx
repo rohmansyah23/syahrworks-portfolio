@@ -17,7 +17,8 @@ export async function generateMetadata({
   const lang = await resolveLang(params);
   const page = getData(lang).site.pageMetadata.home;
   return {
-    title: page.title,
+    // absolute: title beranda sudah lengkap (nama + role), jangan kena template "%s | SyahrWorks".
+    title: { absolute: page.title },
     description: page.description,
     alternates: pageAlternates(lang, "/"),
     openGraph: pageOpenGraph(lang, "/", page.title, page.description),

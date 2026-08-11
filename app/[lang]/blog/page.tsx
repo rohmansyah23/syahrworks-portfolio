@@ -28,7 +28,7 @@ export default async function BlogPage({
 
   return (
     <div className="container-editorial py-14 sm:py-20">
-      <p className="micro-label text-accent">01 — {t.blogLabel}</p>
+      <p className="micro-label text-accent">01 / {t.blogLabel}</p>
       <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl">
         {t.blogTitle}
       </h1>

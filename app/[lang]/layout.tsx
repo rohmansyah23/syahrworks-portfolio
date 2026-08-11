@@ -54,7 +54,7 @@ export async function generateMetadata({
     metadataBase: new URL(meta.siteUrl),
     title: {
       default: meta.title,
-      template: `%s — ${meta.author}`,
+      template: "%s | SyahrWorks",
     },
     description: meta.description,
     keywords: meta.keywords,

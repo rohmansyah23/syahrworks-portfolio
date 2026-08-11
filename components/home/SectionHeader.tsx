@@ -18,7 +18,7 @@ export default function SectionHeader({
   return (
     <div className={cn("mb-12 max-w-2xl", className)}>
       <p className="micro-label text-accent">
-        {index} — {label}
+        {index} / {label}
       </p>
       <h2 className="mt-3 font-serif text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl">
         {title}

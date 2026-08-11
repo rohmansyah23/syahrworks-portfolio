@@ -42,7 +42,7 @@ export default function HeroSection({ lang }: { lang: Locale }) {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 lg:items-center">
           {/* Kolom Kiri — Teks & CTA */}
           <div className="lg:col-span-7">
-            <p className="micro-label text-accent">01 — {t.homeLabel}</p>
+            <p className="micro-label text-accent">01 / {t.homeLabel}</p>
 
             <h1 className="mt-4 font-serif text-5xl leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-[min(7.5rem,10.5vw)] lg:leading-[0.95] lg:whitespace-nowrap">
               {/* Layar < 383px & 465px - 1023px: Normal flow */}
@@ -102,30 +102,24 @@ export default function HeroSection({ lang }: { lang: Locale }) {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                href={localePath(lang, "/projects")}
+                className="inline-flex h-11 items-center gap-2 bg-foreground px-6 text-sm font-medium text-background transition-all duration-200 hover:opacity-85 active:scale-[0.98]"
+              >
+                {t.heroViewProjects}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
               <a
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center gap-2 bg-foreground px-6 text-sm font-medium text-background transition-all duration-200 hover:opacity-85 active:scale-[0.98]"
-              >
-                {t.aboutCvButton}
-                <ArrowRight className="h-4 w-4" />
-              </a>
-              <Link
-                href={localePath(lang, "/projects")}
                 className="inline-flex h-11 items-center gap-2 border border-border px-6 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground active:scale-[0.98]"
               >
-                {t.heroViewProjects}
-              </Link>
-              <Link
-                href={localePath(lang, "/journey")}
-                className="inline-flex h-11 items-center gap-2 px-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
-              >
-                {t.heroViewJourney}
-              </Link>
+                {t.aboutCvButton}
+              </a>
               <a
                 href="#get-in-touch"
-                className="inline-flex h-11 items-center gap-2 px-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
+                className="inline-flex h-11 items-center gap-2 px-3 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
               >
                 {t.heroGetInTouch}
                 <ArrowDown className="h-4 w-4" />
