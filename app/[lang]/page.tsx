@@ -8,6 +8,7 @@ import ContactForm from "@/components/home/ContactForm";
 import JsonLd from "@/components/JsonLd";
 import { getData, resolveLang } from "@/lib/i18n";
 import { pageAlternates, pageOpenGraph, personJsonLd } from "@/lib/seo";
+import { getVisitorCount } from "@/lib/counter";
 
 export async function generateMetadata({
   params,
@@ -31,11 +32,12 @@ export default async function HomePage({
   params: Promise<{ lang?: string }>;
 }) {
   const lang = await resolveLang(params);
+  const visitorCount = await getVisitorCount();
 
   return (
     <>
       <JsonLd data={personJsonLd(lang)} />
-      <HeroSection lang={lang} />
+      <HeroSection lang={lang} visitorCount={visitorCount} />
       <GetInTouch lang={lang} />
       <TechStack lang={lang} />
       <PinnedRepos lang={lang} />

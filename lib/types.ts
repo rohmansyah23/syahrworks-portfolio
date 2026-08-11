@@ -108,6 +108,12 @@ export type Social = {
   link: string;
 };
 
+/* ---------- Visitor Counter ---------- */
+export type CounterResponse = {
+  key: string;
+  value: number;
+};
+
 /* ---------- GitHub Pinned Repos ---------- */
 export type PinnedRepo = {
   id: number;

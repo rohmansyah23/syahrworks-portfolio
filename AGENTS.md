@@ -22,7 +22,7 @@ Sebelum menulis kode, agent WAJIB membaca:
 - **DILARANG** menyentuh/memodifikasi `D:\A-Projek\Web\next-portfolio` (repo arsip lama). Hanya dipakai sebagai SUMBER KONTEN: `data.json` + `public/` (gambar).
 - **DILARANG** menyalin teks/konten milik ShinyQ (Kurniadi) — struktur halaman boleh diadopsi, konten & bahasa desain TIDAK.
 - **TANPA database** (Neon/Postgres, Prisma, ORM, migrasi), tanpa autentikasi, tanpa CMS/dashboard. Konten 100% statis via modul TS di `data/`.
-- Satu-satunya fitur dinamis: **GitHub Pinned Repos** (server fetch + cache revalidate, fallback wajib).
+- Satu-satunya fitur dinamis: **GitHub Pinned Repos** (server fetch + cache revalidate, fallback wajib) dan **Visitor Counter** (CountAPI revival `countapi.mileshilliard.com`, server fetch + revalidate 3600s + fallback wajib, tampil di hero spec-sheet home).
 - **TANPA** efek typewriter, `react-scroll`, `@next/font`, firebase, sendgrid.
 
 ## 3. Stack & Commands
@@ -42,7 +42,7 @@ Sebelum menulis kode, agent WAJIB membaca:
 app/                        # [lang]/layout (root: html lang per locale), [lang]/ 6 halaman + blog/[slug], not-found, page.tsx (redirect / → /en), sitemap, robots, globals.css
 components/                 # Header, Footer, home/*, about/*, journey/*, blog/*, projects/*, ui/*
 data/                       # ui/{en,id}.ts (dictionary UI), en/ & id/ (konten per locale), techStack, socials (shared)
-lib/                        # i18n.ts (Locale, getData, getDictionary, localePath), github.ts, utils.ts, types.ts
+lib/                        # i18n.ts (Locale, getData, getDictionary, localePath), counter.ts (visitor count), github.ts, utils.ts, types.ts
 public/                     # salinan aset dari repo lama (foto, gambar proyek, favicon)
 docs/                       # PRD.md, PROMPT.md (sumber spesifikasi), I18N.md, ENGLISH.md
 ```
@@ -76,7 +76,7 @@ docs/                       # PRD.md, PROMPT.md (sumber spesifikasi), I18N.md, E
 - Kartu flat hairline, radius kecil (2–6px); button primary **solid ink** (bukan pill ungu); grid proyek **asimetris/bento**.
 
 ## 7. Non-Goals
-- Tidak menambah fitur dinamis lain (visitor counter, R2, KV, database, auth).
+- Tidak menambah fitur dinamis lain (R2, KV, database, auth).
 - Tidak membuat dashboard admin/CMS.
 - Tidak mengubah repo lama.
 

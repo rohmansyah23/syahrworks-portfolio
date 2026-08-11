@@ -6,7 +6,13 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 import { getData, getDictionary, localePath, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export default function HeroSection({ lang }: { lang: Locale }) {
+export default function HeroSection({
+  lang,
+  visitorCount,
+}: {
+  lang: Locale;
+  visitorCount?: number | null;
+}) {
   const t = getDictionary(lang);
   const data = getData(lang);
   const main = data.main.main;
@@ -203,6 +209,16 @@ export default function HeroSection({ lang }: { lang: Locale }) {
                     {certsCount}× BNSP
                   </p>
                 </div>
+                {visitorCount != null && (
+                  <div className="col-span-2 border border-border/50 bg-background/50 p-2.5">
+                    <p className="uppercase tracking-wider text-muted-foreground">
+                      {isId ? "Kunjungan" : "Visited"}
+                    </p>
+                    <p className="mt-0.5 font-medium text-foreground">
+                      {visitorCount.toLocaleString()}×
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
