@@ -94,11 +94,11 @@ syahrworks-portfolio/
 ## 10. Spesifikasi Halaman
 **Navbar (global, sticky blur):** logo **wordmark "SyahrWorks"**, menu Home/About/Journey/Blog/Projects (state aktif), theme toggle, drawer mobile. **Footer (global):** Navigations, Contact, sosial, copyright.
 
-1. **Home (`/`)** — Hero **editorial statis** (micro-label `01 — HOME`, nama besar serif "Muhammad Rohman Syah", subtitle `main.tagline`, 2 CTA ke /journey & /about; tanpa typewriter) → Get In Touch (micro-label `02 — GET IN TOUCH`, kartu info minimal) → Tech Stack (`03 — TECH STACK`, 3 grup ikon) → GitHub Pinned Repos (`04 — PINNED REPOS`, 6 repo + "View All") → Latest Blog (`05 — FROM THE BLOG`) → Contact form Formspree (`06 — CONTACT`, validasi email + toast).
-2. **About (`/about`)** — micro-label `01 — ABOUT`, judul serif besar, foto (sticky desktop), bio, ⚙️ Engineering Philosophy, 💻 Working Style, ✨ Technologies I Love, blockquote, tombol **View CV** (modal PDF).
-3. **Journey (`/journey`)** — micro-label `01 — JOURNEY`, tabs filter 5 type, timeline garis tengah/kiri, item: logo, periode, judul, subtitle, bullet, chips tools.
-4. **Blog (`/blog`)** — micro-label `01 — BLOG`, search + tag chips, grid kartu, "No posts found". **Detail `/blog/[slug]`** — cover, meta, render markdown, back link, `generateStaticParams`.
-5. **Projects (`/projects`)** — micro-label `01 — PROJECTS`, filter kategori, grid asimetris/bento, kartu → **ProjectModal** (desc, role, techStack, links, galeri → GalleryModal).
+1. **Home (`/`)** — Hero **editorial statis** (micro-label `01 / HOME`, nama besar serif "Muhammad Rohman Syah", subtitle `main.tagline`, 2 CTA ke /journey & /about; tanpa typewriter) → Get In Touch (micro-label `02 / GET IN TOUCH`, kartu info minimal) → Tech Stack (`03 / TECH STACK`, 3 grup ikon) → GitHub Pinned Repos (`04 / PINNED REPOS`, 6 repo + "View All") → Latest Blog (`05 / FROM THE BLOG`) → Contact form Formspree (`06 / CONTACT`, validasi email + toast).
+2. **About (`/about`)** — micro-label `01 / ABOUT`, judul serif besar, foto (sticky desktop), bio, ⚙️ Engineering Philosophy, 💻 Working Style, ✨ Technologies I Love, blockquote, tombol **View CV** (modal PDF).
+3. **Journey (`/journey`)** — micro-label `01 / JOURNEY`, tabs filter 5 type, timeline garis tengah/kiri, item: logo, periode, judul, subtitle, bullet, chips tools.
+4. **Blog (`/blog`)** — micro-label `01 / BLOG`, search + tag chips, grid kartu, "No posts found". **Detail `/blog/[slug]`** — cover, meta, render markdown, back link, `generateStaticParams`.
+5. **Projects (`/projects`)** — micro-label `01 / PROJECTS`, filter kategori, grid asimetris/bento, kartu → **ProjectModal** (desc, role, techStack, links, galeri → GalleryModal).
 6. **404** — micro-label `404`, "Page not found", tombol kembali.
 
 ## 11. Fitur Dinamis
@@ -133,7 +133,7 @@ syahrworks-portfolio/
 - **Display (serif):** Instrument Serif — heading utama, ukuran besar (`clamp`), `line-height` tight.
 - **Body (sans):** Inter — teks & UI.
 - **Mono:** JetBrains Mono — micro-label, angka, kode.
-- **Micro-label:** uppercase, mono, `tracking-widest`, ~`0.7rem`. Contoh: `01 — ABOUT`, `SELECTED WORK`.
+- **Micro-label:** uppercase, mono, `tracking-widest`, ~`0.7rem`. Contoh: `01 / ABOUT`, `SELECTED WORK`.
 
 ### Layout & Komponen
 - Container max ~`72rem`, whitespace generatif antar section (`py-20/28`).

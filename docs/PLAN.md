@@ -103,11 +103,11 @@ public/  (salinan aset dari repo lama)
 10. `components/Footer.tsx` — Navigations, Contact, sosial, copyright.
 
 ### Phase 2 — Halaman (urutan build)
-11. **Home** — Hero editorial statis (01 — HOME) → Get In Touch (02) → Tech Stack (03) → PinnedRepos (04) → Latest Blog (05) → Contact Formspree (06, validasi email + toast).
-12. **About** — 01 — ABOUT: foto sticky, bio, Engineering Philosophy, Working Style, Technologies I Love, quote, tombol View CV (modal PDF).
-13. **Journey** — 01 — JOURNEY: tabs filter 5 type, timeline (garis tengah desktop / kiri mobile), item: logo, periode, judul, subtitle, bullet, chips tools.
-14. **Projects** — 01 — PROJECTS: filter kategori, grid asimetris/bento, kartu → ProjectModal (desc, role, techStack, links, galeri) → GalleryModal.
-15. **Blog** — 01 — BLOG: search + tag filter chips, grid kartu, "No posts found". **Detail `[slug]`**: cover, meta, markdown, back link, `generateStaticParams`.
+11. **Home** — Hero editorial statis (01 / HOME) → Get In Touch (02) → Tech Stack (03) → PinnedRepos (04) → Latest Blog (05) → Contact Formspree (06, validasi email + toast).
+12. **About** — 01 / ABOUT: foto sticky, bio, Engineering Philosophy, Working Style, Technologies I Love, quote, tombol View CV (modal PDF).
+13. **Journey** — 01 / JOURNEY: tabs filter 5 type, timeline (garis tengah desktop / kiri mobile), item: logo, periode, judul, subtitle, bullet, chips tools.
+14. **Projects** — 01 / PROJECTS: filter kategori, grid asimetris/bento, kartu → ProjectModal (desc, role, techStack, links, galeri) → GalleryModal.
+15. **Blog** — 01 / BLOG: search + tag filter chips, grid kartu, "No posts found". **Detail `[slug]`**: cover, meta, markdown, back link, `generateStaticParams`.
 16. **404** — micro-label 404, "Page not found", tombol kembali.
 17. **SEO** — `app/sitemap.ts`, `app/robots.ts`, `generateMetadata` per halaman.
 
@@ -131,7 +131,7 @@ public/  (salinan aset dari repo lama)
 ## 9. Design System — "Editorial Anti-Slop" (ringkasan wajib)
 
 - **Palet:** bg `#FAFAF9` (light) / `#0A0A0A` (dark) · ink `#111111` / `#E6E6E6` · muted `#6B7280`/`#A1A1AA` · accent **deep violet (hemat)** · hairline `#E5E5E5`/`#262626`.
-- **Tipografi:** Instrument Serif (heading besar tight) · Inter (body) · JetBrains Mono (micro-label uppercase `tracking-widest` ~0.7rem, contoh `01 — ABOUT`).
+- **Tipografi:** Instrument Serif (heading besar tight) · Inter (body) · JetBrains Mono (micro-label uppercase `tracking-widest` ~0.7rem, contoh `01 / ABOUT`).
 - **Layout:** container max ~72rem, py-20/28, section bernomor index, kartu flat hairline radius 2–6px, button primary solid ink (bukan pill ungu), grid proyek asimetris/bento, motion 200–300ms bertujuan.
 - **Anti-Slop Checklist:** ❌ gradient ungu/indigo · ❌ blob/glassmorphism · ❌ hero centered + floating icons/typewriter · ❌ emoji label section · ❌ look shadcn default (rounded-xl + shadow abu) · ❌ grid 3 kolom identik tanpa hierarki.
 - **CSS variables:** `--background, --foreground, --card, --border, --primary, --muted, --muted-foreground, --accent` (light default, dark toggle).
