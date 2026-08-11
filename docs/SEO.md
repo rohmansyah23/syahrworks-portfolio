@@ -181,6 +181,41 @@ http/https + www + semua subdomain dalam satu property.
       URL-prefix lama tetap bisa dipakai berdampingan.
 - [ ] Setelah ±1 minggu: cek **Performance → Queries** untuk keyword "syahrworks" (lihat §3.4 bagian D).
 
+### 3.6 Checklist Request Indexing — Pasca-Deploy Title Baru (11 Agu 2026)
+
+**Latar:** Deploy commit `a31699d` me-refactor title `<head>` — home menjadi
+`Muhammad Rohman Syah — SyahrWorks | Full-Stack Developer`, sub-halaman menjadi
+`<Nama> | SyahrWorks` (About/Journey/Projects/Blog), dan detail blog mendapat suffix
+`| SyahrWorks`. Perubahan title **tidak** menurunkan index (canonical/hreflang/robots
+`index, follow` tidak berubah) — hanya butuh re-crawl agar title baru tampil di SERP.
+
+**A. Verifikasi live dulu (sebelum request indexing):**
+- [ ] `curl -s https://syahrworks.com/en | grep -o '<title>.*</title>'` → harus
+      `Muhammad Rohman Syah — SyahrWorks | Full-Stack Developer`.
+- [ ] `curl -s https://syahrworks.com/en/about | grep -o '<title>.*</title>'` → `About | SyahrWorks`.
+- [ ] `curl -s https://syahrworks.com/en/blog | grep -o '<title>.*</title>'` → `Blog | SyahrWorks`.
+- [ ] Semua halaman kunci tetap `200` dan meta `robots: index, follow` (tidak ada regresi).
+
+**B. Request Indexing (1× per URL — jangan spam):**
+GSC → **URL Inspection** → tempel URL → **Request Indexing**:
+- [ ] `https://syahrworks.com/en` dan `https://syahrworks.com/id`
+- [ ] `https://syahrworks.com/en/about` (dan `/id/about`)
+- [ ] `https://syahrworks.com/en/journey` (dan `/id/journey`)
+- [ ] `https://syahrworks.com/en/projects` (dan `/id/projects`)
+- [ ] `https://syahrworks.com/en/blog` (dan `/id/blog`)
+- [ ] 3 artikel blog: `.../en/blog/ppdb-sistem-terpadu-payment-gateway-ujian-aman`,
+      `.../en/blog/panduan-perintah-cmd-powershell`, `.../en/blog/panduan-git-dari-pemula-hingga-recovery`
+- [ ] **Sitemaps**: pastikan `https://syahrworks.com/sitemap.xml` status **Success**
+      (submit ulang bila perlu — `lastmod` otomatis ter-update saat build).
+
+**C. Pantau (1×/minggu, 1–4 minggu):**
+- [ ] **Indexing → Pages**: "Halaman valid" bertambah/stabil — title baru tidak
+      menurunkan jumlah halaman terindeks.
+- [ ] **URL Inspection** `https://syahrworks.com/en` → "URL is on Google".
+- [ ] Cek SERP (mode incognito) `site:syahrworks.com` → title tampil dengan format baru.
+- [ ] Ekspektasi: Google re-crawl & perbarui title dalam hitungan **hari–minggu**;
+      fluktuasi sesaat "Crawled – currently not indexed" dianggap normal (lihat §3.4E).
+
 ## 4. Checklist Monitoring (bulanan)
 
 - [ ] GSC → sitemap.xml "Success", tidak ada error di Coverage.
