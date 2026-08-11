@@ -215,7 +215,7 @@ export default function HeroSection({
                       {isId ? "Kunjungan" : "Visited"}
                     </p>
                     <p className="mt-0.5 font-medium text-foreground">
-                      {visitorCount.toLocaleString()}×
+                      {visitorCount.toLocaleString(isId ? "id-ID" : "en-US")}×
                     </p>
                   </div>
                 )}
