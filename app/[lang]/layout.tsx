@@ -4,7 +4,6 @@ import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ScrollReset from "@/components/ScrollReset";
 import JsonLd from "@/components/JsonLd";
 import { websiteJsonLd } from "@/lib/seo";
 import {
@@ -107,6 +106,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lang}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${instrument.variable} ${inter.variable} ${jetbrains.variable} h-full antialiased`}
     >
@@ -118,7 +118,6 @@ export default async function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <ScrollReset />
           <Header lang={lang} />
           <main className="flex-1">{children}</main>
           <Footer lang={lang} />
