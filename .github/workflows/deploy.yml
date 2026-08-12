@@ -23,7 +23,8 @@ jobs:
           script: |
             set -e
             cd /home/deploy/syahrworks-portfolio
-            git pull origin master
+            git fetch origin master
+            git reset --hard origin/master
             cat > /home/deploy/syahrworks-portfolio/.env.production << 'EOF'
             NEXT_PUBLIC_FORMSPREE_ENDPOINT=${{ secrets.NEXT_PUBLIC_FORMSPREE_ENDPOINT }}
             GITHUB_API_TOKEN=${{ secrets.GH_API_TOKEN }}
