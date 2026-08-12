@@ -27,7 +27,11 @@ import {
   SiKotlin,
   SiGithub,
   SiVercel,
+  SiLinux,
+  SiGithubactions,
+  SiGooglesearchconsole,
 } from "react-icons/si";
+import { FaServer } from "react-icons/fa";
 import type { TechGroup } from "@/lib/types";
 
 export const techStack: TechGroup[] = [
@@ -70,6 +74,10 @@ export const techStack: TechGroup[] = [
       { name: "Git", icon: DiGit },
       { name: "GitHub", icon: SiGithub },
       { name: "Vercel", icon: SiVercel },
+      { name: "Linux", icon: SiLinux },
+      { name: "systemd", icon: FaServer },
+      { name: "GitHub Actions", icon: SiGithubactions },
+      { name: "Google Search Console", icon: SiGooglesearchconsole },
     ],
   },
 ];
