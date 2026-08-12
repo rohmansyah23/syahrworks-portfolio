@@ -44,6 +44,9 @@ export default function LatestBlogs({ lang }: { lang: Locale }) {
               className="group flex flex-col gap-6 border border-border bg-background p-6 transition-colors duration-200 hover:bg-muted sm:p-8"
             >
               <div className="flex items-center justify-between">
+                <p className="micro-label text-muted-foreground">
+                  {post.category}
+                </p>
                 <div className="flex items-center gap-2">
                   {post.featured && (
                     <span className="inline-flex items-center gap-1 rounded-[2px] border border-border px-1.5 py-0.5 font-mono text-[0.65rem] uppercase tracking-widest text-foreground">
@@ -51,11 +54,8 @@ export default function LatestBlogs({ lang }: { lang: Locale }) {
                       {t.blogPinned}
                     </span>
                   )}
-                  <p className="micro-label text-muted-foreground">
-                    {post.category}
-                  </p>
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
                 </div>
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               </div>
               <h3 className="font-serif text-2xl leading-snug tracking-tight text-foreground transition-opacity duration-200 group-hover:opacity-80">
                 {post.title}
