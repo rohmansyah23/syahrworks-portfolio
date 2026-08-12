@@ -1,21 +1,19 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Pin } from "lucide-react";
 import {
   getData,
   getDictionary,
   localePath,
   type Locale,
 } from "@/lib/i18n";
-import { formatDate } from "@/lib/utils";
+import { formatDate, sortBlogPosts } from "@/lib/utils";
 import SectionHeader from "@/components/home/SectionHeader";
 
 export default function LatestBlogs({ lang }: { lang: Locale }) {
   const t = getDictionary(lang);
   const blogPosts = getData(lang).blog.blogPosts;
 
-  const latest = [...blogPosts]
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 2);
+  const latest = [...blogPosts].sort(sortBlogPosts).slice(0, 2);
 
   if (latest.length === 0) return null;
 
@@ -46,9 +44,17 @@ export default function LatestBlogs({ lang }: { lang: Locale }) {
               className="group flex flex-col gap-6 border border-border bg-background p-6 transition-colors duration-200 hover:bg-muted sm:p-8"
             >
               <div className="flex items-center justify-between">
-                <p className="micro-label text-muted-foreground">
-                  {post.category}
-                </p>
+                <div className="flex items-center gap-2">
+                  {post.featured && (
+                    <span className="inline-flex items-center gap-1 rounded-[2px] border border-border px-1.5 py-0.5 font-mono text-[0.65rem] uppercase tracking-widest text-foreground">
+                      <Pin className="h-3 w-3 text-accent" />
+                      {t.blogPinned}
+                    </span>
+                  )}
+                  <p className="micro-label text-muted-foreground">
+                    {post.category}
+                  </p>
+                </div>
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               </div>
               <h3 className="font-serif text-2xl leading-snug tracking-tight text-foreground transition-opacity duration-200 group-hover:opacity-80">

@@ -83,6 +83,7 @@ export type UIStrings = {
   latestBlogsLabel: string;
   latestBlogsTitle: string;
   latestBlogsViewAll: string;
+  blogPinned: string;
   /* Contact Form */
   contactTitle: string;
   contactDescription: string;

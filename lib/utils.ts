@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { Locale } from "@/lib/i18n";
+import type { BlogPost } from "@/lib/types";
 
 /** Gabungkan class Tailwind dengan resolusi konflik via tailwind-merge. */
 export function cn(...inputs: ClassValue[]) {
@@ -49,4 +50,12 @@ export function formatPeriod(
     return `${shortMonths[lang][m - 1]} ${y}`;
   };
   return `${fmt(start)} — ${fmt(end)}`;
+}
+
+/** Urutkan postingan blog: `featured` paling atas, lalu tanggal terbaru → terlama. */
+export function sortBlogPosts(a: BlogPost, b: BlogPost): number {
+  return (
+    Number(b.featured ?? false) - Number(a.featured ?? false) ||
+    b.date.localeCompare(a.date)
+  );
 }

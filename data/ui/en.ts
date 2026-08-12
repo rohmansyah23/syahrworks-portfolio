@@ -59,6 +59,7 @@ export const ui: UIStrings = {
   latestBlogsLabel: "From The Blog",
   latestBlogsTitle: "Latest writings.",
   latestBlogsViewAll: "View All Articles",
+  blogPinned: "Pinned",
   /* Contact Form */
   contactTitle: "Interested in working together?",
   contactDescription:

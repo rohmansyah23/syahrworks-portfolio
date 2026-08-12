@@ -9,7 +9,7 @@ import {
 } from "@/lib/i18n";
 import BlogCard from "@/components/blog/BlogCard";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+import { cn, sortBlogPosts } from "@/lib/utils";
 
 export default function BlogGrid({ lang }: { lang: Locale }) {
   const t = getDictionary(lang);
@@ -37,7 +37,7 @@ export default function BlogGrid({ lang }: { lang: Locale }) {
           post.tags.some((tag) => tag.toLowerCase().includes(q));
         return matchesTag && matchesQuery;
       })
-      .sort((a, b) => b.date.localeCompare(a.date));
+      .sort(sortBlogPosts);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, activeTag, lang]);
 

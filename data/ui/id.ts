@@ -59,6 +59,7 @@ export const ui: UIStrings = {
   latestBlogsLabel: "Dari Blog",
   latestBlogsTitle: "Tulisan terbaru.",
   latestBlogsViewAll: "Lihat Semua Artikel",
+  blogPinned: "Disematkan",
   /* Contact Form */
   contactTitle: "Tertarik bekerja sama?",
   contactDescription:
