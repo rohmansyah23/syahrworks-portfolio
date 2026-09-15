@@ -25,5 +25,5 @@ export const about: AboutData = {
   ],
   quote:
     "Build reliable systems, ship clean code, and never stop learning.",
-  resumeUrl: "/CV-Muhammad-Rohman-Syah.pdf",
+  resumeUrl: "/CV-Muhammad-Rohman-Syah-EN.pdf",
 };

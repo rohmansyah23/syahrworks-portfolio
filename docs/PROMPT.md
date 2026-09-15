@@ -127,7 +127,7 @@ export const about = {
   workingStyle: ["<4 poin cara kerja>"],
   favoriteTech: ["<daftar tech favorit>"],
   quote: "<quote ringkas>",
-  resumeUrl: "/CV-Muhammad-Rohman-Syah.pdf", // self-hosted di public/ (bukan link Google Drive)
+  resumeUrl: "/CV-Muhammad-Rohman-Syah-ID.pdf", // self-hosted di public/ (bukan link Google Drive); versi EN: "-EN.pdf"
 };
 
 // data/journey.ts

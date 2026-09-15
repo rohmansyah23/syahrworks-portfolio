@@ -25,5 +25,5 @@ export const about: AboutData = {
   ],
   quote:
     "Bangun sistem yang andal, kirim kode yang bersih, dan jangan pernah berhenti belajar.",
-  resumeUrl: "/CV-Muhammad-Rohman-Syah.pdf",
+  resumeUrl: "/CV-Muhammad-Rohman-Syah-ID.pdf",
 };
