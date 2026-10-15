@@ -52,6 +52,20 @@ Domain dikelola di **Dewabiz**: https://my.dewabiz.com/clientarea.php?action=dom
 | `www` | CNAME | `c6777fdd1dc1acde.vercel-dns-017.com.` | Subdomain www → Vercel (fallback sah jika panel menolak CNAME: `www` A → `216.198.79.1`) |
 | `@` | TXT | `google-site-verification=XwwdKNvthYP9Cxubcnhzhlqakn7dAaQ-vLgF2A1agO4` | Verifikasi Google Search Console |
 
+### Primary domain di Vercel (anti redirect-loop)
+
+Di Project Settings → Domains, susunan WAJIB seperti ini (insiden Okt 2026: kebalikannya
+menyebabkan `ERR_TOO_MANY_REDIRECTS`):
+
+| Domain | Mode | Artinya |
+| --- | --- | --- |
+| `syahrworks.com` | **Connect to an environment → Production** | Apex serve konten langsung |
+| `www.syahrworks.com` | **Redirect to Another Domain → 308 ke `syahrworks.com`** | wwwdialihkan ke apex |
+
+Jangan dibalik (apex redirect ke www) — `next.config.ts` (`redirects()`) mengarahkan
+www → apex, sehingga susunan terbalik membentuk loop `apex → www → apex → …`.
+Verifikasi rantai (Okt 2026): `www/` → 308 apex → 307 `/en` → 200; `www/en` → 308 apex `/en` → 200.
+
 ### Catatan penting
 
 - **Label "SPF (txt)" di UI Dewabiz = TXT record asli.** Opsi `<option value="TXT">SPF (txt)</option>`
