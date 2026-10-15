@@ -1,4 +1,10 @@
-# DEPLOY-VERCEL-FALLBACK.md — Fallback Deploy ke Vercel
+# DEPLOY-VERCEL-FALLBACK.md — Migrasi VPS → Vercel (ARSIP, sudah dieksekusi Okt 2026)
+
+> **Status Okt 2026: DIEKSEKUSI PENUH dan menjadi permanen.** VPS tidak
+> dilanjutkan, workflow `Deploy to VPS` dihapus, DNS Dewabiz sudah menunjuk
+> edge Vercel (`@` A `216.198.79.1`, `www` CNAME `...vercel-dns-017.com.` dengan
+> fallback sah `www` A `216.198.79.1`). Dokumen ini dipertahankan sebagai arsip
+> jejak migrasi. Status produksi terkini: `docs/DEPLOY.md`.
 
 Runbook lengkap untuk memindahkan hosting **sementara** dari VPS ke **Vercel**
 jika VPS habis masa aktif (bayar bulanan), **tanpa mengganti domain** `https://syahrworks.com`.

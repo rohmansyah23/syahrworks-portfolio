@@ -9,7 +9,7 @@ Prompt siap pakai untuk sesi eksekusi (coding agent/AI). Pendamping PRD di `docs
 Buat web portofolio BARU 100% dari nol (bukan fork/kloning template orang lain, bukan modifikasi repo lama).
 - Folder project baru: `D:\A-Projek\Web\syahrworks-portfolio`
 - Repo lama `D:\A-Projek\Web\next-portfolio` (GitHub: rohmansyah23/next-portofolio, live lama: syahrworks.vercel.app) TIDAK BOLEH disentuh — biarkan apa adanya sebagai versi arsip. Hanya dipakai sebagai SUMBER KONTEN (data.json + aset gambar di public/).
-- Repo baru menggantikan domain lama `syahrworks.vercel.app` dan kini live di **`https://syahrworks.com`** (VPS, auto-deploy via GitHub Actions — detail `docs/DEPLOY.md`).
+- Repo baru menggantikan domain lama `syahrworks.vercel.app` dan kini live di **`https://syahrworks.com`** (Vercel, auto-deploy via Vercel Git Integration — detail `docs/DEPLOY.md`).
 - Referensi DESAIN: https://www.tasteskill.dev/ — bahasa desain editorial "anti slop AI": typography-led, whitespace besar, palet dibatasi, detail halus (hairline border, index number, micro-label uppercase). Jangan tiru 1:1, ambil prinsipnya.
 - Referensi STRUKTUR (arsitektur halaman saja): https://github.com/ShinyQ/ShinyQ-Playground (live: https://kurniadi.pages.dev/) — adopsi struktur 5 halaman, timeline ber-tab, project modal, blog search+filter. JANGAN meniru bahasa desain ShinyQ (label `//`, logo `> nama_`, typewriter) dan JANGAN menyalin teks/konten milik ShinyQ (Kurniadi).
 

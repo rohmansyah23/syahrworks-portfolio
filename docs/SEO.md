@@ -81,7 +81,7 @@ keyword "https://syahrworks.com/en" (URL). Cek `websearch` menunjukkan hasil
    submit sitemap — gratis menambah peluang traffic.
 5. **Konsolidasi `www` vs non-`www`**: redirect **308 permanen** `www.syahrworks.com`
    → `syahrworks.com` **sudah terpasang di kode** (`redirects()` di `next.config.ts`,
-   kondisi `has: host = www.syahrworks.com`) dan auto-deploy tiap `git push upstream master`.
+   kondisi `has: host = www.syahrworks.com`) dan auto-deploy tiap `git push origin master` (Vercel Git Integration).
    Canonical non-www sudah dipakai di seluruh halaman.
    - Verifikasi live: `curl -s -o NUL -w '%{http_code} %{redirect_url}' https://www.syahrworks.com`
      → harus `308 https://syahrworks.com/en`.
@@ -233,8 +233,8 @@ GSC → **URL Inspection** → tempel URL → **Request Indexing**:
 - [ ] JSON-LD valid: cek dengan https://search.google.com/test/rich-results untuk
       `https://syahrworks.com/en` dan satu artikel blog.
 - [ ] Tiap artikel blog baru: sitemap otomatis ter-update (build) + Request Indexing.
-- [ ] Pastikan **tidak ada perubahan SEO yang bertentangan** saat VPS fallback ke Vercel
-      (domain tetap `syahrworks.com` → canonical/hreflang tetap valid; lihat
+- [ ] Pastikan **tidak ada perubahan SEO yang bertentangan** pasca-migrasi permanen ke Vercel
+      (domain tetap `syahrworks.com` → canonical/hreflang tetap valid; arsip migrasi:
       `docs/DEPLOY-VERCEL-FALLBACK.md`).
 
 ## 5. Catatan Penting
